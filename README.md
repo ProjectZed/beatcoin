@@ -1,4 +1,4 @@
-[![CircleCI]([![CircleCI](https://circleci.com/gh/ProjectZed/beatcoin.svg?style=shield&circle-token=29c531b9dea3831098549784593f7656e55ae28d)](https://circleci.com/gh/ProjectZed/beatcoin))](https://circleci.com/gh/ProjectZed/beatcoin/tree/master)
+[![CircleCI]([![CircleCI](https://circleci.com/gh/ProjectZed/beatcoin.svg?style=shield&circle-token=29c531b9dea3831098549784593f7656e55ae28d)](https://circleci.com/gh/ProjectZed/beatcoin))]
 
 # Startup Product: Client Side
 

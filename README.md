@@ -7,7 +7,7 @@ side of your product runs in the browser.
 
 # Instructions
 
-1. Clone this repo to your local machine
-2. Change to the root directory of beatcoin
-3. Execute `npm install`
-4. Execute `npm run serve`
+1. `git clone https://github.com/ProjectZed/beatcoin.git`
+2. `cd beatcoin`
+3. `npm install`
+4. `npm run serve`

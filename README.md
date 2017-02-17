@@ -4,3 +4,10 @@
 
 This repository will hold the *client side* of your product. The client
 side of your product runs in the browser.
+
+# Instructions
+
+1. Clone this repo to your local machine
+2. Change to the root directory of beatcoin
+3. Execute `npm install`
+4. Execute `npm run serve`

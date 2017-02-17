@@ -5,3 +5,6 @@ build/js/app.js
 
 # Ignore Node Modules
 node_modules/
+
+# Ignore tmp
+.tmp/

@@ -3,8 +3,8 @@ node_modules
 # Ignores your built application.
 build/js/app.js
 
-# Ignore Node Modules
-node_modules/
-
 # Ignore tmp
 .tmp/
+
+# Ignore npm log
+npm-debug.log

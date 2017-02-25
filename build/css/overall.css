@@ -3,44 +3,57 @@ body {
   padding-bottom: 80px;
   background-color: #c7c4ff;
 }
+/*#f9f4ff*/
+.navbar button {
+  background-color: #480c68;
+  border-width: 2px;
+  color: white;
+  border-color: #54078c;
+}
 
-.chat-popup {
-  width: 300px;
-  position: fixed;
-  bottom: 0px;
-  right: 20px;
-  /* Applies the given border style to all sides. */
-  border: 1px solid #000;
-  /* Removes the border on the bottom. */
-  border-bottom: none;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
+.navbar button:hover {
+  border-color: #910cf2;
+  background-color: #480c68;
+  color: white;
 }
-.song-pic {
-	display: inline-block;
-	background-position: center center;
-	background-size: cover;
-	vertical-align: middle;
-    background-image: url('/img/song-pic.jpg');
-	height: 50px;
-	width: 50px;
-	margin-right: 0px;
-	margin-top: 5px;
+
+.navbar button:active,
+.navbar button:focus,
+.navbar button:active:focus {
+  border-color: #910cf2;
+  background-color: #54078c;
+  color: white;
+  /* Removes halo and shadow on button when clicked. */
+  outline: none;
+  box-shadow: none;
 }
+
 .every-button{
   background-color: #480c68;
+  border-width: 2px;
   color: white;
   border-color: #54078c;
 }
 
 .every-button: hover{
   border-color: #910cf2;
+  background-color: #480c68;
+  color: white !important;
+}
+
+.every-button: focus{
+  border-color: #910cf2;
+  background-color: #54078c;
+  color: white !important;
 }
 
 .navbar{
   background-color: #480c68;
   height: 60px;
 }
-.bc-search {
-  width: 395px !important;
+
+.box{
+  background-color: rgba(251,251,240,0.7);
+  border-radius: 5px;
+  border: 2px solid #d07fff;
 }

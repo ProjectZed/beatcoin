@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head;
+    any other head content must come *after* these tags -->
+    <title>Public Profile</title>
+
+    <!-- Bootstrap's CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/profile.css" rel="stylesheet">
+    <link href="css/overall.css" rel="stylesheet">
+    <link href="css/comments.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <!-- The container for our grid. The outermost grid must be placed within
+     a `container` or `container-fluid` class. (Meaning: If you nest a grid
+     within a grid, you should not define another `container`)
+     What's the difference between these two types of container? There's a
+     good answer here: http://stackoverflow.com/a/22263969 -->
+     <div class="container main-container">
+
+      <!-- upper profile info bit -->
+      <div class="row bc-upper-profile">
+        <div class="col-md-3">
+          <div class="row" align="right">
+            <!-- https://upload.wikimedia.org/wikipedia/commons/6/6a/Johann_Sebastian_Bach.jpg -->
+            <div src="img/bach.jpg" class="profile-picture img-circle">
+            </div>
+
+          </div>
+          <div class="row" align="right">
+            <!-- http://www.flowerangelsusa.org/wp-content/uploads/2014/04/donate-button.jpg -->
+            <!-- <img src="img/donate-button.jpg" class="donate-button" /> -->
+
+            <button type="button" class="donate-button btn btn-default every-button">
+              <span class="" style="width:100%">Donate</span>
+            </button>
+          </div>
+        </div>
+        <div class="col-md-9 bc-profile-name">
+          Johann Bach
+        </div>
+      </div> <!-- end of upper profile -->
+
+      <!-- another row to separate the upper and lower parts -->
+      <div class="row bc-middle-profile">
+      </div>
+
+      <!-- lower profile bit -->
+      <div class="row bc-lower-profile">
+        <!-- Timeline -->
+        <div class="col-md-4">
+          <h4 class="timeline-title">Timeline</h4>
+
+          <!-- time -->
+          <div class="row" class="song-timestamp">
+            <span class="glyphicon glyphicon-time"></span>
+            2017-02-27
+          </div>
+
+          <!-- song info -->
+          <div class="panel box">
+            <div class="panel-body">
+              Ave Maria
+            </div>
+          </div>
+
+          <!-- song info -->
+          <div class="panel box">
+            <div class="panel-body">
+              Magnificat
+            </div>
+          </div>
+
+          <!-- time -->
+          <div class="row" class="song-timestamp">
+            <span class="glyphicon glyphicon-time"></span>
+            2017-02-26
+          </div>
+
+          <!-- song info -->
+          <div class="panel box">
+            <div class="panel-body">
+              Cello Suites
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="comments-image">
+          </div>
+        </div>
+
+        <!-- Comments -->
+        <div class="col-md-4 comments-container" align="right">
+          <h4 class="comments-title">Comments</h4>
+
+          <div class="container col-md-12 list-group-item">
+            <div class="row">
+              <div class="col-md-3 col-img">
+                <div class="comments-image profile-pic img-circle">
+                </div>
+              </div>
+              <div class="col-md-6 col-name-message">
+                <div class="comments-name">
+                  Doggie Doggo
+                </div>
+                <div class="comments-message">
+                  Bark Bark Bark Bark
+                </div>
+              </div>
+              <div class="col-md-3 col-actions-date">
+                <div class="comments-date pull-right">Today</div>
+                <div class="pull-right">
+                  <span class="comments-like glyphicon glyphicon-thumbs-up">
+                  </span>
+                  <span class="comments-reply">Reply</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- lower profile -->
+
+    </div> <!-- end of container -->
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below),
+    or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- App code -->
+    <script src="js/bundle.js"></script>
+  </body>
+  </html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Contact Us</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS goes here -->
+    <link href="css/contact-us.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Custom HTML goes here -->
+    <div class="container contact-container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 contact-title">
+          <h1><u>Contact Us</u></h1>
+        </div>
+      </div>
+      <div class="row">
+        <form role="form" data-toggle="validator">
+          <div class="container col-md-8 col-md-offset-2 contact-form">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputName" class="control-label">Full Name:</label>
+                  <input type="text" class="form-control" id="inputName" required data-error="Failure">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="inputEmail" class="control-label">Email:</label>
+                  <input type="email" class="form-control" id="inputEmail" required data-error="Failure">
+                  <div class="help-block with-errors"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="usr">Category:</label>
+                  <select class="form-control" id="sel1">
+                    <option selected>General</option>
+                    <option>Legal</option>
+                    <option>Partnership</option>
+                    <option>Payment</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="usr">Message:</label>
+                  <textarea class="form-control" rows="5" id="message" required data-error=""></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <button type="submit" class="form-control btn btn-default contact-submit">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- App code -->
+    <script src="js/bundle.js"></script>
+  </body>
+</html>

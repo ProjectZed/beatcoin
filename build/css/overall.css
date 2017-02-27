@@ -1,0 +1,20 @@
+body {
+  padding-top: 60px;
+  padding-bottom: 80px;
+  background-color: #c7c4ff;
+}
+/*#f9f4ff*/
+
+.every-button{
+  background-color: transparent;
+  color: white;
+}
+
+.every-button: hover{
+  background-color: #2b0042;
+}
+
+.navbar{
+  background-color: #480c68;
+  height: 60px;
+}

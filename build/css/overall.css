@@ -18,3 +18,6 @@ body {
   background-color: #480c68;
   height: 60px;
 }
+.bc-search {
+  width: 395px !important;
+}

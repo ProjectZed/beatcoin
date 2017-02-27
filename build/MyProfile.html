@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head;
+         any other head content must come *after* these tags -->
+    <title>My Profile</title>
+    <!-- Bootstrap's CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/my-profile.css" rel="stylesheet">
+    <link href="css/overall.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Our Facebook layout will go here. -->
+    <!-- <nav class="navbar navbar-fixed-top navbar-default"> -->
+    <!-- ".container-fluid" expands to fill the entire browser view's width.
+           ".container" will use the same width as the ".container" in the body,
+           which contains the three columns of content.
+           We want ".container" here so the navbar is the same width as the content.
+           Confused? Try switching between the two container classes once you have a
+           complete navbar to see the difference. -->
+    <!-- <div class="container"> -->
+
+    <!-- </div> -->
+    <!-- /.container -->
+    <!-- </nav> -->
+
+    <!-- The container for our grid. The outermost grid must be placed within
+     a `container` or `container-fluid` class. (Meaning: If you nest a grid
+     within a grid, you should not define another `container`)
+     What's the difference between these two types of container? There's a
+     good answer here: http://stackoverflow.com/a/22263969 -->
+    <div class="container main-container">
+
+        <!-- upper profile info bit -->
+        <div class="row bc-upper-profile">
+            <div class="col-md-4">
+                <div class="row" align="right">
+                    <!-- https://upload.wikimedia.org/wikipedia/commons/6/6a/Johann_Sebastian_Bach.jpg -->
+                    <img src="img/bach.jpg" class="profile-picture"></img>
+                </div>
+                <div class="row" align="right">
+                    <!-- <div class="col upload-profile-link" align="right"> -->
+                    <button class="upload-profile-link">
+
+                <span class="glyphicon glyphicon-pencil"></span>
+                Change Profile Picture
+            </button>
+                </div>
+            </div>
+            <div class="col-md-8 my-profile-name">
+                Johann Bach
+            </div>
+        </div>
+        <!-- end of upper profile -->
+
+        <!-- lower profile bit -->
+        <div class="row bc-upper-profile">
+            <div class="col-md-4">
+                <div class="row selector-col">
+                    <b>
+                <button class="row selector-button">
+                    General
+                </button>
+                <button class="row selector-button">
+                    Listening Preferences
+                </button>
+                <button class="row selector-button">
+                    Songs
+                </button>
+                <button class="row selector-button">
+                    Favorites
+                </button>
+                <button class="row selector-button">
+                    Redeem
+                </button>
+              </b>
+                </div>
+            </div>
+
+            <div class="col-md-8 profile-info">
+                <font size="6">General </font>
+                <font size="4"><a href="#"><span class="glyphicon glyphicon-pencil"></span></a></font>
+                <hr>
+                <div class="col-md-3 displayed-info">
+                    Displayed Name
+                    <br> Birthday
+                    <br> Gender
+                    <br> Address
+                    <br> Education
+                </div>
+                <div class="col-md-3 displayed-info">
+                    Johann Bach
+                    <br> 1685/03/31
+                    <br> Male
+                    <br> Germany
+                    <br> High School
+                </div>
+                <div class="col-md-4 displayed-info">
+                    <br>
+                    <span class="glyphicon glyphicon-remove"></span> Hidden
+                    <br>
+                    <span class="glyphicon glyphicon-remove"></span> Hidden
+                    <br>
+                    <span class="glyphicon glyphicon-ok"></span> Displayed
+                    <br>
+                    <span class="glyphicon glyphicon-remove"></span> Hidden
+                </div>
+            </div>
+        </div>
+        <!-- lower profile -->
+
+    </div>
+    <!-- end of container -->
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below),
+         or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>

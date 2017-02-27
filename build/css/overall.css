@@ -5,13 +5,15 @@ body {
 }
 /*#f9f4ff*/
 
+
 .every-button{
-  background-color: transparent;
+  background-color: #480c68;
   color: white;
+  border-color: #54078c;
 }
 
 .every-button: hover{
-  background-color: #2b0042;
+  border-color: #910cf2;
 }
 
 .navbar{

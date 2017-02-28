@@ -1,65 +1,67 @@
-body {
-  padding-top: 60px;
-  padding-bottom: 80px;
-  background-color: #c7c4ff;
+html {
+    overflow: hidden;
 }
-/*#f9f4ff*/
+
+body {
+    padding-top: 60px;
+    padding-bottom: 80px;
+    background-color: #c7c4ff;
+}
+
 .navbar button {
-  background-color: #480c68;
-  border-width: 2px;
-  color: white;
-  border-color: #54078c;
+    background-color: #480c68;
+    border-width: 2px;
+    color: white;
+    border-color: #54078c;
 }
 
 .navbar button:hover {
-  border-color: #910cf2;
-  background-color: #480c68;
-  color: white;
+    border-color: #910cf2;
+    background-color: #480c68;
+    color: white;
 }
 
-.navbar button:active,
-.navbar button:focus,
-.navbar button:active:focus {
-  border-color: #910cf2;
-  background-color: #54078c;
-  color: white;
-  /* Removes halo and shadow on button when clicked. */
-  outline: none;
-  box-shadow: none;
+.navbar button:active, .navbar button:focus, .navbar button:active:focus {
+    border-color: #910cf2;
+    background-color: #54078c;
+    color: white;
+    /* Removes halo and shadow on button when clicked. */
+    outline: none;
+    box-shadow: none;
 }
 
-.every-button{
-  background-color: #480c68;
-  border-width: 2px;
-  color: white;
-  border-color: #54078c;
+.every-button {
+    background-color: #480c68;
+    border-width: 2px;
+    color: white;
+    border-color: #54078c;
 }
 
-.every-button: hover{
-  border-color: #910cf2;
-  background-color: #480c68;
-  color: white !important;
+.every-button: hover {
+    border-color: #910cf2;
+    background-color: #480c68;
+    color: white !important;
 }
 
-.every-button: focus{
-  border-color: #910cf2;
-  background-color: #54078c;
-  color: white !important;
+.every-button: focus {
+    border-color: #910cf2;
+    background-color: #54078c;
+    color: white !important;
 }
 
-.navbar{
-  background-color: #480c68;
-  height: 60px;
+.navbar {
+    background-color: #480c68;
+    height: 60px;
 }
 
-.box{
-  background-color: rgba(251,251,240,0.7);
-  border-radius: 5px;
-  border: 2px solid #d07fff;
+.box {
+    background-color: rgba(251, 251, 240, 0.7);
+    border-radius: 5px;
+    border: 2px solid #d07fff;
 }
 
 .bc-search {
-  width: 395px !important;
+    width: 395px !important;
 }
 
 .song-pic {

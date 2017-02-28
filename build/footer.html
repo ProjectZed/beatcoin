@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head;
+         any other head content must come *after* these tags -->
+    <title>Beatcoin</title>
+
+    <!-- Bootstrap's CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/overall.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-fixed-bottom navbar-default">
+      <!-- ".container-fluid" expands to fill the entire browser view's width.
+           ".container" will use the same width as the ".container" in the body,
+           which contains the three columns of content.
+           We want ".container" here so the navbar is the same width as the content.
+           Confused? Try switching between the two container classes once you have a
+           complete navbar to see the difference. -->
+      <div class="container">
+        <!-- On mobile, this div is hidden by default. The user hits the button
+             in the `navbar-header` to see the content of the div.
+             On desktop, this div is visible all of the time. -->
+        <div class="navbar navbar-static-top">
+	      <div class="navbar-left">
+            <!-- Left-aligned items. -->
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default navbar-btn">
+                <span class="glyphicon glyphicon-fast-backward"></span>
+              </button>
+              <button type="button" class="btn btn-default navbar-btn">
+                <span class="glyphicon glyphicon-play-circle"></span>
+              </button>
+              <button type="button" class="btn btn-default navbar-btn">
+                <span class="glyphicon glyphicon-fast-forward"></span>
+              </button>
+            </div>
+          </div>
+		  <div class="navbar-inner" style="display: inline-block;">
+			<div class="nav navbar-text progress" style="width: 500px; margin-top:15px">
+                <div class="bar" style="width: 50%;"></div>
+            </div>
+            <p class="nav navbar-text">13:37</p>
+			<button type="button" class="btn btn-default navbar-btn">
+              <span class="glyphicon glyphicon-repeat"></span>
+            </button>
+			<button type="button" class="btn btn-default navbar-btn">
+              <span class="glyphicon glyphicon-volume-down"></span>
+            </button>
+		  </div>
+          <div class="nav navbar-nav navbar-right">
+            <!-- Right-aligned items -->
+			<div class="comments-image song-pic"></div>
+            <p class="nav navbar-text" style="margin-top:10px">Sherlock<br>Blasphemy Frumblesnatch</p>
+            <button type="button" class="btn btn-default navbar-btn">
+              <span class="glyphicon glyphicon-thumbs-up"></span>
+            </button>
+          </div>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below),
+         or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

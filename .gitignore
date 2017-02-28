@@ -8,3 +8,6 @@ build/js/app.js
 
 # Ignore npm log
 npm-debug.log
+
+#Ignore .DS_Store
+*/.DS_Store

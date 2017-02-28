@@ -11,8 +11,7 @@
   display:inline-block;
   text-align:center;
   padding: 5px;
-  border:5px outset #d07fff;
-  box-shadow: 5px 5px 5px #8e8d61;
+  border:1px solid #000;
 }
 
 .img{
@@ -29,4 +28,16 @@
   width:100px;
   height:30px;
   vertical-align:middle;
+}
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
 }

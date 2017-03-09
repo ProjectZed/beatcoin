@@ -1,0 +1,52 @@
+main-container {
+	height: 100%;
+}
+
+body {
+  /*padding-top: 50px;*/
+}
+
+
+.bc-upper-profile {
+	height: 200px;
+}
+
+.bc-middle-profile {
+	/*height: 50px;*/
+}
+
+.bc-lower-profile {
+	margin-top: 20px;
+}
+
+.profile-picture {
+    background-image: url('/img/bach.jpg');
+	/*width: 50%;*/
+	text-align: center;
+
+    display: inline-block;
+    vertical-align: middle;
+    width: 150px;
+    height: 150px;
+    background-position: center center;
+    background-size: cover;
+}
+
+.donate-button {
+	width: 150px;
+	/*text-align: right;*/
+}
+
+.bc-profile-name {
+  line-height: 175px;
+  font-size: 50px;
+}
+
+.timeline-title {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.song-timestamp {
+    text-align: left;
+}

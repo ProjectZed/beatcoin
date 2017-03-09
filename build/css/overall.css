@@ -9,10 +9,11 @@ body {
 }
 
 .navbar button {
-    background-color: #480c68;
-    border-width: 2px;
-    color: white;
-    border-color: #54078c;
+  background-color: #480c68;
+  border-width: 2px;
+  color: white;
+  border-color: #54078c;
+  vertical-align: middle;
 }
 
 .navbar button:hover {
@@ -62,6 +63,22 @@ body {
 
 .bc-search {
     width: 395px !important;
+}
+
+.song-pic {
+    display: inline-block;
+    background-position: center center;
+    background-size: cover;
+    vertical-align: middle;
+    background-image: url('/img/song-pic.jpg');
+    height: 50px;
+    width: 50px;
+    margin-right: 0px;
+    margin-top: 5px;
+}
+
+.bc-search {
+  width: 395px !important;
 }
 
 .song-pic {

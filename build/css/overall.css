@@ -9,10 +9,11 @@ body {
 }
 
 .navbar button {
-    background-color: #480c68;
-    border-width: 2px;
-    color: white;
-    border-color: #54078c;
+  background-color: #480c68;
+  border-width: 2px;
+  color: white;
+  border-color: #54078c;
+  vertical-align: middle;
 }
 
 .navbar button:hover {

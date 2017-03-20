@@ -15,9 +15,8 @@ export default class ContactForm extends React.Component {
                         <div className="col-md-6">
                             <div className="form-group">
                                 <label htmlFor="inputEmail" className="control-label">Email:</label>
-                                <input type="email" className="form-control" id="inputEmail" required data-error="Failure">
+                                <input type="email" className="form-control" id="inputEmail" required data-error="Failure"></input>
                                     <div className="help-block with-errors"></div>
-                                </input>
                             </div>
                         </div>
                     </div>
@@ -26,7 +25,7 @@ export default class ContactForm extends React.Component {
                             <div className="form-group">
                                 <label htmlFor="usr">Category:</label>
                                 <select className="form-control" id="sel1">
-                                    <option selected>General</option>
+                                    <option defaultValue>General</option>
                                     <option>Legal</option>
                                     <option>Partnership</option>
                                     <option>Payment</option>

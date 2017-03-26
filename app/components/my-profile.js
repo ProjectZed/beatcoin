@@ -1,5 +1,8 @@
 import React from 'react';
 
+import MyProfileInformation from './my-profile-information';
+import MyProfileSelector from './my-profile-selector';
+
 export default class MyProfile extends React.Component {
     render() {
         return (
@@ -24,56 +27,10 @@ export default class MyProfile extends React.Component {
                 </div>
                 <div className="row bc-upper-profile">
                     <div className="col-md-4">
-                        <div className="row selector-col">
-                            <b>
-                        <button className="row selector-button">
-                            General
-                        </button>
-                        <button className="row selector-button">
-                            Listening Preferences
-                        </button>
-                        <button className="row selector-button">
-                            Songs
-                        </button>
-                        <button className="row selector-button">
-                            Favorites
-                        </button>
-                        <button className="row selector-button">
-                            Redeem
-                        </button>
-                      </b>
-                        </div>
+                      <MyProfileSelector />
                     </div>
 
-                    <div className="col-md-8 profile-info">
-                        <font size="6">General </font>
-                        <font size="4"><a href="#"><span className="glyphicon glyphicon-pencil"></span></a></font>
-                        <hr/>
-                        <div className="col-md-3 displayed-info">
-                            Displayed Name
-                            <br/> Birthday
-                            <br/> Gender
-                            <br/> Address
-                            <br/> Education
-                        </div>
-                        <div className="col-md-3 displayed-info">
-                            Johann Bach
-                            <br/> 1685/03/31
-                            <br/> Male
-                            <br/> Germany
-                            <br/> High School
-                        </div>
-                        <div className="col-md-4 displayed-info">
-                            <br/>
-                            <span className="glyphicon glyphicon-remove"></span> Hidden
-                            <br/>
-                            <span className="glyphicon glyphicon-remove"></span> Hidden
-                            <br/>
-                            <span className="glyphicon glyphicon-ok"></span> Displayed
-                            <br/>
-                            <span className="glyphicon glyphicon-remove"></span> Hidden
-                        </div>
-                    </div>
+                    <MyProfileInformation />
                 </div>
 
             </div>

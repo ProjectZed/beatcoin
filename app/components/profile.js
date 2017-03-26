@@ -1,4 +1,5 @@
 import React from 'react';
+import CommentThread from './comment-thread';
 
 export default class Profile extends React.Component {
   render() {
@@ -64,32 +65,10 @@ export default class Profile extends React.Component {
          </div>
 
          <div className="col-md-4 comments-container" align="right">
-           <h4 className="comments-title">Comments</h4>
-
-           <div className="container col-md-12 list-group-item">
-             <div className="row">
-               <div className="col-md-3 col-img">
-                 <div className="comments-image profile-pic img-circle">
-                 </div>
-               </div>
-               <div className="col-md-6 col-name-message">
-                 <div className="comments-name">
-                   Doggie Doggo
-                 </div>
-                 <div className="comments-message">
-                   Bark Bark Bark Bark
-                 </div>
-               </div>
-               <div className="col-md-3 col-actions-date">
-                 <div className="comments-date pull-right">Today</div>
-                 <div className="pull-right">
-                   <span className="comments-like glyphicon glyphicon-thumbs-up">
-                   </span>
-                   <span className="comments-reply">Reply</span>
-                 </div>
-               </div>
-             </div>
-           </div>
+           <CommentThread>
+             <Comment picture="profile-pic" name="Doggie Doggo" message="Bark Bark Bark" date="Today" />
+             <Comment picture="profile-pic" name="Doggie Doggo" message="Woof Woof Woof" date="Yesterday" />
+           </CommentThread>
          </div>
        </div>
       </div>

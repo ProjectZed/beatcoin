@@ -8,6 +8,7 @@ import ContactUs from './components/contact-us.js';
 import PlaylistView from './components/playlist-view.js';
 import Redeem from './components/redeem.js';
 import UserHome from './components/user-home.js';
+import Navbar from './components/navbar.js';
 
 // For each view conditionally determine which view to display
 // depending on if the ID is present in the HTML.
@@ -33,6 +34,7 @@ if (document.getElementById('profile') !== null) {
   );
 }else if (document.getElementById('redeem') !== null) {
   ReactDOM.render(
+    <Navbar />,
     <Redeem />,
     document.getElementById('redeem')
   );
@@ -40,5 +42,10 @@ if (document.getElementById('profile') !== null) {
   ReactDOM.render(
     <UserHome />,
     document.getElementById('user-home')
+  );
+}else if (document.getElementById('navbar') !== null) {
+  ReactDOM.render(
+    <Navbar />,
+    document.getElementById('navbar')
   );
 }

@@ -12,7 +12,6 @@ import Navbar from './components/navbar.js';
 
 // For each view conditionally determine which view to display
 // depending on if the ID is present in the HTML.
-ReactDOM.render(<Navbar />);
 if (document.getElementById('profile') !== null) {
   ReactDOM.render(
     <Profile />,
@@ -50,10 +49,3 @@ if (document.getElementById('profile') !== null) {
     document.getElementById('navbar')
   );
 }
-ReactDOM.render(
-  <Profile />,
-  document.getElementById('profile')
-);
-app.listen(3000, function () {
-  console.log("Express server listening on port 3000");
-});

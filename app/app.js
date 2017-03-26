@@ -30,7 +30,8 @@ const profileInfo = [
 		'address':'Germany',
 		'addressstatus':'Displayed',
 		'education':'High School',
-		'educationstatus':'Hidden'
+		'educationstatus':'Hidden',
+		'profilePicture':'img/bach.jpg'
 	}
 ]
 if (document.getElementById('profile') !== null) {

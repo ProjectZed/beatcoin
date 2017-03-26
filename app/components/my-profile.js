@@ -14,7 +14,7 @@ export default class MyProfile extends React.Component {
                 <div className="row bc-upper-profile">
                     <div className="col-md-4">
                         <div className="row" align="right">
-                            <img src="img/bach.jpg" className="profile-picture img-circle"></img>
+                            <img src={this.props.data.profilePicture} className="profile-picture img-circle"></img>
                         </div>
                         <div className="row" align="right">
                             <button className="upload-profile-link">

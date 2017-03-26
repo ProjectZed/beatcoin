@@ -20,6 +20,19 @@ const songProps = [
 	'songArtist':'Blasphemy Frumblesnatch'
 }
 ]
+const profileInfo = [
+	{
+		'Name':'Johann Bach',
+		'birthday':'1685/03/31',
+		'birthdaystatus':'Hidden',
+		'gender':'Male',
+		'genderstatus':'Hidden',
+		'address':'Germany',
+		'addressstatus':'Displayed',
+		'education':'High School',
+		'educationstatus':'Hidden'
+	}
+]
 if (document.getElementById('profile') !== null) {
   ReactDOM.render(
     <Profile />,
@@ -27,7 +40,7 @@ if (document.getElementById('profile') !== null) {
   );
 } else if (document.getElementById('my-profile') !== null) {
   ReactDOM.render(
-    <MyProfile />,
+    <MyProfile data={profileInfo[0]}/>,
     document.getElementById('my-profile')
   );
 }else if (document.getElementById('contact-us') !== null) {

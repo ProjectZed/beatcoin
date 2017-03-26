@@ -2,11 +2,14 @@ import React from 'react';
 
 import MyProfileInformation from './my-profile-information';
 import MyProfileSelector from './my-profile-selector';
+import Navbar from './navbar';
+import Footer from './footer';
 
 export default class MyProfile extends React.Component {
     render() {
         return (
             <div>
+              <Navbar></Navbar>
             <div className="container main-container">
                 <div className="row bc-upper-profile">
                     <div className="col-md-4">
@@ -22,7 +25,7 @@ export default class MyProfile extends React.Component {
                         </div>
                     </div>
                     <div className="col-md-8 my-profile-name">
-                        Johann Bach
+                        {this.props.data.Name}
                     </div>
                 </div>
                 <div className="row bc-upper-profile">
@@ -30,10 +33,11 @@ export default class MyProfile extends React.Component {
                       <MyProfileSelector />
                     </div>
 
-                    <MyProfileInformation />
+                    <MyProfileInformation data={this.props.data}/>
                 </div>
 
             </div>
+            <Footer data={{songTime:'13:37',songTitle:'Sherlock',songArtist:'Blasphemy Frumblesnatch'}}/>,
             </div>
         )
     }

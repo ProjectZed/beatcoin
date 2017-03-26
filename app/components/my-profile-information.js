@@ -16,21 +16,21 @@ export default class MyProfileInformation extends React.Component {
                       <br/> Education
                   </div>
                   <div className="col-md-3 displayed-info">
-                      Johann Bach
-                      <br/> 1685/03/31
-                      <br/> Male
-                      <br/> Germany
-                      <br/> High School
+                      {this.props.data.Name}
+                      <br/> {this.props.data.birthday}
+                      <br/> {this.props.data.gender}
+                      <br/> {this.props.data.address}
+                      <br/> {this.props.data.education}
                   </div>
                   <div className="col-md-4 displayed-info">
                       <br/>
-                      <span className="glyphicon glyphicon-remove"></span> Hidden
+                      <span className="glyphicon glyphicon-remove"></span> {this.props.data.birthdaystatus}
                       <br/>
-                      <span className="glyphicon glyphicon-remove"></span> Hidden
+                      <span className="glyphicon glyphicon-remove"></span> {this.props.data.genderstatus}
                       <br/>
-                      <span className="glyphicon glyphicon-ok"></span> Displayed
+                      <span className="glyphicon glyphicon-ok"></span> {this.props.data.addressstatus}
                       <br/>
-                      <span className="glyphicon glyphicon-remove"></span> Hidden
+                      <span className="glyphicon glyphicon-remove"></span> {this.props.data.educationstatus}
                   </div>
               </div>
             </div>

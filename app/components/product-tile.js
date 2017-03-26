@@ -5,7 +5,7 @@ export default class ProductTile extends React.Component {
         return (
           <div className="col-md-5 col-centered">
             <div className="relative">
-              <div className={"img" + (this.props.productPhoto)}></div>
+              <img className="img" src={this.props.productPhoto} alt=""/>
               <div className="btn-group btn-group-justified" role="group" aria-label="...">
                 <a href="#" className="btn btn-default" role="button">$5</a>
                 <a href="#" className="btn btn-default" role="button">$10</a>

@@ -19,11 +19,11 @@ export default class Footer extends React.Component {
                     </button>
                   </div>
                 </div>
-            <div className="navbar-inner" style="display: inline-block;">
-            <div className="nav navbar-text progress" style="width: 500px; margin-top:15px">
-                      <div className="bar" style="width: 50%;"></div>
+            <div className="navbar-inner" style={{display: "inline-block"}}>
+            <div className="nav navbar-text progress" style={{width: "500px", marginTop:"15px"}}>
+                      <div className="bar" style={{width: "50%"}}></div>
                   </div>
-                  <p className="nav navbar-text">this.props.SongTime</p>
+                  <p className="nav navbar-text">{this.props.data.songTime}</p>
             <button type="button" className="btn btn-default navbar-btn">
                     <span className="glyphicon glyphicon-repeat"></span>
                   </button>
@@ -33,7 +33,7 @@ export default class Footer extends React.Component {
             </div>
                 <div className="nav navbar-nav navbar-right">
             <div className="comments-image song-pic"></div>
-                  <p className="nav navbar-text" style="margin-top:10px">this.props.SongName<br></br>this.props.ArtistName</p>
+<p className="nav navbar-text" style={{marginTop:"10px"}}>{this.props.data.songTitle}<br></br>{this.props.data.songArtist}</p>
                   <button type="button" className="btn btn-default navbar-btn">
                     <span className="glyphicon glyphicon-thumbs-up"></span>
                   </button>

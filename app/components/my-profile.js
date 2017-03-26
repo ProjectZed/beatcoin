@@ -2,11 +2,8 @@ import React from 'react';
 
 import MyProfileInformation from './my-profile-information';
 import MyProfileSelector from './my-profile-selector';
-<<<<<<< HEAD
 import Navbar from './navbar';
 import Footer from './footer';
-=======
->>>>>>> f2e27c9346bf8a680be476ff3a923c4592aba48b
 
 export default class MyProfile extends React.Component {
     render() {

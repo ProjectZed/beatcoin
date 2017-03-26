@@ -163,86 +163,7 @@
      within a grid, you should not define another `container`)
      What's the difference between these two types of container? There's a
      good answer here: http://stackoverflow.com/a/22263969 -->
-    <div class="container main-container">
-
-        <!-- upper profile info bit -->
-        <div class="row bc-upper-profile">
-            <div class="col-md-4">
-                <div class="row" align="right">
-                    <!-- https://upload.wikimedia.org/wikipedia/commons/6/6a/Johann_Sebastian_Bach.jpg -->
-                    <img src="img/bach.jpg" class="profile-picture img-circle"></img>
-                </div>
-                <div class="row" align="right">
-                    <!-- <div class="col upload-profile-link" align="right"> -->
-                    <button class="upload-profile-link">
-
-                <span class="glyphicon glyphicon-pencil"></span>
-                Change Profile Picture
-            </button>
-                </div>
-            </div>
-            <div class="col-md-8 my-profile-name">
-                Johann Bach
-            </div>
-        </div>
-        <!-- end of upper profile -->
-
-        <!-- lower profile bit -->
-        <div class="row bc-upper-profile">
-            <div class="col-md-4">
-                <div class="row selector-col">
-                    <b>
-                <button class="row selector-button">
-                    General
-                </button>
-                <button class="row selector-button">
-                    Listening Preferences
-                </button>
-                <button class="row selector-button">
-                    Songs
-                </button>
-                <button class="row selector-button">
-                    Favorites
-                </button>
-                <button class="row selector-button">
-                    Redeem
-                </button>
-              </b>
-                </div>
-            </div>
-
-            <div class="col-md-8 profile-info">
-                <font size="6">General </font>
-                <font size="4"><a href="#"><span class="glyphicon glyphicon-pencil"></span></a></font>
-                <hr>
-                <div class="col-md-3 displayed-info">
-                    Displayed Name
-                    <br> Birthday
-                    <br> Gender
-                    <br> Address
-                    <br> Education
-                </div>
-                <div class="col-md-3 displayed-info">
-                    Johann Bach
-                    <br> 1685/03/31
-                    <br> Male
-                    <br> Germany
-                    <br> High School
-                </div>
-                <div class="col-md-4 displayed-info">
-                    <br>
-                    <span class="glyphicon glyphicon-remove"></span> Hidden
-                    <br>
-                    <span class="glyphicon glyphicon-remove"></span> Hidden
-                    <br>
-                    <span class="glyphicon glyphicon-ok"></span> Displayed
-                    <br>
-                    <span class="glyphicon glyphicon-remove"></span> Hidden
-                </div>
-            </div>
-        </div>
-        <!-- lower profile -->
-
+    <div id="my-profile">
     </div>
     <!-- end of container -->
 
@@ -252,6 +173,9 @@
     <!-- Include all compiled plugins (below),
          or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <!-- Our React code! -->
+    <script src="js/app.js"></script>
+
 </body>
 
 </html>

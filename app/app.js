@@ -1,4 +1,4 @@
-
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 // Each major browser view user interface must be imported.

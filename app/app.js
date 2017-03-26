@@ -55,7 +55,6 @@ if (document.getElementById('profile') !== null) {
   );
 }else if (document.getElementById('redeem') !== null) {
   ReactDOM.render(
-    <Navbar />,
     <Redeem />,
     document.getElementById('redeem')
   );

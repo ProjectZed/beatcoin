@@ -2,11 +2,14 @@ import React from 'react';
 
 import PreferredPlaylist from './preferred-playlist.js';
 import Playlist from './playlist.js';
+import Navbar from './navbar.js';
+import Footer from './footer.js';
 
 export default class UserHome extends React.Component {
   render() {
     return (
-      // main thing -->
+      <div>
+        <Navbar></Navbar>
       <div className="container panelstyle">
         <div className = "row">
 
@@ -66,8 +69,10 @@ export default class UserHome extends React.Component {
               </div>
 
         </div>
-      </div> 
+      </div>
+      <Footer data={{songTime:'13:37',songTitle:'Sherlock',songArtist:'Blasphemy Frumblesnatch'}}/>,
 
+    </div>
     );
   }
 }

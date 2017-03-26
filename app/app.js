@@ -1,4 +1,4 @@
-
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 // Each major browser view user interface must be imported.
@@ -9,9 +9,17 @@ import PlaylistView from './components/playlist-view.js';
 import Redeem from './components/redeem.js';
 import UserHome from './components/user-home.js';
 import Navbar from './components/navbar.js';
+import Footer from './components/footer.js';
 
 // For each view conditionally determine which view to display
 // depending on if the ID is present in the HTML.
+const songProps = [
+{
+	'songTime':'13:37',
+	'songTitle':'Sherlock',
+	'songArtist':'Blasphemy Frumblesnatch'
+}
+]
 if (document.getElementById('profile') !== null) {
   ReactDOM.render(
     <Profile />,
@@ -34,7 +42,6 @@ if (document.getElementById('profile') !== null) {
   );
 }else if (document.getElementById('redeem') !== null) {
   ReactDOM.render(
-    <Navbar />,
     <Redeem />,
     document.getElementById('redeem')
   );
@@ -48,4 +55,10 @@ if (document.getElementById('profile') !== null) {
     <Navbar />,
     document.getElementById('navbar')
   );
+}else if (document.getElementById('footer') !== null) {
+  ReactDOM.render(
+    <Footer data={songProps[0]}/>,
+    document.getElementById('footer')
+  );
 }
+

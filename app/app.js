@@ -62,4 +62,3 @@ if (document.getElementById('profile') !== null) {
     document.getElementById('footer')
   );
 }
-

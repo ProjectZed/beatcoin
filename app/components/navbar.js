@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
+import ResetDatabase from '../database';
 
 export default class Navbar extends React.Component {
     render() {
@@ -57,6 +58,9 @@ export default class Navbar extends React.Component {
                                             </li>
                                             <li>
                                                 <a href="#">Log out</a>
+                                            </li>
+                                            <li>
+                                                <ResetDatabase></ResetDatabase>
                                             </li>
                                         </ul>
                                     </div>

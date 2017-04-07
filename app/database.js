@@ -178,15 +178,15 @@ var initialData = {
     },
     "songs": {
         "1": {
-            "title": "L'Abe igi orombo",
-            "genre": "Folk",
+            "title": "The Star Spangled Banner",
+            "genre": "Classical",
             "uploader": 2,
             "price": 35,
             "plays": 1027,
-            "audio": "audio/labe_igi_orombo.mp3",
-            "cover": "img/labe_igi_orombo.jpg",
-            "lyrics": "L'abe igi orombo\nN'ibe l'agbe nsere wa\nInu wa dun, ara wa ya\nL'abe igi orombo\n\nOrombo, orombo\nOrombo, orombo.",
-            "description": "Nigerian children's song about the orange tree.",
+            "audio": "audio/star-spangled-banner.mp3",
+            "cover": "img/songs/covers/star-spangled-banner.jpg",
+            "lyrics": "Oh, say can you see by the dawn\'s early light\nWhat so proudly we hailed at the twilight\'s last gleaming?\nWhose broad stripes and bright stars thru the perilous fight,O\'er the ramparts we watched were so gallantly streaming?\nAnd the rockets\' red glare, the bombs bursting in air,\nGave proof through the night that our flag was still there.\nOh, say does that star-spangled banner yet wave\nO\'er the land of the free and the home of the brave?\nOn the shore, dimly seenthrough the mists of the deep,\nWhere the foe\'s haughty host in dread silence reposes,\nWhat is that which the breeze, o\'er the towering steep,\nAs it fitfully blows, half conceals, half discloses?\nNow it catches the gleam of the morning\'s first beam,\nIn full glory reflected now shines in the stream:\n'Tis the star-spangled banner! Oh long may it wave\nO'er the land of the free and the home of the brave.\n\nAnd where is that band who so vauntingly swore\nThat the havoc of war and the battle\'s confusion,\nA home and a country should leave us no more!\nTheir blood has washed out their foul footsteps\' pollution.\nNo refuge could save the hireling and slave'\nFrom the terror of flight and the gloom of the grave:\nAnd the star-spangled banner in triumph doth wave\nO'er the land of the free and the home of the brave.\n\nOh! thus be it ever, when freemen shall stand\nBetween their loved home and the war's desolation!\nBlest with victory and peace, may the heav\'n rescued land\nPraise the Power that hath made and preserved us a nation.\nThen conquer we must, when our cause it is just,\nAnd this be our motto: \"In God is our trust.\"\nAnd the star-spangled banner in triumph shall wave\nO'er the land of the free and the home of the brave.",
+            "description": "The U.S. National Anthem",
             "uploadDate": 1453690800000,
             "likes": [2],
             "comments": [1, 2]
@@ -198,12 +198,8 @@ var initialData = {
             "image": "img/redeem/chipotle.jpg",
             "price": [
                 //beatcoins,cents
-                [
-                    1000, 1000
-                ],
-                [
-                    1400, 1500
-                ],
+                [1000, 1000],
+                [1400, 1500],
                 [1700, 2000]
             ]
         },
@@ -212,12 +208,8 @@ var initialData = {
             "image": "img/redeem/amazon.jpg",
             "price": [
                 //beatcoins,cents
-                [
-                    1000, 1000
-                ],
-                [
-                    1400, 1500
-                ],
+                [1000, 1000],
+                [1400, 1500],
                 [1700, 2000]
             ]
         }

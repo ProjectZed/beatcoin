@@ -146,8 +146,8 @@ var initialData = {
                 "education": "High School",
                 "displayed": [true, true, true, true, true]
             },
-            "uploads": [1],
-            "favorites": [1],
+            "uploads": [1, 2],
+            "favorites": [1, 2],
             "token": "TOKEN-GOES-HERE",
             "playlists": {
                 "1": {

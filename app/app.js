@@ -1,3 +1,7 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {IndexRoute, Router, Route, browserHistory} from 'react-router'
+
 // Each major browser view user interface must be imported.
 import Profile from './components/profile.js';
 import MyProfile from './components/my-profile.js';
@@ -46,19 +50,6 @@ class App extends React.Component {
         )
     }
 }
-//
-// ReactDOM.render((
-//     <Router history={browserHistory}>
-//         <Route path="/" component={App}>
-// 						{}
-//             <IndexRoute component={PlaylistView}/>
-//             <Route path="profile/:id" component={ProfilePage}/>
-//         </Route>
-//     </Router>
-// ), document.getElementById('beatcoin-main'));
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {IndexRoute, Router, Route, browserHistory} from 'react-router'
 
 ReactDOM.render((
     <Router history={browserHistory}>

@@ -146,8 +146,8 @@ var initialData = {
                 "education": "High School",
                 "displayed": [true, true, true, true, true]
             },
-            "uploads": [1, 2],
-            "favorites": [1, 2],
+            "uploads": [1, 2, 3],
+            "favorites": [1, 2, 3],
             "token": "TOKEN-GOES-HERE",
             "playlists": {
                 "1": {
@@ -202,6 +202,20 @@ var initialData = {
               "lyrics": "O Canada!\nOur home and native land!\nTrue patriot love in all thy sons command.\nWith glowing hearts we see thee rise,\nThe True North strong and free!\nFrom far and wide,\nO Canada, we stand on guard for thee.\nGod keep our land glorious and free!\nO Canada, we stand on guard for thee.\nO Canada, we stand on guard for thee.",
               "description": "The Canadian National Anthem",
               "uploadDate": 1453490800000,
+              "likes": [1, 2],
+              "comments": [1, 2]
+        },
+        "3": {
+              "title": "Taiwan National Anthem",
+              "genre": "Classical",
+              "uploader": 2,
+              "price": 24,
+              "plays": 6712,
+              "audio": "audio/o-canada.mp3",
+              "cover": "img/songs/covers/o-canada.jpg",
+              "lyrics": "San Min Chu-i,\nOur aim shall be:\nTo found a free land,\nWorld peace, be our stand.\nLead on, comrades,\nVanguards ye are.\nHold fast your aim,\nBy sun and star.\nBe earnest and brave,\nYour country to save,\nOne heart, one soul,\nOne mind, one goal...",
+              "description": "Taiwan National Anthem",
+              "uploadDate": 1457490800000,
               "likes": [1, 2],
               "comments": [1, 2]
         }

@@ -187,7 +187,7 @@ var initialData = {
 			"description": "Nigerian children's song about the orange tree.",
 			"uploadDate": 1453690800000,
 			"likes": [2],
-			"comments": []
+			"comments": [1,2]
 		}
 	},
 	"redeemables": {
@@ -197,7 +197,7 @@ var initialData = {
 			"price": [
 				//beatcoins,cents
 				[1000,1000],
-				[1200,1500],
+				[1400,1500],
 				[1700,2000]
 			]
 		},
@@ -207,7 +207,7 @@ var initialData = {
 			"price": [
 				//beatcoins,cents
 				[1000,1000],
-				[1200,1500],
+				[1400,1500],
 				[1700,2000]
 			]
 		}

@@ -15,11 +15,11 @@ var initialData = {
 				"location": "UMass Amherst",
 				"contactAgent": "N/A",
 				"education": "College",
-				"displayed": [false, false, false, false, false],
-			}
+				"displayed": [false, false, false, false, false]
+			},
 			"uploads": [],
 			"favorites": [],
-			"token": "TOKEN-GOES-HERE"
+			"token": "TOKEN-GOES-HERE",
 			"playlists": {
 				"1": {
 					"name": "Jazz",
@@ -143,11 +143,11 @@ var initialData = {
 				"location": "UMass Amherst",
 				"contactAgent": "Sara Ramaker (310-288-8000)",
 				"education": "High School",
-				"displayed": [true, true, true, true, true],
-			}
+				"displayed": [true, true, true, true, true]
+			},
 			"uploads": [1],
 			"favorites": [1],
-			"token": "TOKEN-GOES-HERE"
+			"token": "TOKEN-GOES-HERE",
 			"playlists": {
 				"1": {
 					"name": "My Jazz",
@@ -198,17 +198,17 @@ var initialData = {
 			"cover": "img/labe_igi_orombo.jpg",
 			"lyrics": "L'abe igi orombo\nN'ibe l'agbe nsere wa\nInu wa dun, ara wa ya\nL'abe igi orombo\n\nOrombo, orombo\nOrombo, orombo.",
 			"description": "Nigerian children's song about the orange tree.",
-			"uploadDate": 1453690800000
+			"uploadDate": 1453690800000,
 			"likes": [2],
 			"comments": {
-				
+
 			}
 		}
 	},
 	"redeemables": {
 		"1": {
-			"name": "Chipotle"
-			"image": "img/redeem/cihpotle.jpg"
+			"name": "Chipotle",
+			"image": "img/redeem/cihpotle.jpg",
 			"price": [
 				//beatcoins,cents
 				[1000,1000],
@@ -217,8 +217,8 @@ var initialData = {
 			]
 		},
 		"2": {
-			"name": "Amazon"
-			"image": "img/redeem/amazon.jpg"
+			"name": "Amazon",
+			"image": "img/redeem/amazon.jpg",
 			"price": [
 				//beatcoins,cents
 				[1000,1000],

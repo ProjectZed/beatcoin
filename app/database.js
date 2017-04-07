@@ -190,6 +190,20 @@ var initialData = {
             "uploadDate": 1453690800000,
             "likes": [2],
             "comments": [1, 2]
+        },
+        "2": {
+              "title": "O Canada",
+              "genre": "Classical",
+              "uploader": 2,
+              "price": 24,
+              "plays": 6712,
+              "audio": "audio/o-canada.mp3",
+              "cover": "img/songs/covers/o-canada.jpg",
+              "lyrics": "O Canada!\nOur home and native land!\nTrue patriot love in all thy sons command.\nWith glowing hearts we see thee rise,\nThe True North strong and free!\nFrom far and wide,\nO Canada, we stand on guard for thee.\nGod keep our land glorious and free!\nO Canada, we stand on guard for thee.\nO Canada, we stand on guard for thee.",
+              "description": "The Canadian National Anthem",
+              "uploadDate": 1453490800000,
+              "likes": [1, 2],
+              "comments": [1, 2]
         }
     },
     "redeemables": {

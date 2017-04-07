@@ -193,7 +193,7 @@ var initialData = {
 	"redeemables": {
 		"1": {
 			"name": "Chipotle",
-			"image": "img/redeem/cihpotle.jpg",
+			"image": "img/redeem/chipotle.jpg",
 			"price": [
 				//beatcoins,cents
 				[1000,1000],

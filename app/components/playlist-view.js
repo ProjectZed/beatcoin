@@ -26,9 +26,7 @@ export default class PlaylistView extends React.Component {
                         </div>
                         <div className="col-md-3 comments-container">
                             <h3>Comments</h3>
-                            <CommentThread>
-                                <Comment picture="profile-pic" name="Doggie Doggo" message="Bark Bark Bark Bark" date="Today"/>
-                                <Comment picture="profile-pic" name="Doggie Doggo" message="Whoof Whoof Whoof Whoof" date="Yesterday"/>
+                            <CommentThread playing="1">
                             </CommentThread>
                         </div>
                     </div>

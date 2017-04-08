@@ -119,7 +119,7 @@ var initialData = {
                     "genre": "Classical",
                     "owner": 1,
                     "cover": "img/user-home/Classical.jpg",
-                    "songs": [1]
+                    "songs": [1, 2, 3]
                 },
                 "15": {
                     "name": "Acapella",

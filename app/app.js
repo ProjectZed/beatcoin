@@ -56,7 +56,7 @@ ReactDOM.render((
         <Route path="/" component={App}>
             <IndexRoute component={UserHome}/>
             <Route path="/redeem" component={Redeem}/>
-            <Route path="/myprofile" component={MyProfile}/>
+            <Route path="/my-profile" component={MyProfile}/>
             <Route path="/contact-us" component={ContactUs}/>
             <Route path="/playlist-view" component={PlaylistView}/>
             <Route path="/profile/:id" component={Profile}/>

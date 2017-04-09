@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "./node_modules/.bin/webpack",
-    "test": "mocha test",
+    "test": "npm run build",
     "serve": "./node_modules/.bin/webpack-dev-server --content-base build"
   },
   "devDependencies": {
@@ -25,7 +25,8 @@
     "react-dom": "^0.14.6",
     "react-router": "^1.0.3",
     "webpack": "^1.12.12",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "webpack-fail-plugin": "^1.0.6"
   },
   "dependencies": {
     "react-music-player": "^1.0.3"

@@ -1,7 +1,6 @@
 import React from 'react';
 
 var initialData = {
-    // The "user" collection. Contains all of the users in our Facebook system.
     "users": {
         // This user has id "1".
         "1": {
@@ -12,15 +11,15 @@ var initialData = {
             "balance": 0,
             "profilePicture": "img/users/beatcoin.jpg",
             "info": {
-                "birthday": "2017/01/24",
-                "gender": "N/A",
-                "location": "UMass Amherst",
-                "contactAgent": "N/A",
-                "education": "College",
-                "displayed": [false, false, false, false, false]
+                "birthday": ["2017/01/24", false],
+                "gender": ["N/A", false],
+                "location": ["UMass Amherst", false],
+                "contactAgent": ["N/A", false],
+                "education": ["College", false]
             },
             "uploads": [],
             "favorites": [],
+            //used for authentication
             "token": "TOKEN-GOES-HERE",
             "playlists": {
                 "1": {

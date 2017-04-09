@@ -1,33 +1,48 @@
-main-container {
+#my-profile main-container {
     height: 100%;
 }
 
-.bc-upper-profile {
+#my-profile .my-profile-top {
     height: 300px;
 }
 
-.profile-picture {
+#my-profile .bc-upper-profile {
+    height: 300px;
+}
+
+#my-profile .profile-picture {
     width: 55%;
+    height: 55%;
+    display: block;
+    margin: auto;
     /*text-align: right;*/
 }
 
-.upload-profile-link {
-  width: 55%;
+#my-profile .prof-pic-and-upload{
+  width: 30%;
+  display: inline-block;
+}
+#my-profile .upload-profile-link {
+  width: 100%;
   background-color: #480c68;
   color: white;
 }
 
-.donate-button {
+#my-profile .donate-button {
     width: 50%;
     /*text-align: right;*/
 }
 
-.my-profile-name {
+#my-profile .my-profile-name {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
     line-height: 175px;
     font-size: 50px;
+    height:100px;
 }
 
-.selector-button {
+#my-profile .selector-button {
     margin: auto;
     width: 100%;
     border: 3px solid #d07fff;
@@ -38,7 +53,7 @@ main-container {
     border-radius: 10px;
 }
 
-.profile-info {
+#my-profile .profile-info {
   border-radius: 10px;
   background-color: #fff;
     border: 3px solid #d07fff;
@@ -46,11 +61,15 @@ main-container {
     height: 350px;
 }
 
-.displayed-info {
+#my-profile .displayed-info {
     font-size: 20px;
 }
 
-.selector-col {
+#my-profile .selector-col {
     margin: auto;
     width: 50%;
+}
+
+#my-profile .user-info-list {
+  list-style: none;
 }

@@ -2,43 +2,51 @@ import React from 'react';
 
 import MyProfileInformation from './my-profile-information';
 import MyProfileSelector from './my-profile-selector';
-import Navbar from './navbar';
-import Footer from './footer';
+import {getUserData} from '../server';
 
 export default class MyProfile extends React.Component {
-    render() {
-        return (
-            <div>
-              <Navbar></Navbar>
-            <div className="container main-container">
-                <div className="row bc-upper-profile">
-                    <div className="col-md-4">
-                        <div className="row" align="right">
-                            <img src={this.props.data.profilePicture} className="profile-picture img-circle"></img>
-                        </div>
-                        <div className="row" align="right">
-                            <button className="upload-profile-link">
+  constructor(props) {
+    super(props);
+    this.state = {
+      userData: {}
+    };
+  }
+  refresh() {
+    getUserData(this.props.params.id, (userData) => {
+      this.setState(userData);
+    });
+  }
+  componentDidMount() {
+    this.refresh();
+  }
+  render() {
+    var data = this.state;
+    return (
+      <div id="my-profile">
+        <div className="container main-container">
+          <div className="row bc-upper-profile">
+            <div className="col prof-pic-and-upload">
+              <img className="profile-picture img-circle" src={data.profilePicture}></img>
+              <div className="row" align="right">
+                <button className="upload-profile-link">
 
-                        <span className="glyphicon glyphicon-pencil"></span>
-                        Change Profile Picture
-                    </button>
-                        </div>
-                    </div>
-                    <div className="col-md-8 my-profile-name">
-                        {this.props.data.Name}
-                    </div>
-                </div>
-                <div className="row bc-upper-profile">
-                    <div className="col-md-4">
-                      <MyProfileSelector />
-                    </div>
-
-                    <MyProfileInformation data={this.props.data}/>
-                </div>
-
+                  <span className="glyphicon glyphicon-pencil"></span>
+                  Change Profile Picture
+                </button>
+              </div>
             </div>
-            <Footer data={{songTime:'13:37',songTitle:'Sherlock',songArtist:'Blasphemy Frumblesnatch'}}/>,
+            <div className="col my-profile-name">
+              {data.name}
             </div>
-        )
-    }
+          </div>
+          <div className="row bc-upper-profile">
+            <div className="col-md-4">
+              <MyProfileSelector/>
+            </div>
+            <MyProfileInformation id={this.props.params.id} data={data.info} username={data.name}/>
+          </div>
+        </div>
+      </div>
+    )
+  }
 }

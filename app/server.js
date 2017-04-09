@@ -121,7 +121,7 @@ export function likeSong(userId, songId, cb) {
     var song = readDocument('songs', songId);
     song.likes.push(userId);
     writeDocument('songs', song);
-    song.uploader= readDocument('users', song.uploader);
+    song.uploader = readDocument('users', song.uploader);
     emulateServerReturn(song, cb);
 }
 
@@ -132,6 +132,13 @@ export function dislikeSong(userId, songId, cb) {
         song.likes.splice(index, 1);
         writeDocument('songs', song);
     }
-    song.uploader= readDocument('users', song.uploader);
+    song.uploader = readDocument('users', song.uploader);
     emulateServerReturn(song, cb);
+}
+
+export function getUserData(user, cb) {
+    // Get the User object with the id "user".
+    var userData = readDocument('users', user);
+
+    emulateServerReturn(userData, cb);
 }

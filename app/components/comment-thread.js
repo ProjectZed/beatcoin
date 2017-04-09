@@ -18,6 +18,14 @@ export default class CommentThread extends React.Component {
         });
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.playing !== this.state.playing) {
+            getSongComments(nextProps.playing, (comments) => {
+                this.setState({comments: comments, current: nextProps.playing});
+            });
+        }
+    }
+
     render() {
         return (
             <div>

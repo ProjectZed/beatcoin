@@ -14,7 +14,7 @@ export default class Comment extends React.Component {
                 <div className="row">
                     <div className="col-md-3 col-img">
                         <div className="comments-image img-circle" style={{
-                            backgroundImage: + 'url(' + this.state.author.profilePicture + ')'
+                            backgroundImage: "url(" + this.state.author.profilePicture + ')'
                         }}></div>
                     </div>
                     <div className="col-md-6 col-name-message">

@@ -86,3 +86,21 @@ export function getInitialSong(ids, cb) {
         });
         emulateServerReturn(comments, cb);
     }
+
+    function getSong(songId) {
+        var song = readDocument('songs', songId);
+        song.uploader = readDocument('users', song.uploader);
+        return song;
+    }
+
+    export function getPlaylist(userId, playlistId, cb) {
+        var user = readDocument('users', userId);
+        var playlist = user.playlists[playlistId];
+        var songs = playlist.songs;
+        songs = songs.map((songId) => {
+            return getSong(songId)
+        });
+        playlist.songs = songs;
+        emulateServerReturn(playlist, cb);
+
+    }

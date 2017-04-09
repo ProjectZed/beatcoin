@@ -202,7 +202,7 @@ var initialData = {
             "description": "The U.S. National Anthem",
             "uploadDate": 1453690800000,
             "likes": [2],
-            "comments": [1, 2]
+            "comments": [2]
         },
         "2": {
               "title": "O Canada",
@@ -225,12 +225,12 @@ var initialData = {
               "price": 24,
               "plays": 6712,
               "audio": "audio/o-canada.mp3",
-              "cover": "img/songs/covers/o-canada.jpg",
+              "cover": "img/songs/covers/taiwan-national-anthem.jpg",
               "lyrics": "San Min Chu-i,\nOur aim shall be:\nTo found a free land,\nWorld peace, be our stand.\nLead on, comrades,\nVanguards ye are.\nHold fast your aim,\nBy sun and star.\nBe earnest and brave,\nYour country to save,\nOne heart, one soul,\nOne mind, one goal...",
               "description": "Taiwan National Anthem",
               "uploadDate": 1457490800000,
               "likes": [1, 2],
-              "comments": [1, 2]
+              "comments": [1]
         }
     },
     "redeemables": {

@@ -91,7 +91,7 @@ ReactDOM.render((
             <Route path="/redeem" component={Redeem}/>
             <Route path="/my-profile" component={MyProfile}/>
             <Route path="/contact-us" component={ContactUs}/>
-            <Route path="/playlist-view" component={PlaylistView}/>
+            <Route path="/playlist-view" playlist={14} component={PlaylistView}/>
             <Route path="/profile/:id" component={Profile}/>
         </Route>
     </Router>

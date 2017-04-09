@@ -19,7 +19,7 @@ export default class SongInfo extends React.Component {
                 </div>
                 <div className="col-md-6 lyrics-container">
                     <h3>Lyrics</h3>
-                    <span className="lyrics">{lyrics}</span>
+                    <div className="lyrics">{lyrics}</div>
                 </div>
             </div>
         )

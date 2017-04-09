@@ -52,8 +52,7 @@ export default class PlaylistView extends React.Component {
 
     render() {
         return (
-            <div>
-                <Navbar></Navbar>
+            <div id="playlist-component">
                 <div className="container playlist-container">
                     <div className="row border-between">
                         <div className="col-md-9 songs-container">
@@ -77,11 +76,6 @@ export default class PlaylistView extends React.Component {
                         </div>
                     </div>
                 </div>
-                <Footer data={{
-                    songTime: '13:37',
-                    songTitle: 'Sherlock',
-                    songArtist: 'Blasphemy Frumblesnatch'
-                }}></Footer>
             </div>
         )
     }

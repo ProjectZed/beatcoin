@@ -119,5 +119,34 @@ export function likeComment(userId, commentId, cb) {
     var comment = readDocument('comments', commentId);
     comment.likes.push(userId);
     writeDocument('comments', comment);
+    comment.author = readDocument('users', comment.author);
     emulateServerReturn(comment, cb);
+}
+
+export function dislikeComment(userId, commentId, cb) {
+    var comment = readDocument('comments', commentId);
+    var index = comment.likes.indexOf(userId);
+    if (index !== -1) {
+        comment.likes.splice(index, 1);
+        writeDocument('comments', comment);
+    }
+    comment.author = readDocument('users', comment.author);
+    emulateServerReturn(comment, cb);
+}
+
+export function postSongComment(songId, message, cb) {
+    getLoggedInUserId((userId) => {
+        var comment = {
+            "author": userId,
+            "text": message,
+            "postDate": new Date().getTime(),
+            "likes": []
+        }
+        comment = addDocument('comments', comment);
+        comment.author = readDocument('users', comment.author);
+        var song = readDocument('songs', songId);
+        song.comments.push(comment._id);
+        writeDocument('songs', song);
+        emulateServerReturn(comment, cb);
+    });
 }

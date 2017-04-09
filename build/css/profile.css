@@ -1,25 +1,24 @@
-main-container {
-  height: 100%;
+#profile .main-container {
+  margin-top: 20px;
+  margin-bottom: 100px;
 }
 
-body {
-  /*padding-top: 50px;*/
-}
+#profile body {}
 
-.bc-upper-profile {
+#profile .bc-upper-profile {
   height: 200px;
 }
 
-.bc-middle-profile {
+#profile .bc-middle-profile {
   /*height: 50px;*/
 }
 
-.bc-lower-profile {
+#profile .bc-lower-profile {
   margin-top: 20px;
 }
 
-.profile-picture {
-  background-image: url('/img/bach.jpg');
+#profile .profile-picture {
+  /*background-image: url('/img/bach.jpg');*/
   /*width: 50%;*/
   text-align: center;
   display: inline-block;
@@ -30,21 +29,36 @@ body {
   background-size: cover;
 }
 
-.donate-button {
+#profile .donate-button {
   width: 150px;
   /*text-align: right;*/
 }
 
-.bc-profile-name {
+#profile .bc-profile-name {
   line-height: 175px;
   font-size: 50px;
 }
 
-.timeline-title {
+#profile .timeline-title {
   text-align: center;
   padding-bottom: 10px;
 }
 
-.song-timestamp {
+#profile .song-timestamp {
   text-align: left;
+}
+
+#profile .user-info-list {
+  list-style: none;
+}
+
+.uploaded-song-pic {
+  display: inline-block;
+  background-position: center center;
+  background-size: cover;
+  vertical-align: middle;
+  height: 50px;
+  width: 50px;
+  margin-right: 0px;
+  margin-top: 5px;
 }

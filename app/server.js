@@ -13,3 +13,7 @@ function emulateServerReturn(data, cb) {
         cb(data);
     }, 4);
 }
+
+export function getLoggedInUserId(cb) {
+    emulateServerReturn(2, cb);
+}

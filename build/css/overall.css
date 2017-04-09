@@ -66,41 +66,43 @@ body {
     background-position: center center;
     background-size: cover;
     vertical-align: middle;
-    background-image: url('/img/song-pic.jpg');
     height: 50px;
     width: 50px;
     margin-right: 0px;
     margin-top: 5px;
 }
 
-.bc-search {
-  width: 395px !important;
+.player-progress-container {
+    position: relative;
+
+    width: 500px;
+    height: 9px;
+    margin: 0 auto;
+
+    background-color: #414141;
+    border-radius: 40px;
 }
 
-.song-pic {
-    display: inline-block;
-    background-position: center center;
-    background-size: cover;
-    vertical-align: middle;
-    background-image: url('/img/song-pic.jpg');
-    height: 50px;
-    width: 50px;
-    margin-right: 0px;
-    margin-top: 5px;
-}
+.player-progress-value {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
 
-.bc-search {
-  width: 395px !important;
-}
+    background-color: #CDD2D8;
+    border-radius: 40px;
 
-.song-pic {
-    display: inline-block;
-    background-position: center center;
-    background-size: cover;
-    vertical-align: middle;
-    background-image: url('/img/song-pic.jpg');
-    height: 50px;
-    width: 50px;
-    margin-right: 0px;
-    margin-top: 5px;
+    &:after {
+        position: absolute;
+        top: -3px;
+        right: -6px;
+        content: '';
+
+        width: 15px;
+        height: 15px;
+
+        border-radius: 50%;
+        background-color: #7748B5;
+        box-shadow: rgba(0,0,0,.2) 0 0 5px 2px;
+    }
 }

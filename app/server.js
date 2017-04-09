@@ -104,3 +104,20 @@ export function getInitialSong(ids, cb) {
         emulateServerReturn(playlist, cb);
 
     }
+export function getPlaylist(userId, playlistId, cb) {
+    var user = readDocument('users', userId);
+    var playlist = user.playlists[playlistId];
+    var songs = playlist.songs;
+    songs = songs.map((songId) => {
+        return getSong(songId)
+    });
+    playlist.songs = songs;
+    emulateServerReturn(playlist, cb);
+}
+
+export function likeComment(userId, commentId, cb) {
+    var comment = readDocument('comments', commentId);
+    comment.likes.push(userId);
+    writeDocument('comments', comment);
+    emulateServerReturn(comment, cb);
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import {likeComment} from '../server';
 import {unixTimeToString} from '../util';
 
 export default class Comment extends React.Component {
@@ -6,6 +7,16 @@ export default class Comment extends React.Component {
     constructor(props) {
         super(props);
         this.state = props.data;
+        this.handleLikeClick = this.handleLikeClick.bind(this);
+    }
+
+    handleLikeClick(clickEvent) {
+        clickEvent.preventDefault();
+        if (clickEvent.button === 0) {
+          likeComment(2, this.state._id, (comment) => {
+            this.setState(comment);
+          });
+        }
     }
 
     render() {
@@ -28,7 +39,7 @@ export default class Comment extends React.Component {
                     <div className="col-md-3 col-actions-date">
                         <div className="comments-date pull-right">{unixTimeToString(this.state.postDate)}</div>
                         <div className="pull-right">
-                            <span className="comments-like glyphicon glyphicon-thumbs-up"></span>
+                            <span onClick={this.handleLikeClick} className="comments-like glyphicon glyphicon-thumbs-up"></span>
                             <span className="comments-reply">Reply</span>
                         </div>
                     </div>

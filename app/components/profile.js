@@ -1,19 +1,15 @@
 import React from 'react';
 import CommentThread from './comment-thread';
-import Navbar from './navbar';
-import Footer from './footer';
 
 export default class Profile extends React.Component {
   render() {
     return (
       <div>
-        <Navbar></Navbar>
         <div className="container main-container">
           <div className="row bc-upper-profile">
             <div className="col-md-3">
               <div className="row" align="right">
-                <div src="img/bach.jpg" className="profile-picture img-circle">
-                </div>
+                <div src="img/bach.jpg" className="profile-picture img-circle"></div>
 
               </div>
               <div className="row" align="right">
@@ -27,8 +23,7 @@ export default class Profile extends React.Component {
             </div>
           </div>
 
-          <div className="row bc-middle-profile">
-          </div>
+          <div className="row bc-middle-profile"></div>
 
           <div className="row bc-lower-profile">
             <div className="col-md-4">
@@ -64,19 +59,17 @@ export default class Profile extends React.Component {
             </div>
 
             <div className="col-md-4">
-              <div className="comments-image">
-              </div>
+              <div className="comments-image"></div>
             </div>
 
             <div className="col-md-4 comments-container" align="right">
               <CommentThread>
-                <Comment picture="profile-pic" name="Doggie Doggo" message="Bark Bark Bark" date="Today" />
-                <Comment picture="profile-pic" name="Doggie Doggo" message="Woof Woof Woof" date="Yesterday" />
+                <Comment picture="profile-pic" name="Doggie Doggo" message="Bark Bark Bark" date="Today"/>
+                <Comment picture="profile-pic" name="Doggie Doggo" message="Woof Woof Woof" date="Yesterday"/>
               </CommentThread>
             </div>
           </div>
         </div>
-        <Footer data={{songTime:'13:37',songTitle:'Sherlock',songArtist:'Blasphemy Frumblesnatch'}}/>,
       </div>
     )
   }

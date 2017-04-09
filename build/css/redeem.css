@@ -1,43 +1,49 @@
-.panelstyle{
-  background-color: rgba(251,251,240,0.7);
+.panelstyle {
+  background-color: rgba(251, 251, 240, 0.7);
   border-radius: 5px;
   border: 2px solid #d07fff;
   padding-top: 60px;
   padding-bottom: 60px;
 }
-.relative{
-  position:relative;
-  position:relative;
-  display:inline-block;
-  text-align:center;
+
+.relative {
+  position: relative;
+  position: relative;
+  display: inline-block;
+  text-align: center;
   padding: 5px;
-  border:1px solid #000;
+  border: 1px solid #000;
 }
 
-.img{
-  width:100%;
+.img {
+  width: 100%;
   display: table-cell;
-  vertical-align:middle;
+  vertical-align: middle;
   width: 355px;
   height: 194px;
 }
-.redeem-group{
-  position:absolute;
-  bottom:10px;
-  right:10px;
-  width:100px;
-  height:30px;
-  vertical-align:middle;
+
+.redeem-group {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 100px;
+  height: 30px;
+  vertical-align: middle;
 }
+
+
 /* centered columns styles */
+
 .row-centered {
-    text-align:center;
+  text-align: center;
 }
+
 .col-centered {
-    display:inline-block;
-    float:none;
-    /* reset the text-align */
-    text-align:left;
-    /* inline-block space fix */
-    margin-right:-4px;
+  display: inline-block;
+  float: none;
+  /* reset the text-align */
+  text-align: left;
+  /* inline-block space fix */
+  margin-right: -4px;
 }

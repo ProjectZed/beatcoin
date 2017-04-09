@@ -87,6 +87,12 @@ export default class PlaylistView extends React.Component {
             </div>
           </div>
         </div>
+        <div className="row border-top"></div>
+        <SongInfo data={this.state.songList[this.state.currentSong - 1]}/>
+        <div className="col-md-3 comments-container">
+          <h3>Comments</h3>
+          <CommentThread playing={this.state.currentSong}></CommentThread>
+        </div>
       </div>
     )
   }

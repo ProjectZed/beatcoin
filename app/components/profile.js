@@ -13,7 +13,8 @@ export default class Profile extends React.Component {
 			userId: 0,
 			userData: {
 				name: "Default Name",
-				profilePicture: ""
+				profilePicture: "",
+				info: {}
 			}
 		};
 	}
@@ -41,9 +42,10 @@ export default class Profile extends React.Component {
           <div className="row bc-upper-profile">
             <div className="col-md-3">
               <div className="row" align="right">
-                <div className="profile-picture img-circle" style={{'backgroundImage': "url('" + this.state.userData.profilePicture + "')"
+                <div className="profile-picture img-circle" style={{
+                  'backgroundImage': "url('" + this.state.userData.profilePicture + "')"
                 }}></div>
-							<DonateButton id={this.state.userId}/>
+                <DonateButton id={this.props.params.id}/>
               </div>
             </div>
             <div className="col-md-9 bc-profile-name">
@@ -55,11 +57,11 @@ export default class Profile extends React.Component {
 
           <div className="row bc-lower-profile">
             <div className="row">
-              <Timeline id={this.state.userId}/>
+              <Timeline id={this.props.params.id}/>
 
               <div className="col-md-4">
                 <h4 className="timeline-title">Biography</h4>
-                <ProfileInfo id={this.state.userId} data={this.state.info}/>
+                <ProfileInfo id={this.props.params.id} data={this.state.userData.info}/>
               </div>
 
               <div className="col-md-4 comments-container" align="right" style={{

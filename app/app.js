@@ -41,11 +41,6 @@ class App extends React.Component {
             <div>
                 <Navbar/>
                 <div>{this.props.children}</div>
-                <Footer data={{
-                    songTime: '13:37',
-                    songTitle: 'Sherlock',
-                    songArtist: 'Blasphemy Frumblesnatch'
-                }}></Footer>
             </div>
         )
     }

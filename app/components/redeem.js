@@ -25,11 +25,24 @@ export default class Redeem extends React.Component {
                         </div>
                     </div>
                 </div>
-                <Footer data={{
-                    songTime: '13:37',
-                    songTitle: 'Sherlock',
-                    songArtist: 'Blasphemy Frumblesnatch'
-                }}/>,
+                <Footer songs={
+            [{
+                "url": "audio/star-spangled-banner.mp3",
+                "cover": "img/songs/covers/star-spangled-banner.jpg",
+                "artist":{
+                    "song": "The Star Spangled Banner",
+                    "name": "USA"
+                }
+            },
+            {
+                "url": "audio/o-canada.mp3",
+                "cover": "img/songs/covers/o-canada.jpg",
+                "artist":{
+                    "song": "O Canada",
+                    "name": "Canada"
+                }
+            }
+          ]}/>,
             </div>
         )
     }

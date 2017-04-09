@@ -50,6 +50,9 @@ body {
     background-color: #480c68;
     height: 60px;
 }
+.navbar-text{
+    display: inline-block;
+}
 
 .box {
     background-color: rgba(251, 251, 240, 0.7);
@@ -73,14 +76,14 @@ body {
 }
 
 .player-progress-container {
+    display: inline-block;
     position: relative;
-
     width: 500px;
-    height: 9px;
+    height: 15px;
     margin: 0 auto;
-
+    margin-top: 15px;
     background-color: #414141;
-    border-radius: 40px;
+    border-radius: 5px;
 }
 
 .player-progress-value {
@@ -90,19 +93,5 @@ body {
     bottom: 0;
 
     background-color: #CDD2D8;
-    border-radius: 40px;
-
-    &:after {
-        position: absolute;
-        top: -3px;
-        right: -6px;
-        content: '';
-
-        width: 15px;
-        height: 15px;
-
-        border-radius: 50%;
-        background-color: #7748B5;
-        box-shadow: rgba(0,0,0,.2) 0 0 5px 2px;
-    }
+    border-radius: 5px;
 }

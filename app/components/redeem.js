@@ -8,7 +8,6 @@ export default class Redeem extends React.Component {
     render() {
         return (
             <div>
-                <Navbar></Navbar>
                 <div className="container panelstyle">
                     <div className="row row-centered">
                         <div className="col-md-10 col-centered">
@@ -25,11 +24,6 @@ export default class Redeem extends React.Component {
                         </div>
                     </div>
                 </div>
-                <Footer data={{
-                    songTime: '13:37',
-                    songTitle: 'Sherlock',
-                    songArtist: 'Blasphemy Frumblesnatch'
-                }}/>,
             </div>
         )
     }

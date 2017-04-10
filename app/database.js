@@ -177,6 +177,19 @@ var initialData = {
         }
     },
     "songs": {
+        "0": {
+            "title": "Welcome to Beatcoin",
+            "genre": "None",
+            "uploader": 1,
+            "price": 0,
+            "plays": 0,
+            "audio": "audio/silence.mp3",
+            "cover": "img/beatcoinholder.png",
+            "lyrics": "Welcome to beatcoin",
+            "uploadDate": 1453690800000,
+            "likes": [0],
+            "comments": []
+        },
         "1": {
             "title": "The Star Spangled Banner",
             "genre": "Classical",

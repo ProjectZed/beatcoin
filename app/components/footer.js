@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router';
+
 
 export default class Footer extends React.Component {
   constructor(props){
@@ -17,16 +19,23 @@ export default class Footer extends React.Component {
 
     this.state = {
       active: this.props.songs[0],
-      current: 0,
+      current: this.props.data.current || 0,
       progress: 0,
       random: false,
       repeat: false,
       mute: false,
-      timeNow: 0,
-      durationNow: 0,
       play: this.props.autoplay || false,
-      songs: this.props.songs
-  }}
+      songs: this.props.songs,
+    }
+  }
+  componentWillReceiveProps(nextProps){
+    if (this.props.songs != nextProps.songs){
+      this.setState({songs: nextProps.songs, current: 0, active: nextProps.songs[0], play: true, progress: 0});
+    }
+    if (this.props.data.current != nextProps.data.current){
+      this.setState({current: nextProps.data.current, active: this.props.songs[nextProps.data.current], progress: 0});
+    }
+  }
 
   componentDidMount () {
       let playerElement = this.refs.player;
@@ -52,7 +61,7 @@ export default class Footer extends React.Component {
       let progress = (currentTime * 100) / duration;
 
       this.refs.player.currentTime = currentTime;
-      this.setState({ progress: progress, timeNow: currentTime, durationNow: duration });
+      this.setState({ progress: progress});
       this.play();
   }
 
@@ -60,7 +69,7 @@ export default class Footer extends React.Component {
       let duration = this.refs.player.duration;
       let currentTime = this.refs.player.currentTime;
       let progress = (currentTime * 100) / duration;
-      this.setState({ progress: progress, timeNow: currentTime, durationNow: duration});
+      this.setState({ progress: progress});
   }
 
   play () {
@@ -87,7 +96,7 @@ export default class Footer extends React.Component {
       var active = this.state.songs[current];
 
       this.setState({ current: current, active: active, progress: 0 });
-
+      this.props.update.songChange(current);
       this.refs.player.src = active.url;
       this.play();
   }
@@ -98,6 +107,7 @@ export default class Footer extends React.Component {
       var active = this.state.songs[current];
 
       this.setState({ current: current, active: active, progress: 0 });
+      this.props.update.songChange(current);
 
       this.refs.player.src = active.url;
       this.play();
@@ -150,8 +160,10 @@ export default class Footer extends React.Component {
             </button>
             </div>
                 <div className="nav navbar-nav navbar-right">
-                  <div className="song-pic" style={{backgroundImage: 'url(/'+active.cover+')'}}></div>
-                  <p className="nav navbar-text" style={{marginTop:"10px"}}>{active.artist.song}<br></br>{active.artist.name}</p>
+                  <Link to={'/playlist-view'}>
+                    <div className="song-pic" style={{backgroundImage: 'url(/'+active.cover+')'}}></div>
+                    <p className="nav navbar-text" style={{marginTop:"10px"}}>{active.artist.song}<br></br>{active.artist.name}</p>
+                  </Link>
                   <button type="button" className="btn btn-default navbar-btn">
                     <span className="glyphicon glyphicon-thumbs-up"></span>
                   </button>

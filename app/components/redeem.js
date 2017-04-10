@@ -8,7 +8,6 @@ export default class Redeem extends React.Component {
     render() {
         return (
             <div>
-                <Navbar></Navbar>
                 <div className="container panelstyle">
                     <div className="row row-centered">
                         <div className="col-md-10 col-centered">
@@ -25,24 +24,6 @@ export default class Redeem extends React.Component {
                         </div>
                     </div>
                 </div>
-                <Footer songs={
-            [{
-                "url": "audio/star-spangled-banner.mp3",
-                "cover": "img/songs/covers/star-spangled-banner.jpg",
-                "artist":{
-                    "song": "The Star Spangled Banner",
-                    "name": "USA"
-                }
-            },
-            {
-                "url": "audio/o-canada.mp3",
-                "cover": "img/songs/covers/o-canada.jpg",
-                "artist":{
-                    "song": "O Canada",
-                    "name": "Canada"
-                }
-            }
-          ]}/>,
             </div>
         )
     }

@@ -3,8 +3,6 @@ import React from 'react';
 import SongTile from './song-tile';
 import SongInfo from './song-info';
 import CommentThread from './comment-thread';
-import Navbar from './navbar';
-import Footer from './footer';
 import {getPlaylist} from '../server';
 
 export default class PlaylistView extends React.Component {
@@ -12,11 +10,12 @@ export default class PlaylistView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            playlistId: props.route.playlist,
+            playlistId: props.playlist,
             playlist: {
                 songs: []
             },
-            currentSong: 2
+            currentIndex: 0,
+            currentSong: 1
         };
         this.handlePrevClick = this.handlePrevClick.bind(this);
         this.handleNextClick = this.handleNextClick.bind(this);
@@ -31,22 +30,24 @@ export default class PlaylistView extends React.Component {
     handlePrevClick(clickEvent) {
         clickEvent.preventDefault();
         if (clickEvent.button === 0) {
-            var newState = this.state.currentSong - 1;
-            if (newState <= 0) {
-                newState = 1;
+            var nextIndex = this.state.currentIndex - 1;
+            if (nextIndex < 0) {
+                nextIndex = this.state.playlist.songs.length - 1;
             }
-            this.setState({currentSong: newState});
+            this.setState({currentIndex: nextIndex, currentSong: this.state.playlist.songs[nextIndex]._id});
+            this.props.playSong(nextIndex);
         }
     }
 
     handleNextClick(clickEvent) {
         clickEvent.preventDefault();
         if (clickEvent.button === 0) {
-            var newState = this.state.currentSong + 1;
-            if (newState > this.state.playlist.length) {
-                newState = this.state.playlist.length;
+            var nextIndex = this.state.currentIndex + 1;
+            if (nextIndex >= this.state.playlist.songs.length) {
+                nextIndex = 0;
             }
-            this.setState({currentSong: newState});
+            this.setState({currentIndex: nextIndex, currentSong: this.state.playlist.songs[nextIndex]._id});
+            this.props.playSong(nextIndex);
         }
     }
 

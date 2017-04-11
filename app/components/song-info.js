@@ -15,7 +15,7 @@ export default class SongInfo extends React.Component {
             <div className="row border-between">
                 <div className="col-md-6 description-container">
                     <h3>Description</h3>
-                    <span className="description">{description}</span>
+                    <div className="description">{description}</div>
                 </div>
                 <div className="col-md-6 lyrics-container">
                     <h3>Lyrics</h3>

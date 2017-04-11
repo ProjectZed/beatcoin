@@ -35,29 +35,38 @@ import Footer from './components/footer.js';
 // // 		'profilePicture':'img/bach.jpg'
 // // 	}
 // // ]
-class App extends React.Component {
-    constructor(props){
-      super(props);
-      this.state = {
-        current: props.route.current,
-        songs: props.route.songs,
-        array: props.route.array
-      }
+class App extends React.Component { <<<<<<< HEAD
+    constructor(props) {
+        super(props);
+        this.state = {
+            current: props.route.current,
+            songs: props.route.songs,
+            array: props.route.array
+        }
     }
-    playSong(index){
-      this.setState({current: index});
+    playSong(index) {
+        this.setState({current: index});
     }
-    songChange(songID){
-      this.props.children.setState({"currentSong": songID});
+    songChange(songID) {
+        this.props.children.setState({"currentSong": songID});
     }
     onCall(user, list) {
-            playlistClicked(user, list, (list) => {
-                this.setState(array: list)
-                getSongInfo(list, (list) => {
-                  this.setState({songs: list});
+        playlistClicked(user, list, (list) => {
+            this.setState(array : list)
+            getSongInfo(list, (list) => {
+                this.setState({songs: list});
             });
         });
+    } ======= constructor(props) {
+        super(props);
+        this.state = {
+            current: props.route.current
+        };
     }
+
+    playSong(index) {
+        this.setState({current: index});
+    } >>>>>>> partially using footer
     render() {
         return (
             <div>
@@ -70,28 +79,28 @@ class App extends React.Component {
 }
 ReactDOM.render((
     <Router history={browserHistory}>
-        <Route path="/" songs={[{
-          "url": "audio/star-spangled-banner.mp3",
-          "cover": "img/songs/covers/star-spangled-banner.jpg",
-          "artist":{
-              "song": "The Star Spangled Banner",
-              "name": "USA"
-          }
-        },
-        {
-            "url": "audio/o-canada.mp3",
-            "cover": "img/songs/covers/o-canada.jpg",
-            "artist":{
-                "song": "O Canada",
-                "name": "Canada"
+        <Route path="/" songs={[
+            {
+                "url": "audio/star-spangled-banner.mp3",
+                "cover": "img/songs/covers/star-spangled-banner.jpg",
+                "artist": {
+                    "song": "The Star Spangled Banner",
+                    "name": "USA"
+                }
+            }, {
+                "url": "audio/o-canada.mp3",
+                "cover": "img/songs/covers/o-canada.jpg",
+                "artist": {
+                    "song": "O Canada",
+                    "name": "Canada"
+                }
             }
-        }
-      ]} current={0} array={0} component={App}>
+        ]} current={0} array={0} component={App}>
             <IndexRoute component={UserHome}/>
             <Route path="/redeem" component={Redeem}/>
             <Route path="/my-profile" component={MyProfile}/>
             <Route path="/contact-us" component={ContactUs}/>
-            <Route path="/playlist-view" playlist={14} component={PlaylistView}/>
+            <Route path="/playlist-view" component={() => (<PlaylistView playlist={14} playSong={(id) => this.playSong(id)}/>)}/>
             <Route path="/profile/:id" component={Profile}/>
         </Route>
     </Router>

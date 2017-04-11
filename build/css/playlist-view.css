@@ -137,11 +137,21 @@
 }
 
 #playlist-component .lyrics-container {
-    height: calc(100vh - 20px - 150px - 35px - 38px - 120px);
+    height: calc(100vh - 20px - 150px - 35px - 40px - 120px);
     overflow: hidden;
 }
 
 #playlist-component .lyrics {
-    height: calc(100vh - 20px - 150px - 35px - 38px - 120px - 64px);
+    height: calc(100vh - 20px - 150px - 35px - 40px - 120px - 64px);
+    overflow: auto;
+}
+
+#playlist-component .description-container {
+    height: calc(100vh - 20px - 150px - 35px - 40px - 120px);
+    overflow: hidden;
+}
+
+#playlist-component .description {
+    height: calc(100vh - 20px - 150px - 35px - 40px - 120px - 64px);
     overflow: auto;
 }

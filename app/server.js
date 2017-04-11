@@ -67,43 +67,22 @@ export function getSongInfo(ids, cb) {
     emulateServerReturn(songs, cb);
 }
 
-export function getInitialSong(ids, cb) {
-    var songs = [{
-        "url": "audio/silence.mp3",
-        "cover": "img/beatcoinholder.png",
-        "artist": {
-            "song": "Welcome to Beatcoin",
-            "name": ""
-        }
-    }]
+export function getSongComments(songId, cb) {
+    var song = readDocument('songs', songId);
+    var comments = song.comments;
+    comments = comments.map((commentId) => readDocument('comments', commentId));
+    comments.forEach((comment) => {
+        comment.author = readDocument('users', comment.author);
+    });
+    emulateServerReturn(comments, cb);
+}
 
-    export function getSongComments(songId, cb) {
-        var song = readDocument('songs', songId);
-        var comments = song.comments;
-        comments = comments.map((commentId) => readDocument('comments', commentId));
-        comments.forEach((comment) => {
-            comment.author = readDocument('users', comment.author);
-        });
-        emulateServerReturn(comments, cb);
-    }
+function getSong(songId) {
+    var song = readDocument('songs', songId);
+    song.uploader = readDocument('users', song.uploader);
+    return song;
+}
 
-    function getSong(songId) {
-        var song = readDocument('songs', songId);
-        song.uploader = readDocument('users', song.uploader);
-        return song;
-    }
-
-    export function getPlaylist(userId, playlistId, cb) {
-        var user = readDocument('users', userId);
-        var playlist = user.playlists[playlistId];
-        var songs = playlist.songs;
-        songs = songs.map((songId) => {
-            return getSong(songId)
-        });
-        playlist.songs = songs;
-        emulateServerReturn(playlist, cb);
-
-    }
 export function getPlaylist(userId, playlistId, cb) {
     var user = readDocument('users', userId);
     var playlist = user.playlists[playlistId];
@@ -113,6 +92,7 @@ export function getPlaylist(userId, playlistId, cb) {
     });
     playlist.songs = songs;
     emulateServerReturn(playlist, cb);
+
 }
 
 export function likeComment(userId, commentId, cb) {

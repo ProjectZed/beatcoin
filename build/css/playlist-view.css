@@ -1,19 +1,16 @@
-html {
+#playlist-component .playlist-container {
+    width: 100%;
+    height: calc(100vh - 120px);
     overflow: hidden;
 }
 
-.playlist-container {
-    width: 100%;
-    height: 100%;
-}
-
-.border-top {
+#playlist-component .border-top {
     height: 1px;
     padding: 0px;
     background: #838383;
 }
 
-.border-between>[class*='col-']:before {
+#playlist-component .border-between>[class*='col-']:before {
     background: #838383;
     bottom: 0;
     content: " ";
@@ -24,23 +21,24 @@ html {
     top: 0;
 }
 
-.border-between>[class*='col-']:first-child:before {
+#playlist-component .border-between>[class*='col-']:first-child:before {
     display: none;
 }
 
-.comments-container {
+#playlist-component .comments-container {
     padding-left: 0px;
     padding-right: 0px;
-    height: 100vh;
+    overflow: scroll;
+    height: calc(100vh - 120px);
 }
 
-.comments-container>h3 {
+#playlist-component .comments-container>h3 {
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.comments-container .list-group-item {
+#playlist-component .comments-container .list-group-item {
     border-radius: 0px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -48,57 +46,57 @@ html {
     border-color: #B3B3B3;
 }
 
-.list-group-item>.container {
+#playlist-component .list-group-item>.container {
     padding-left: 0px;
 }
 
-.col-img {
+#playlist-component .col-img {
     padding-right: 0px;
     text-align: left;
 }
 
-.col-name-message {
+#playlist-component .col-name-message {
     padding-left: 0px;
     padding-right: 0px;
     text-align: left;
     height: auto;
 }
 
-.col-actions-date {
+#playlist-component .col-actions-date {
     padding-left: 0px;
     padding-right: 0px;
     position: relative;
 }
 
-.comments-name {
+#playlist-component .comments-name {
     font-weight: 500;
     font-size: 14px;
 }
 
-.comments-message {
+#playlist-component .comments-message {
     padding-top: 5px;
     padding-left: 10px;
     font-size: 12px;
 }
 
-.comments-date {
+#playlist-component .comments-date {
     margin-right: 10px;
     padding-bottom: 5px;
 }
 
-.comments-like, .comments-reply {
+#playlist-component .comments-like, .comments-reply {
     font-size: 12px;
     float: right;
     bottom: 0;
     right: 0;
 }
 
-.comments-like {
+#playlist-component .comments-like {
     padding-left: 10px;
     padding-right: 10px;
 }
 
-.comments-image, .song-image {
+#playlist-component .comments-image, .song-image {
     display: inline-block;
     vertical-align: middle;
     width: 50px;
@@ -107,53 +105,53 @@ html {
     background-size: cover;
 }
 
-.song-image {
+#playlist-component .song-image {
     width: 150px;
     height: 150px;
     margin-right: 0px;
 }
 
-.songs-container {
+#playlist-component .songs-container {
     padding-left: 0px;
     padding-right: 0px;
 }
 
-.song-container {
+#playlist-component .song-container {
     padding-top: 20px;
     text-align: center;
 }
 
-.song-artist {
+#playlist-component .song-artist {
     margin-top: 0px;
     margin-bottom: 20px;
 }
 
-.song-title {
+#playlist-component .song-title {
     font-size: 20px;
     margin-top: 10px;
     margin-bottom: 5px;
 }
 
-.shaded {
+#playlist-component .shaded {
     background-color: #B0B0B0
 }
 
-.previous-song {
-    background-image: url('/img/prev-song.jpg');
+#playlist-component .lyrics-container {
+    height: calc(100vh - 20px - 150px - 35px - 40px - 120px);
+    overflow: hidden;
 }
 
-.current-song {
-    background-image: url('/img/curr-song.jpg');
+#playlist-component .lyrics {
+    height: calc(100vh - 20px - 150px - 35px - 40px - 120px - 64px);
+    overflow: auto;
 }
 
-.next-song {
-    background-image: url('/img/next-song.jpg');
+#playlist-component .description-container {
+    height: calc(100vh - 20px - 150px - 35px - 40px - 120px);
+    overflow: hidden;
 }
 
-.profile-pic {
-    background-image: url('/img/profile-pic.jpg');
-}
-
-.lyrics-container {
-    height: 100vh;
+#playlist-component .description {
+    height: calc(100vh - 20px - 150px - 35px - 40px - 120px - 64px);
+    overflow: auto;
 }

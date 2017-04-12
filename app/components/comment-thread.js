@@ -1,33 +1,54 @@
 import React from 'react';
+import Comment from './comment';
+import {getSongComments} from '../server';
+import {postSongComment} from '../server';
 
 export default class CommentThread extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            current: props.playing,
+            comments: []
+        };
+    }
+
+    componentDidMount() {
+        getSongComments(this.state.current, (comments) => {
+            this.setState({comments: comments});
+        });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        getSongComments(nextProps.playing, (comments) => {
+            this.setState({comments: comments, current: nextProps.playing});
+        });
+    }
+
+    handleChange(e) {
+        this.setState({value: e.target.value});
+    }
+
+    handleKeyUp(e) {
+        if (e.key === "Enter") {
+            var comment = this.state.value.trim();
+            if (comment !== "") {
+                // Post comment
+                postSongComment(this.state.current, this.state.value, (comment) => {
+                    this.state.comments.push(comment);
+                    this.setState({comments: this.state.comments, value: ""});
+                });
+            }
+        }
+    }
+
     render() {
         return (
             <div>
-                {React.Children.map(this.props.children, function(child) {
+                <input type="text" className="form-control" placeholder="Write a comment..." value={this.state.value} onChange={(e) => this.handleChange(e)} onKeyUp={(e) => this.handleKeyUp(e)}></input>
+                {this.state.comments.map((comment) => {
                     return (
-                        <div className="container col-md-12 list-group-item">
-                            <div className="row">
-                                <div className="col-md-3 col-img">
-                                    <div className={"comments-image img-circle " + child.props.picture}></div>
-                                </div>
-                                <div className="col-md-6 col-name-message">
-                                    <div className="comments-name">
-                                        {child.props.name}
-                                    </div>
-                                    <div className="comments-message">
-                                        {child.props.message}
-                                    </div>
-                                </div>
-                                <div className="col-md-3 col-actions-date">
-                                    <div className="comments-date pull-right">{child.props.date}</div>
-                                    <div className="pull-right">
-                                        <span className="comments-like glyphicon glyphicon-thumbs-up"></span>
-                                        <span className="comments-reply">Reply</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <Comment key={comment._id} index={comment._id} data={comment}></Comment>
                     )
                 })}
             </div>

@@ -3,41 +3,84 @@ import React from 'react';
 import SongTile from './song-tile';
 import SongInfo from './song-info';
 import CommentThread from './comment-thread';
-import Navbar from './navbar';
-import Footer from './footer';
 
 export default class PlaylistView extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            onSongChanged: this.onSongChanged,
+            setPlaylist: props.setPlaylist,
+            songList: props.songList,
+            currentIndex: 0,
+            currentSong: 1
+        };
+        this.handlePrevClick = this.handlePrevClick.bind(this);
+        this.handleNextClick = this.handleNextClick.bind(this);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.state.currentIndex != nextProps.currentSongIndex) {
+            this.setState({
+                currentIndex: nextProps.currentSongIndex,
+                currentSong: this.state.songList[nextProps.currentSongIndex]._id
+            });
+        }
+        if (this.state.songList != nextProps.songList) {
+            this.setState({songList: nextProps.songList});
+        }
+    }
+
+    handlePrevClick(clickEvent) {
+        clickEvent.preventDefault();
+        if (clickEvent.button === 0) {
+            var nextIndex = this.state.currentIndex - 1;
+            if (nextIndex < 0) {
+                nextIndex = this.state.songList.length - 1;
+            }
+            this.setState({currentIndex: nextIndex, currentSong: this.state.songList[nextIndex]._id});
+            this.props.onSongChanged(nextIndex);
+        }
+    }
+
+    handleNextClick(clickEvent) {
+        clickEvent.preventDefault();
+        if (clickEvent.button === 0) {
+            var nextIndex = this.state.currentIndex + 1;
+            if (nextIndex >= this.state.songList.length) {
+                nextIndex = 0;
+            }
+            this.setState({currentIndex: nextIndex, currentSong: this.state.songList[nextIndex]._id});
+            this.props.onSongChanged(nextIndex);
+        }
+    }
+
     render() {
         return (
-            <div>
-                <Navbar></Navbar>
+            <div id="playlist-component">
                 <div className="container playlist-container">
                     <div className="row border-between">
                         <div className="col-md-9 songs-container">
                             <div className="container col-md-12">
                                 <div className="row border-between">
-                                    <SongTile isPlaying="false" songCover="previous-song" songTitle="Sherlock" songArtist="Bourgeoisie Clombyclomp"/>
-                                    <SongTile isPlaying="true" songCover="current-song" songTitle="Sherlock" songArtist="Blasphemy Frumblesnatch"/>
-                                    <SongTile isPlaying="false" songCover="next-song" songTitle="Sherlock" songArtist="Buttercup Crackerdong"/>
+                                    <div onClick={this.handlePrevClick}>
+                                        <SongTile data={this.state.songList[this.state.currentSong - 2]}/>
+                                    </div>
+                                    <SongTile isMiddle="true" data={this.state.songList[this.state.currentSong - 1]}/>
+                                    <div onClick={this.handleNextClick}>
+                                        <SongTile data={this.state.songList[this.state.currentSong]}/>
+                                    </div>
                                 </div>
                                 <div className="row border-top"></div>
-                                <SongInfo songDescription="This is my first song released on Beatcoin! Hope you all enjoy it!" songLyrics="Turtle turtle turtle turtle turtle turtle turtle turtle turtle turtle turtle turtle turtle turtle turtle turtle turtle turtle turtle turtle turtle turtle turtle turtle turtle turtle turtle turtle turtle turtle"/>
+                                <SongInfo data={this.state.songList[this.state.currentSong - 1]}/>
                             </div>
                         </div>
                         <div className="col-md-3 comments-container">
                             <h3>Comments</h3>
-                            <CommentThread>
-                                <Comment picture="profile-pic" name="Doggie Doggo" message="Bark Bark Bark Bark" date="Today"/>
-                                <Comment picture="profile-pic" name="Doggie Doggo" message="Whoof Whoof Whoof Whoof" date="Yesterday"/>
-                            </CommentThread>
+                            <CommentThread playing={this.state.currentSong}></CommentThread>
                         </div>
                     </div>
                 </div>
-                <Footer data={{
-                    songTime: '13:37',
-                    songTitle: 'Sherlock',
-                    songArtist: 'Blasphemy Frumblesnatch'
-                }}></Footer>
             </div>
         )
     }

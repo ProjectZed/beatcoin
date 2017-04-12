@@ -9,8 +9,7 @@ export default class PlaylistView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            playlistId: props.playlist,
-            playSong: props.playSong,
+            onSongChanged: this.onSongChanged,
             setPlaylist: props.setPlaylist,
             songList: props.songList,
             currentIndex: 0,
@@ -40,7 +39,7 @@ export default class PlaylistView extends React.Component {
                 nextIndex = this.state.songList.length - 1;
             }
             this.setState({currentIndex: nextIndex, currentSong: this.state.songList[nextIndex]._id});
-            this.props.playSong(nextIndex);
+            this.props.onSongChanged(nextIndex);
         }
     }
 
@@ -52,7 +51,7 @@ export default class PlaylistView extends React.Component {
                 nextIndex = 0;
             }
             this.setState({currentIndex: nextIndex, currentSong: this.state.songList[nextIndex]._id});
-            this.props.playSong(nextIndex);
+            this.props.onSongChanged(nextIndex);
         }
     }
 

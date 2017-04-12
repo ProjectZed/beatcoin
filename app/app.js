@@ -19,13 +19,8 @@ class App extends React.Component {
             songList: [],
             currentSongIndex: 0
         }
-        this.playSong = this.playSong.bind(this);
         this.setPlaylist = this.setPlaylist.bind(this);
         this.onSongChanged = this.onSongChanged.bind(this);
-    }
-
-    playSong(index) {
-        this.setState({currentSongIndex: index});
     }
 
     onSongChanged(songIndex) {
@@ -39,11 +34,10 @@ class App extends React.Component {
     render() {
         const {children} = this.props;
         const child = React.cloneElement(children, {
-            playSong: this.playSong,
+            onSongChanged: this.onSongChanged,
             setPlaylist: this.setPlaylist,
             songList: this.state.songs,
-            currentSongIndex: this.state.currentSongIndex,
-            playlist: 14
+            currentSongIndex: this.state.currentSongIndex
         });
         return (
             <div>

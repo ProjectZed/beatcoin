@@ -6,7 +6,7 @@ import ContactInformation from './contact-information';
 export default class ContactUs extends React.Component {
     render() {
         return (
-            <div className="container contact-container">
+            <div id="contact-us-component" className="container contact-container">
                 <div className="row">
                     <div className="col-md-8 col-md-offset-2 contact-title">
                         <h1>

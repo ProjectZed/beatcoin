@@ -16,7 +16,53 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            songList: [],
+            songList: [
+                {
+                    "title" : "Welcome to Beatcoin",
+                    "genre" : "None",
+                    "uploader" : {
+                        "_id": 2,
+                        "name": "Fang Jhang",
+                        "beatcoins": 200,
+                        "balance": 500,
+                        "profilePicture": "img/users/fang_jhang.jpg",
+                        "info": {
+                            "birthday": "1689/03/31",
+                            "gender": "Female",
+                            "location": "UMass Amherst",
+                            "contactAgent": "Sara Ramaker (310-288-8000)",
+                            "education": "High School",
+                            "displayed": [true, true, true, true, true]
+                        },
+                        "uploads": [
+                            1, 2, 3
+                        ],
+                        "favorites": [
+                            1, 2, 3
+                        ],
+                        "token": "TOKEN-GOES-HERE",
+                        "playlists": {
+                            "1": {
+                                "name": "My Jazz",
+                                "genre": "Jazz",
+                                "owner": 1,
+                                "cover": "img/user-home/Jazz.jpg",
+                                "songs": [1]
+                            }
+                        },
+                        "likes": [2],
+                        "comments": [1, 2]
+                    },
+                    "price" : 0,
+                    "plays" : 0,
+                    "audio" : "audio/silence.mp3",
+                    "cover" : "img/beatcoinholder.png",
+                    "lyrics" : "Welcome to beatcoin",
+                    "uploadDate" : 1453690800000,
+                    "likes" : [0],
+                    "comments" : []
+                }
+            ],
             currentSongIndex: 0
         }
         this.setPlaylist = this.setPlaylist.bind(this);

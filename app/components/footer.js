@@ -18,7 +18,53 @@ export default class Footer extends React.Component {
         this.state = {
             songChangeCallback: this.props.songChangeCallback,
             currentSongIndex: this.props.currentSongIndex || 0,
-            songList: this.props.songList || [],
+            songList: this.props.songList || [
+                [
+                    "title" : "Welcome to Beatcoin",
+                    "genre" : "None",
+                    "uploader" : {
+                        "_id": 2,
+                        "name": "Fang Jhang",
+                        "beatcoins": 200,
+                        "balance": 500,
+                        "profilePicture": "img/users/fang_jhang.jpg",
+                        "info": {
+                            "birthday": "1689/03/31",
+                            "gender": "Female",
+                            "location": "UMass Amherst",
+                            "contactAgent": "Sara Ramaker (310-288-8000)",
+                            "education": "High School",
+                            "displayed": [true, true, true, true, true]
+                        },
+                        "uploads": [
+                            1, 2, 3
+                        ],
+                        "favorites": [
+                            1, 2, 3
+                        ],
+                        "token": "TOKEN-GOES-HERE",
+                        "playlists": {
+                            "1": {
+                                "name": "My Jazz",
+                                "genre": "Jazz",
+                                "owner": 1,
+                                "cover": "img/user-home/Jazz.jpg",
+                                "songs": [1]
+                            }
+                        },
+                        "likes": [2],
+                        "comments": [1, 2]
+                    },
+                    "price" : 0,
+                    "plays" : 0,
+                    "audio" : "audio/silence.mp3",
+                    "cover" : "img/beatcoinholder.png",
+                    "lyrics" : "Welcome to beatcoin",
+                    "uploadDate" : 1453690800000,
+                    "likes" : [0],
+                    "comments" : []
+                ]
+            ],
             active: this.props.songList[this.props.currentSongIndex || 0],
             progress: 0,
             random: false,
@@ -143,22 +189,10 @@ export default class Footer extends React.Component {
             : 0;
     }
     render() {
-        var audio = ""
-        if (this.state.active) {
-            audio = this.state.active.audio;
-        }
-        var cover = ""
-        if (this.state.active) {
-            cover = this.state.active.cover;
-        }
-        var title = ""
-        if (this.state.active) {
-            title = this.state.active.title;
-        }
-        var name = ""
-        if (this.state.active) {
-            name = this.state.active.uploader.name;
-        }
+        var audio = this.state.active.audio;
+        var cover = this.state.active.cover;
+        var title = this.state.active.title;
+        var name = this.state.active.uploader.name;
         return (
             <nav className="navbar navbar-fixed-bottom navbar-default">
                 <div className="container">

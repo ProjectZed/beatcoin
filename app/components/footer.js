@@ -5,8 +5,6 @@ import {Link} from 'react-router';
 export default class Footer extends React.Component {
   constructor(props){
     super(props);
-    this.componentDidMount = this.componentDidMount.bind(this);
-    this.componentWillUnmount = this.componentWillUnmount.bind(this);
     this.setProgress = this.setProgress.bind(this);
     this.updateProgress = this.updateProgress.bind(this);
     this.play = this.play.bind(this);
@@ -18,22 +16,22 @@ export default class Footer extends React.Component {
     this.repeat = this.repeat.bind(this);
 
     this.state = {
-      active: this.props.songs[0],
-      current: this.props.data.current || 0,
+      current: this.props.current || 0,
+      active: this.props.songs[this.props.current || 0],
       progress: 0,
       random: false,
       repeat: false,
       mute: false,
       play: this.props.autoplay || false,
-      songs: this.props.songs,
+      songs: this.props.songs
     }
   }
   componentWillReceiveProps(nextProps){
     if (this.props.songs != nextProps.songs){
       this.setState({songs: nextProps.songs, current: 0, active: nextProps.songs[0], play: true, progress: 0});
     }
-    if (this.props.data.current != nextProps.data.current){
-      this.setState({current: nextProps.data.current, active: this.props.songs[nextProps.data.current], progress: 0});
+    if (this.props.data != nextProps.data){
+      this.setState({current: nextProps.data, active: this.props.songs[nextProps.data], progress: 0});
     }
   }
 

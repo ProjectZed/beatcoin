@@ -11,6 +11,7 @@ export default class PlaylistView extends React.Component {
         super(props);
         this.state = {
             playlistId: props.playlist,
+            playSong: props.playSong,
             playlist: {
                 songs: []
             },

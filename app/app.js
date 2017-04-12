@@ -35,7 +35,7 @@ import Footer from './components/footer.js';
 // // 		'profilePicture':'img/bach.jpg'
 // // 	}
 // // ]
-class App extends React.Component { <<<<<<< HEAD
+class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -43,35 +43,27 @@ class App extends React.Component { <<<<<<< HEAD
             songs: props.route.songs,
             array: props.route.array
         }
-    }
-    playSong(index) {
-        this.setState({current: index});
-    }
-    songChange(songID) {
-        this.props.children.setState({"currentSong": songID});
-    }
-    onCall(user, list) {
-        playlistClicked(user, list, (list) => {
-            this.setState(array : list)
-            getSongInfo(list, (list) => {
-                this.setState({songs: list});
-            });
-        });
-    } ======= constructor(props) {
-        super(props);
-        this.state = {
-            current: props.route.current
-        };
+        this.playSong = this.playSong.bind(this)
     }
 
     playSong(index) {
         this.setState({current: index});
-    } >>>>>>> partially using footer
+    }
+
+    songChange(songID) {
+        this.props.children.setState({"currentSong": songID});
+    }
+
     render() {
+        const {children} = this.props;
+        const child = React.cloneElement(children, {
+            playSong: this.playSong,
+            playlist: 14
+        });
         return (
             <div>
                 <Navbar/>
-                <div>{this.props.children}</div>
+                <div>{child}</div>
                 <Footer songs={this.state.songs} data={this.state.current} update={this.songChange}/>
             </div>
         )
@@ -100,7 +92,7 @@ ReactDOM.render((
             <Route path="/redeem" component={Redeem}/>
             <Route path="/my-profile" component={MyProfile}/>
             <Route path="/contact-us" component={ContactUs}/>
-            <Route path="/playlist-view" component={() => (<PlaylistView playlist={14} playSong={(id) => this.playSong(id)}/>)}/>
+            <Route path="/playlist-view" component={PlaylistView}/>
             <Route path="/profile/:id" component={Profile}/>
         </Route>
     </Router>

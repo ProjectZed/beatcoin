@@ -39,34 +39,6 @@ export function playlistClicked(user, alist, cb) {
     }
 }
 
-export function getSongInfo(ids, cb) {
-    var songs = [{
-            "url": "audio/star-spangled-banner.mp3",
-            "cover": "img/songs/covers/star-spangled-banner.jpg",
-            "artist": {
-                "song": "The Star Spangled Banner",
-                "name": "USA"
-            }
-        },
-        {
-            "url": "audio/o-canada.mp3",
-            "cover": "img/songs/covers/o-canada.jpg",
-            "artist": {
-                "song": "O Canada",
-                "name": "Canada"
-            }
-        }, {
-            "url": "audio/taiwan-national-anthem.mp3",
-            "cover": "img/songs/covers/taiwan-national-anthem.jpg",
-            "artist": {
-                "song": "Taiwan National Anthem",
-                "name": "Taiwan"
-            }
-        }
-    ]
-    emulateServerReturn(songs, cb);
-}
-
 export function getSongComments(songId, cb) {
     var song = readDocument('songs', songId);
     var comments = song.comments;

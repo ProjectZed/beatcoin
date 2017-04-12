@@ -235,7 +235,7 @@ var initialData = {
             "uploader": 2,
             "price": 24,
             "plays": 6712,
-            "audio": "audio/o-canada.mp3",
+            "audio": "audio/taiwan-national-anthem.mp3",
             "cover": "img/songs/covers/taiwan-national-anthem.jpg",
             "lyrics": "San Min Chu-i,\nOur aim shall be:\nTo found a free land,\nWorld peace, be our stand.\nLead on, comrades,\nVanguards ye are.\nHold fast your aim,\nBy sun and star.\nBe earnest and brave,\nYour country to save,\nOne heart, one soul,\nOne mind, one goal...",
             "description": "Taiwan National Anthem",

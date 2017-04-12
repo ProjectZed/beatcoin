@@ -12,6 +12,7 @@ export default class PlaylistView extends React.Component {
         this.state = {
             playlistId: props.playlist,
             playSong: props.playSong,
+            setPlaylist: props.setPlaylist,
             playlist: {
                 songs: []
             },
@@ -22,9 +23,19 @@ export default class PlaylistView extends React.Component {
         this.handleNextClick = this.handleNextClick.bind(this);
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (this.state.currentIndex != nextProps.currentSongIndex) {
+            this.setState({
+                currentIndex: nextProps.currentSongIndex,
+                currentSong: this.state.playlist.songs[nextProps.currentSongIndex]._id
+            });
+        }
+    }
+
     componentDidMount() {
         getPlaylist(1, this.state.playlistId, (playlist) => {
             this.setState({playlist: playlist});
+            this.state.setPlaylist(playlist.songs);
         })
     }
 

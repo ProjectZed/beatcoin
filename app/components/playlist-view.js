@@ -3,7 +3,6 @@ import React from 'react';
 import SongTile from './song-tile';
 import SongInfo from './song-info';
 import CommentThread from './comment-thread';
-import {getPlaylist} from '../server';
 
 export default class PlaylistView extends React.Component {
 
@@ -13,9 +12,7 @@ export default class PlaylistView extends React.Component {
             playlistId: props.playlist,
             playSong: props.playSong,
             setPlaylist: props.setPlaylist,
-            playlist: {
-                songs: []
-            },
+            songList: props.songList,
             currentIndex: 0,
             currentSong: 1
         };
@@ -27,16 +24,12 @@ export default class PlaylistView extends React.Component {
         if (this.state.currentIndex != nextProps.currentSongIndex) {
             this.setState({
                 currentIndex: nextProps.currentSongIndex,
-                currentSong: this.state.playlist.songs[nextProps.currentSongIndex]._id
+                currentSong: this.state.songList[nextProps.currentSongIndex]._id
             });
         }
-    }
-
-    componentDidMount() {
-        getPlaylist(1, this.state.playlistId, (playlist) => {
-            this.setState({playlist: playlist});
-            this.state.setPlaylist(playlist.songs);
-        })
+        if (this.state.songList != nextProps.songList) {
+            this.setState({songList: nextProps.songList});
+        }
     }
 
     handlePrevClick(clickEvent) {
@@ -44,9 +37,9 @@ export default class PlaylistView extends React.Component {
         if (clickEvent.button === 0) {
             var nextIndex = this.state.currentIndex - 1;
             if (nextIndex < 0) {
-                nextIndex = this.state.playlist.songs.length - 1;
+                nextIndex = this.state.songList.length - 1;
             }
-            this.setState({currentIndex: nextIndex, currentSong: this.state.playlist.songs[nextIndex]._id});
+            this.setState({currentIndex: nextIndex, currentSong: this.state.songList[nextIndex]._id});
             this.props.playSong(nextIndex);
         }
     }
@@ -55,10 +48,10 @@ export default class PlaylistView extends React.Component {
         clickEvent.preventDefault();
         if (clickEvent.button === 0) {
             var nextIndex = this.state.currentIndex + 1;
-            if (nextIndex >= this.state.playlist.songs.length) {
+            if (nextIndex >= this.state.songList.length) {
                 nextIndex = 0;
             }
-            this.setState({currentIndex: nextIndex, currentSong: this.state.playlist.songs[nextIndex]._id});
+            this.setState({currentIndex: nextIndex, currentSong: this.state.songList[nextIndex]._id});
             this.props.playSong(nextIndex);
         }
     }
@@ -72,15 +65,15 @@ export default class PlaylistView extends React.Component {
                             <div className="container col-md-12">
                                 <div className="row border-between">
                                     <div onClick={this.handlePrevClick}>
-                                        <SongTile data={this.state.playlist.songs[this.state.currentSong - 2]}/>
+                                        <SongTile data={this.state.songList[this.state.currentSong - 2]}/>
                                     </div>
-                                    <SongTile isMiddle="true" data={this.state.playlist.songs[this.state.currentSong - 1]}/>
+                                    <SongTile isMiddle="true" data={this.state.songList[this.state.currentSong - 1]}/>
                                     <div onClick={this.handleNextClick}>
-                                        <SongTile data={this.state.playlist.songs[this.state.currentSong]}/>
+                                        <SongTile data={this.state.songList[this.state.currentSong]}/>
                                     </div>
                                 </div>
                                 <div className="row border-top"></div>
-                                <SongInfo data={this.state.playlist.songs[this.state.currentSong - 1]}/>
+                                <SongInfo data={this.state.songList[this.state.currentSong - 1]}/>
                             </div>
                         </div>
                         <div className="col-md-3 comments-container">

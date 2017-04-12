@@ -18,13 +18,13 @@ export default class Footer extends React.Component {
         this.state = {
             songChangeCallback: this.props.songChangeCallback,
             currentSongIndex: this.props.currentSongIndex || 0,
+            songList: this.props.songList || [],
             active: this.props.songList[this.props.currentSongIndex || 0],
             progress: 0,
             random: false,
             repeat: false,
             mute: false,
-            play: this.props.autoplay || false,
-            songList: this.props.songList
+            play: this.props.autoplay || false
         }
     }
     componentWillReceiveProps(nextProps) {

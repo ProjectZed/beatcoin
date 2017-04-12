@@ -64,7 +64,6 @@ export function getPlaylist(userId, playlistId, cb) {
     });
     playlist.songs = songs;
     emulateServerReturn(playlist, cb);
-
 }
 
 export function likeComment(userId, commentId, cb) {
@@ -83,6 +82,21 @@ export function dislikeComment(userId, commentId, cb) {
         writeDocument('comments', comment);
     }
     comment.author = readDocument('users', comment.author);
+    emulateServerReturn(comment, cb);
+}
+
+export function postUserComment(posterId, userId, message, cb) {
+    var comment = {
+        "author": posterId,
+        "text": message,
+        "postDate": new Date().getTime(),
+        "likes": []
+    }
+    comment = addDocument('comments', comment);
+    comment.author = readDocument('users', comment.author);
+    var user = readDocument('users', userId);
+    user.comments.push(comment._id);
+    writeDocument('users', user);
     emulateServerReturn(comment, cb);
 }
 

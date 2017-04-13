@@ -82,7 +82,7 @@ class App extends React.Component {
         const child = React.cloneElement(children, {
             onSongChanged: this.onSongChanged,
             setPlaylist: this.setPlaylist,
-            songList: this.state.songs,
+            songList: this.state.songList,
             currentSongIndex: this.state.currentSongIndex
         });
         return (

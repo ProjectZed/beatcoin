@@ -116,3 +116,22 @@ export function postSongComment(songId, message, cb) {
         emulateServerReturn(comment, cb);
     });
 }
+
+export function likeSong(userId, songId, cb) {
+    var song = readDocument('songs', songId);
+    song.likes.push(userId);
+    writeDocument('songs', song);
+    song.uploader= readDocument('users', song.uploader);
+    emulateServerReturn(song, cb);
+}
+
+export function dislikeSong(userId, songId, cb) {
+    var song = readDocument('songs', songId);
+    var index = song.likes.indexOf(userId);
+    if (index !== -1) {
+        song.likes.splice(index, 1);
+        writeDocument('songs', song);
+    }
+    song.uploader= readDocument('users', song.uploader);
+    emulateServerReturn(song, cb);
+}

@@ -55,7 +55,13 @@ export default class PlaylistView extends React.Component {
         }
     }
 
+    songTileData() {}
+
     render() {
+        var prevTile = <SongTile data={null}/>;
+        if (this.state.currentSong >= 2) {
+            prevTile = <SongTile data={this.state.songList[this.state.currentSong - 2]}/>;
+        }
         return (
             <div id="playlist-component">
                 <div className="container playlist-container">
@@ -64,7 +70,7 @@ export default class PlaylistView extends React.Component {
                             <div className="container col-md-12">
                                 <div className="row border-between">
                                     <div onClick={this.handlePrevClick}>
-                                        <SongTile data={this.state.songList[this.state.currentSong - 2]}/>
+                                        {prevTile}
                                     </div>
                                     <SongTile isMiddle="true" data={this.state.songList[this.state.currentSong - 1]}/>
                                     <div onClick={this.handleNextClick}>

@@ -14,9 +14,9 @@ export default class Navbar extends React.Component {
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                         </button>
-                        <a className="navbar-brand" href="#">
+                        <Link className='navbar-brand' to={'/'}>
                             <span className="glyphicon glyphicon-home"></span>
-                        </a>
+                        </Link>
                     </div>
                     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <form className="navbar-form navbar-left" role="search">
@@ -42,19 +42,21 @@ export default class Navbar extends React.Component {
                                     </button>
                                 </div>
                                 <div className="btn-group" role="group">
-                                    <button type="button" className="btn btn-default navbar-btn">
-                                        Profile
-                                    </button>
+                                    <Link to={'/my-profile'}>
+                                      <button type="button" className="btn btn-default navbar-btn">
+                                          Profile
+                                      </button>
+                                    </Link>
                                     <div className="btn-group" role="group">
                                         <button type="button" className="btn btn-default dropdown-toggle navbar-btn" data-toggle="dropdown">
                                             <span className="caret"></span>
                                         </button>
                                         <ul className="dropdown-menu">
                                             <li>
-                                                <a href="#">Redeem Beatcoins</a>
+                                                <Link to={'/redeem'}>Redeem Beatcoins</Link>
                                             </li>
                                             <li>
-                                                <a href="#">Contact Us</a>
+                                                <Link to={'/contact-us'}>Contact Us</Link>
                                             </li>
                                             <li>
                                                 <a href="#">Log out</a>

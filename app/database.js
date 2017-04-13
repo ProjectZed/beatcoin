@@ -184,6 +184,7 @@ var initialData = {
     },
     "songs": {
         "0": {
+            "_id": 0,
             "title": "Welcome to Beatcoin",
             "genre": "None",
             "uploader": 1,

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
+import {getLoggedInUserId, likeSong, dislikeSong} from '../server';
 
 export default class Footer extends React.Component {
     constructor(props) {
@@ -14,46 +15,144 @@ export default class Footer extends React.Component {
         this.previous = this.previous.bind(this);
         this.toggleMute = this.toggleMute.bind(this);
         this.repeat = this.repeat.bind(this);
+        this.handleLikeClick = this.handleLikeClick.bind(this);
+        this.didUserLike = this.didUserLike.bind(this);
 
         this.state = {
             songChangeCallback: this.props.songChangeCallback,
             currentSongIndex: this.props.currentSongIndex || 0,
             songList: this.props.songList || [
                 [
+                    "_id": 0,
                     "title" : "Welcome to Beatcoin",
                     "genre" : "None",
                     "uploader" : {
-                        "_id": 2,
-                        "name": "Fang Jhang",
-                        "beatcoins": 200,
-                        "balance": 500,
-                        "profilePicture": "img/users/fang_jhang.jpg",
+                        "_id": 1,
+                        "name": "Beatcoin Admin",
+                        "beatcoins": 0,
+                        // Amount of $ a User has to reward listeners
+                        "balance": 0,
+                        "profilePicture": "img/users/beatcoin.jpg",
                         "info": {
-                            "birthday": "1689/03/31",
-                            "gender": "Female",
+                            "birthday": "2017/01/24",
+                            "gender": "N/A",
                             "location": "UMass Amherst",
-                            "contactAgent": "Sara Ramaker (310-288-8000)",
-                            "education": "High School",
-                            "displayed": [true, true, true, true, true]
+                            "contactAgent": "N/A",
+                            "education": "College",
+                            "displayed": [false, false, false, false, false]
                         },
-                        "uploads": [
-                            1, 2, 3
-                        ],
-                        "favorites": [
-                            1, 2, 3
-                        ],
+                        "uploads": [],
+                        "favorites": [],
                         "token": "TOKEN-GOES-HERE",
                         "playlists": {
                             "1": {
-                                "name": "My Jazz",
+                                "name": "Jazz",
                                 "genre": "Jazz",
                                 "owner": 1,
                                 "cover": "img/user-home/Jazz.jpg",
                                 "songs": [1]
+                            },
+                            "2": {
+                                "name": "Folk",
+                                "genre": "Folk",
+                                "owner": 1,
+                                "cover": "img/user-home/Folk.jpg",
+                                "songs": [1]
+                            },
+                            "3": {
+                                "name": "Rock",
+                                "genre": "Rock",
+                                "owner": 1,
+                                "cover": "img/user-home/Rock.jpg",
+                                "songs": [1]
+                            },
+                            "4": {
+                                "name": "Blues",
+                                "genre": "Blues",
+                                "owner": 1,
+                                "cover": "img/user-home/Blues.jpg",
+                                "songs": [1]
+                            },
+                            "5": {
+                                "name": "Funk",
+                                "genre": "Funk",
+                                "owner": 1,
+                                "cover": "img/user-home/Funk.jpg",
+                                "songs": [1]
+                            },
+                            "6": {
+                                "name": "Country",
+                                "genre": "Country",
+                                "owner": 1,
+                                "cover": "img/user-home/Country.jpg",
+                                "songs": [1]
+                            },
+                            "7": {
+                                "name": "Pop",
+                                "genre": "Pop",
+                                "owner": 1,
+                                "cover": "img/user-home/Pop.jpg",
+                                "songs": [1]
+                            },
+                            "8": {
+                                "name": "RnB",
+                                "genre": "RnB",
+                                "owner": 1,
+                                "cover": "img/user-home/RnB.jpg",
+                                "songs": [1]
+                            },
+                            "9": {
+                                "name": "Hiphop",
+                                "genre": "Hiphop",
+                                "owner": 1,
+                                "cover": "img/user-home/Hiphop.jpg",
+                                "songs": [1]
+                            },
+                            "10": {
+                                "name": "Rapping",
+                                "genre": "Rapping",
+                                "owner": 1,
+                                "cover": "img/user-home/Rapping.jpg",
+                                "songs": [1]
+                            },
+                            "11": {
+                                "name": "Reggae",
+                                "genre": "Reggae",
+                                "owner": 1,
+                                "cover": "img/user-home/Reggae.jpg",
+                                "songs": [1]
+                            },
+                            "12": {
+                                "name": "Punk",
+                                "genre": "Punk",
+                                "owner": 1,
+                                "cover": "img/user-home/Punk.jpg",
+                                "songs": [1]
+                            },
+                            "13": {
+                                "name": "EDM",
+                                "genre": "EDM",
+                                "owner": 1,
+                                "cover": "img/user-home/EDM.jpg",
+                                "songs": [1]
+                            },
+                            "14": {
+                                "name": "Classical",
+                                "genre": "Classical",
+                                "owner": 1,
+                                "cover": "img/user-home/Classical.jpg",
+                                "songs": [1, 2, 3]
+                            },
+                            "15": {
+                                "name": "Acapella",
+                                "genre": "Acapella",
+                                "owner": 1,
+                                "cover": "img/user-home/Acapella.jpg",
+                                "songs": [1]
                             }
                         },
-                        "likes": [2],
-                        "comments": [1, 2]
+                        "likes": [],
+                        "comments": []
                     },
                     "price" : 0,
                     "plays" : 0,
@@ -70,8 +169,11 @@ export default class Footer extends React.Component {
             random: false,
             repeat: false,
             mute: false,
-            play: this.props.autoplay || false
+            play: this.props.autoplay || false,
         }
+        getLoggedInUserId((userId) => {
+            this.setState({loggedUser: userId, index: props.index});
+        });
     }
     componentWillReceiveProps(nextProps) {
         if (this.state.songList != nextProps.songList) {
@@ -188,6 +290,26 @@ export default class Footer extends React.Component {
             ? 1
             : 0;
     }
+
+    handleLikeClick(clickEvent) {
+        clickEvent.preventDefault();
+        if (clickEvent.button === 0) {
+            if (this.didUserLike()) {
+                dislikeSong(this.state.loggedUser, this.state.active._id, (song) => {
+                  this.setState({active: song});
+                });
+            } else {
+                likeSong(this.state.loggedUser, this.state.active._id, (song) => {
+                  this.setState({active: song});
+                });
+            }
+        }
+    }
+
+    didUserLike() {
+        return this.state.active.likes.indexOf(this.state.loggedUser) !== -1;
+    }
+
     render() {
         var audio = this.state.active.audio;
         var cover = this.state.active.cover;
@@ -237,7 +359,7 @@ export default class Footer extends React.Component {
                                 }}>{title}
                                     <br></br>{name}</p>
                             </Link>
-                            <button type="button" className="btn btn-default navbar-btn">
+                            <button onClick={this.handleLikeClick} type="button" className="btn btn-default navbar-btn">
                                 <span className="glyphicon glyphicon-thumbs-up"></span>
                             </button>
                         </div>

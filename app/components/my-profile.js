@@ -3,22 +3,26 @@ import React from 'react';
 import MyProfileInformation from './my-profile-information';
 import MyProfileSelector from './my-profile-selector';
 import {getUserData} from '../server';
+import {getLoggedInUserId} from '../server';
 
 export default class MyProfile extends React.Component {
+
   constructor(props) {
     super(props);
-    this.state = {
-      userData: {}
-    };
+    this.state = {}
   }
+
   refresh() {
-    getUserData(this.props.params.id, (userData) => {
-      this.setState(userData);
+    getLoggedInUserId((userId) => {
+      getUserData(userId, (userData) => {
+        this.setState(userData);
+      });
     });
   }
   componentDidMount() {
     this.refresh();
   }
+
   render() {
     var data = this.state;
     return (
@@ -29,7 +33,6 @@ export default class MyProfile extends React.Component {
               <img className="profile-picture img-circle" src={data.profilePicture}></img>
               <div className="row" align="right">
                 <button className="upload-profile-link">
-
                   <span className="glyphicon glyphicon-pencil"></span>
                   Change Profile Picture
                 </button>
@@ -43,7 +46,7 @@ export default class MyProfile extends React.Component {
             <div className="col-md-4">
               <MyProfileSelector/>
             </div>
-            <MyProfileInformation id={this.props.params.id} data={data.info} username={data.name}/>
+            <MyProfileInformation profile={data}/>
           </div>
         </div>
       </div>

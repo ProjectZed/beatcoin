@@ -1,56 +1,76 @@
-main-container {
-    height: 100%;
+#my-profile main-container {
+  height: 100%;
 }
 
-.bc-upper-profile {
-    height: 300px;
+#my-profile .my-profile-top {
+  height: 300px;
 }
 
-.profile-picture {
-    width: 55%;
-    /*text-align: right;*/
+#my-profile .bc-upper-profile {
+  height: 300px;
 }
 
-.upload-profile-link {
+#my-profile .profile-picture {
   width: 55%;
+  height: 55%;
+  display: block;
+  margin: auto;
+  /*text-align: right;*/
+}
+
+#my-profile .prof-pic-and-upload {
+  width: 30%;
+  display: inline-block;
+}
+
+#my-profile .upload-profile-link {
+  width: 100%;
   background-color: #480c68;
   color: white;
 }
 
-.donate-button {
-    width: 50%;
-    /*text-align: right;*/
+#my-profile .donate-button {
+  width: 50%;
+  /*text-align: right;*/
 }
 
-.my-profile-name {
-    line-height: 175px;
-    font-size: 50px;
+#my-profile .my-profile-name {
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  line-height: 175px;
+  font-size: 50px;
+  height: 100px;
 }
 
-.selector-button {
-    margin: auto;
-    width: 100%;
-    border: 3px solid #d07fff;
-    padding: 10px;
-    font-size: 20px;
-    color: #480c68;
-    background-color: #fff;
-    border-radius: 10px;
+#my-profile .selector-button {
+  margin: auto;
+  width: 100%;
+  border: 3px solid #d07fff;
+  padding: 10px;
+  font-size: 20px;
+  color: #480c68;
+  background-color: #fff;
+  border-radius: 10px;
 }
 
-.profile-info {
+#my-profile .profile-info {
   border-radius: 10px;
   background-color: #fff;
-    border: 3px solid #d07fff;
-    /* the border color was green, now its purple, matches border of user home*/
-    height: 350px;
+  border: 3px solid #d07fff;
+  /* the border color was green, now its purple, matches border of user home*/
+  height: 350px;
 }
 
-.displayed-info {
-    font-size: 20px;
+#my-profile .displayed-info {
+  font-size: 20px;
 }
 
-.selector-col {
-    margin: auto;
-    width: 50%;
+#my-profile .selector-col {
+  margin: auto;
+  width: 50%;
+}
+
+#my-profile .user-info-list {
+  list-style: none;
 }

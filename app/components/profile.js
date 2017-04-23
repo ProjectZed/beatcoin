@@ -5,20 +5,27 @@ import ProfileInfo from './profile-info';
 import Timeline from './timeline';
 import PlaylistList from './playlist-list';
 import Playlist from './playlist';
-import {getUserData} from '../server';
+import {getLoggedInUserId, getUserData} from '../server';
 
 export default class Profile extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			userData: {}
+			userId: 0,
+			userData: {
+				name: "Default Name",
+				profilePicture: ""
+			}
 		};
 	}
 
 	refresh() {
-		getUserData(this.props.params.id, (userData) => {
-			this.setState(userData);
-		});
+		getLoggedInUserId((userId) => {
+			this.setState({userId: userId});
+			getUserData(userId, (userData) => {
+				this.setState({userData: userData});
+			});
+		})
 	}
 
 	componentDidMount() {
@@ -26,21 +33,22 @@ export default class Profile extends React.Component {
 	}
 
 	render() {
-		var data = this.state;
-
+		if(this.state.userId === 0) {
+			return (<div id="profile"></div>);
+		}
     return (
       <div id="profile">
         <div className="container main-container">
           <div className="row bc-upper-profile">
             <div className="col-md-3">
               <div className="row" align="right">
-                <div className="profile-picture img-circle" style={{'backgroundImage': "url('" + data.profilePicture + "')"
+                <div className="profile-picture img-circle" style={{'backgroundImage': "url('" + this.state.userData.profilePicture + "')"
                 }}></div>
-                <DonateButton id={this.props.params.id}/>
+							<DonateButton id={this.state.userId}/>
               </div>
             </div>
             <div className="col-md-9 bc-profile-name">
-              {data.name}
+              {this.state.userData.name}
             </div>
           </div>
 
@@ -48,18 +56,18 @@ export default class Profile extends React.Component {
 
           <div className="row bc-lower-profile">
             <div className="row">
-              <Timeline id={this.props.params.id}/>
+              <Timeline id={this.state.userId}/>
 
               <div className="col-md-4">
                 <h4 className="timeline-title">Biography</h4>
-                <ProfileInfo id={this.props.params.id} data={data.info}/>
+                <ProfileInfo id={this.state.userId} data={this.state.info}/>
               </div>
 
               <div className="col-md-4 comments-container" align="right" style={{
                 'height': '0'
               }}>
                 <h4 className="timeline-title">Comments</h4>
-                <CommentThread>
+                <CommentThread playing={ 1 }>
                   <Comment picture="profile-pic" name="Doggie Doggo" message="Bark Bark Bark" date="Today"/>
                   <Comment picture="profile-pic" name="Doggie Doggo" message="Woof Woof Woof" date="Yesterday"/>
                 </CommentThread>
@@ -68,7 +76,7 @@ export default class Profile extends React.Component {
 
             <div className="row">
               <h4 className="timeline-title">Playlists</h4>
-              <PlaylistList id={this.props.params.id}>
+              <PlaylistList id={this.state.userId}>
                 <Playlist pic="img/user-home/Jazz.jpg" listname="My Jazz"></Playlist>
                 <Playlist pic="img/user-home/Jazz.jpg" listname="My Jazz"></Playlist>
                 <Playlist pic="img/user-home/Jazz.jpg" listname="My Jazz"></Playlist>

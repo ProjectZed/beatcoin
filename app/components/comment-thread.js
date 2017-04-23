@@ -4,7 +4,6 @@ import {getSongComments} from '../server';
 import {postSongComment} from '../server';
 
 export default class CommentThread extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {

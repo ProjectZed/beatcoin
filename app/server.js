@@ -44,6 +44,14 @@
     });
   }
 
+  export function getUserPlaylist(cb){
+    getLoggedInUserId((userId) => {
+      var user = readDocument('users', userId);
+      var playList = user.playlists;
+      emulateServerReturn(playList, cb);
+    })
+  }
+
   export function playlistClicked(userId, listId, cb) {
     if (userId === "1") {
       var user = readDocument('users', userId);

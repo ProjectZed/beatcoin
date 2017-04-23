@@ -12,7 +12,7 @@ export default class ProfileInfo extends React.Component {
       this.setState(userData.info);
     });
   }
-
+ 
   componentDidMount() {
     this.refresh();
   }

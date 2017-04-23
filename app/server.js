@@ -205,12 +205,3 @@ export function getUploadedSongs(userId, cb) {
 
   emulateServerReturn(uploadedSongs, cb);
 }
-
-export function getUploadedSongs(userId, cb) {
-  // Get the User object with the id "user".
-  var user = readDocument('users', userId);
-  var uploadIds = user['uploads'];
-  var uploadedSongs = uploadIds.map((uploadId) => readDocument('songs', uploadId));
-
-  emulateServerReturn(uploadedSongs, cb);
-}

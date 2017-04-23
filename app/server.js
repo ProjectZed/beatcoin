@@ -202,5 +202,6 @@
     var user = readDocument('users', userId);
     var uploadIds = user['uploads'];
     var uploadedSongs = uploadIds.map((uploadId) => readDocument('songs', uploadId));
+
     emulateServerReturn(uploadedSongs, cb);
   }

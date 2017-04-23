@@ -7,35 +7,37 @@ import PlaylistList from './playlist-list';
 import {getLoggedInUserId, getUserData} from '../server';
 
 export default class Profile extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			userId: 0,
-			userData: {
-				name: "Default Name",
-				profilePicture: "",
-				info: {}
-			}
-		};
-	}
+  constructor(props) {
+    super(props);
+    this.state = {
+      userId: 0,
+      userData: {
+        name: "Default Name",
+        profilePicture: "",
+        info: {}
+      }
+    };
+  }
 
-	refresh() {
-		getLoggedInUserId((userId) => {
-			this.setState({userId: userId});
-			getUserData(userId, (userData) => {
-				this.setState({userData: userData});
-			});
-		})
-	}
+  refresh() {
+    getLoggedInUserId((userId) => {
+      this.setState({userId: userId});
+      getUserData(userId, (userData) => {
+        this.setState({userData: userData});
+      });
+    })
+  }
 
-	componentDidMount() {
-		this.refresh();
-	}
+  componentDidMount() {
+    this.refresh();
+  }
 
-	render() {
-		if(this.state.userId === 0) {
-			return (<div id="profile"></div>);
-		}
+  render() {
+    if (this.state.userId === 0) {
+      return (
+        <div id="profile"></div>
+      );
+    }
     return (
       <div id="profile">
         <div className="container main-container">
@@ -45,7 +47,7 @@ export default class Profile extends React.Component {
                 <div className="profile-picture img-circle" style={{
                   'backgroundImage': "url('" + this.state.userData.profilePicture + "')"
                 }}></div>
-                <DonateButton id={this.props.params.id}/>
+                <DonateButton id={this.state.userId}/>
               </div>
             </div>
             <div className="col-md-9 bc-profile-name">
@@ -57,7 +59,7 @@ export default class Profile extends React.Component {
 
           <div className="row bc-lower-profile">
             <div className="row">
-              <Timeline id={this.props.params.id}/>
+              <Timeline id={this.state.userId}/>
 
               <div className="col-md-4">
                 <h4 className="timeline-title">Biography</h4>
@@ -68,8 +70,7 @@ export default class Profile extends React.Component {
                 'height': '0'
               }}>
                 <h4 className="timeline-title">Comments</h4>
-                <CommentThread playing={ 1 }>
-                </CommentThread>
+                <CommentThread playing={1}></CommentThread>
               </div>
             </div>
 

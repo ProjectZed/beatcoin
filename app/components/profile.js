@@ -4,7 +4,6 @@ import DonateButton from './donate-button';
 import ProfileInfo from './profile-info';
 import Timeline from './timeline';
 import PlaylistList from './playlist-list';
-import Playlist from './playlist';
 import {getLoggedInUserId, getUserData} from '../server';
 
 export default class Profile extends React.Component {

@@ -5,7 +5,10 @@ import {Link} from 'react-router';
 export default class DonateButton extends React.Component {
   constructor(props) {
     super(props);
-    this.state = props.data;
+    this.state = {
+      userId: 0,
+      data: props.data
+    };
   }
 
   refresh() {

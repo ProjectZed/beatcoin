@@ -4,7 +4,7 @@ import DonateButton from './donate-button';
 import ProfileInfo from './profile-info';
 import Timeline from './timeline';
 import PlaylistList from './playlist-list';
-import {getLoggedInUserId, getUserData} from '../server';
+import {getUserData} from '../server';
 
 export default class Profile extends React.Component {
 	constructor(props) {
@@ -20,12 +20,14 @@ export default class Profile extends React.Component {
 	}
 
 	refresh() {
-		getLoggedInUserId((userId) => {
-			this.setState({userId: userId});
-			getUserData(userId, (userData) => {
-				this.setState({userData: userData});
-			});
-		})
+		// getLoggedInUserId((userId) => {
+		// 	this.setState({userId: userId});
+		//
+		// })
+		this.setState({userId: this.props.params.id});
+		getUserData(this.props.params.id, (userData) => {
+			this.setState({userData: userData});
+		});
 	}
 
 	componentDidMount() {
@@ -44,7 +46,7 @@ export default class Profile extends React.Component {
               <div className="row" align="right">
                 <div className="profile-picture img-circle" style={{'backgroundImage': "url('" + this.state.userData.profilePicture + "')"
                 }}></div>
-							<DonateButton id={this.state.userId}/>
+							<DonateButton id={this.props.params.id}/>
               </div>
             </div>
             <div className="col-md-9 bc-profile-name">

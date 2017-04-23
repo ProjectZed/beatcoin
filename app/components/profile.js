@@ -4,7 +4,6 @@ import DonateButton from './donate-button';
 import ProfileInfo from './profile-info';
 import Timeline from './timeline';
 import PlaylistList from './playlist-list';
-import Playlist from './playlist';
 import {getLoggedInUserId, getUserData} from '../server';
 
 export default class Profile extends React.Component {
@@ -68,22 +67,13 @@ export default class Profile extends React.Component {
               }}>
                 <h4 className="timeline-title">Comments</h4>
                 <CommentThread playing={ 1 }>
-                  <Comment picture="profile-pic" name="Doggie Doggo" message="Bark Bark Bark" date="Today"/>
-                  <Comment picture="profile-pic" name="Doggie Doggo" message="Woof Woof Woof" date="Yesterday"/>
                 </CommentThread>
               </div>
             </div>
 
             <div className="row">
               <h4 className="timeline-title">Playlists</h4>
-              <PlaylistList id={this.state.userId}>
-                <Playlist pic="img/user-home/Jazz.jpg" listname="My Jazz"></Playlist>
-                <Playlist pic="img/user-home/Jazz.jpg" listname="My Jazz"></Playlist>
-                <Playlist pic="img/user-home/Jazz.jpg" listname="My Jazz"></Playlist>
-                <Playlist pic="img/user-home/Jazz.jpg" listname="My Jazz"></Playlist>
-                <Playlist pic="img/user-home/Jazz.jpg" listname="My Jazz"></Playlist>
-                <Playlist pic="img/user-home/Jazz.jpg" listname="My Jazz"></Playlist>
-              </PlaylistList>
+              <PlaylistList setPlaylist={this.props.setPlaylist}></PlaylistList>
             </div>
 
           </div>

@@ -60,7 +60,8 @@ export default class Profile extends React.Component {
           <div className="row bc-middle-profile"></div>
           <div className="row bc-lower-profile">
             <div className="row">
-              <Timeline id={this.state.userId}/>
+              <Timeline id={this.state.userId} setPlaylist={this.props.setPlaylist} onSongChanged={this.props.onSongChanged} />
+
               <div className="col-md-4">
                 <h4 className="timeline-title">Biography</h4>
                 <ProfileInfo id={this.props.params.id} data={this.state.userData.info}/>
@@ -74,7 +75,7 @@ export default class Profile extends React.Component {
               </div>
             </div>
 
-            <div className="row" id="userhome">
+            <div className="row">
               <h4 className="timeline-title">Playlists</h4>
               <PlaylistList setPlaylist={this.props.setPlaylist}></PlaylistList>
             </div>

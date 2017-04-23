@@ -4,8 +4,13 @@ export default class TimelineSong extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      songInfo: props.songInfo
+      uploadedSongs: props.uploadedSongs,
+      songInfo: props.songInfo,
+      songIndex: props.songIndex,
+      setPlaylist: props.setPlaylist,
+      onSongChanged: props.onSongChanged
     };
+    this.onClick = this.onClick.bind(this);
   }
 
   refresh() {}
@@ -42,12 +47,26 @@ export default class TimelineSong extends React.Component {
             </div>
 
             <div className="col-md-9">
-              {song["title"]}
+              <a href="#" onClick={(e) => this.onClick(e)}>
+                {song["title"]}
+              </a>
             </div>
           </div>
         </div>
       </div>
     );
+  }
+
+  onClick(e) {
+    e.preventDefault();
+
+    this.state.setPlaylist(this.state.uploadedSongs);
+    this.state.onSongChanged(this.state.songIndex);
+
+
+    // getPlaylist(this.state.genreInfo.owner, this.state.genreInfo._id - 1, (songList) => {
+    //   this.state.setPlaylist(songList.songs);
+    // });
   }
 
   render() {

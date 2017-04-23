@@ -13,7 +13,7 @@ export default class Profile extends React.Component {
     this.state = {
       userId: 0,
       userData: {
-        name: "Default Name",
+        name: "",
         profilePicture: ""
       }
     };
@@ -21,9 +21,8 @@ export default class Profile extends React.Component {
 
   refresh() {
     getLoggedInUserId((userId) => {
-      this.setState({userId: userId});
       getUserData(userId, (userData) => {
-        this.setState({userData: userData});
+        this.setState({userId: userId, userData: userData});
       });
     })
   }
@@ -54,13 +53,10 @@ export default class Profile extends React.Component {
               {this.state.userData.name}
             </div>
           </div>
-
           <div className="row bc-middle-profile"></div>
-
           <div className="row bc-lower-profile">
             <div className="row">
               <Timeline id={this.state.userId}/>
-
               <div className="col-md-4">
                 <h4 className="timeline-title">Biography</h4>
                 <ProfileInfo id={this.state.userId} data={this.state.info}/>
@@ -70,27 +66,13 @@ export default class Profile extends React.Component {
                 'height': '0'
               }}>
                 <h4 className="timeline-title">Comments</h4>
-                <CommentThread playing={1}>
-                  <Comment picture="profile-pic" name="Doggie Doggo" message="Bark Bark Bark" date="Today"/>
-                  <Comment picture="profile-pic" name="Doggie Doggo" message="Woof Woof Woof" date="Yesterday"/>
-                </CommentThread>
+                <CommentThread type={2} contentId={this.state.userId}></CommentThread>
               </div>
             </div>
-
             <div className="row">
               <h4 className="timeline-title">Playlists</h4>
-              <PlaylistList id={this.state.userId}>
-                <Playlist pic="img/user-home/Jazz.jpg" listname="My Jazz"></Playlist>
-                <Playlist pic="img/user-home/Jazz.jpg" listname="My Jazz"></Playlist>
-                <Playlist pic="img/user-home/Jazz.jpg" listname="My Jazz"></Playlist>
-                <Playlist pic="img/user-home/Jazz.jpg" listname="My Jazz"></Playlist>
-                <Playlist pic="img/user-home/Jazz.jpg" listname="My Jazz"></Playlist>
-                <Playlist pic="img/user-home/Jazz.jpg" listname="My Jazz"></Playlist>
-              </PlaylistList>
             </div>
-
           </div>
-
         </div>
       </div>
     )

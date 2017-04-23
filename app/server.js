@@ -82,6 +82,16 @@
     emulateServerReturn(comments, cb);
   }
 
+  export function getUserComments(userId, cb) {
+    var user = readDocument('users', userId);
+    var comments = user.comments;
+    comments = comments.map((commentId) => readDocument('comments', commentId));
+    comments.forEach((comment) => {
+      comment.author = readDocument('users', comment.author);
+    });
+    emulateServerReturn(comments, cb);
+  }
+
   function getSong(songId) {
     var song = readDocument('songs', songId);
     song.uploader = readDocument('users', song.uploader);

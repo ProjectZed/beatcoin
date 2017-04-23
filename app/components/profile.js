@@ -5,13 +5,13 @@ import ProfileInfo from './profile-info';
 import Timeline from './timeline';
 import PlaylistList from './playlist-list';
 import Playlist from './playlist';
-import {getLoggedInUserId, getUserData} from '../server';
+import {getPublicProfile} from '../server';
 
 export default class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: 0,
+      userId: props.routeParams.id,
       userData: {
         name: "",
         profilePicture: ""
@@ -20,15 +20,19 @@ export default class Profile extends React.Component {
   }
 
   refresh() {
-    getLoggedInUserId((userId) => {
-      getUserData(userId, (userData) => {
-        this.setState({userId: userId, userData: userData});
-      });
-    })
+    getPublicProfile(this.state.userId, (userData) => {
+      this.setState({userData: userData});
+    });
   }
 
   componentDidMount() {
     this.refresh();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    getPublicProfile(nextProps.routeParams.id, (userData) => {
+      this.setState({userId: nextProps.routeParams.id, userData: userData});
+    });
   }
 
   render() {
@@ -59,7 +63,7 @@ export default class Profile extends React.Component {
               <Timeline id={this.state.userId}/>
               <div className="col-md-4">
                 <h4 className="timeline-title">Biography</h4>
-                <ProfileInfo id={this.state.userId} data={this.state.info}/>
+                <ProfileInfo profile={this.state.userData.info}/>
               </div>
 
               <div className="col-md-4 comments-container" align="right" style={{

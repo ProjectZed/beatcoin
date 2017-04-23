@@ -4,35 +4,37 @@ import DonateButton from './donate-button';
 import ProfileInfo from './profile-info';
 import Timeline from './timeline';
 import PlaylistList from './playlist-list';
-import {getUserData} from '../server';
+import Playlist from './playlist';
+import {getPublicProfile} from '../server';
 
 export default class Profile extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			userId: 0,
-			userData: {
-				name: "",
-				profilePicture: "",
-        info: {}
-			},
+  constructor(props) {
+    super(props);
+    this.state = {
+      userId: props.routeParams.id,
+      userData: {
+        name: "",
+        profilePicture: "",
+				info: {}
+      },
 			setPlaylist: this.props.setPlaylist
-		};
-	}
+    };
+  }
 
   refresh() {
-    // getLoggedInUserId((userId) => {
-    // 	this.setState({userId: userId});
-    //
-    // })
-    this.setState({userId: this.props.params.id});
-    getUserData(this.props.params.id, (userData) => {
+    getPublicProfile(this.state.userId, (userData) => {
       this.setState({userData: userData});
     });
   }
 
   componentDidMount() {
     this.refresh();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    getPublicProfile(nextProps.routeParams.id, (userData) => {
+      this.setState({userId: nextProps.routeParams.id, userData: userData});
+    });
   }
 
   render() {

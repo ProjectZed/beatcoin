@@ -1,16 +1,23 @@
 import React from 'react';
-import {getUserData} from '../server';
+import {getLoggedInUserId, getUserData} from '../server';
 import Playlist from './playlist';
 
 export default class PlaylistList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = props.data;
+    this.state = {
+      user: {},
+      data: props
+    };
   }
 
   refresh() {
-    getUserData(this.props.id, (user) => {
-      this.setState({user: user});
+    getLoggedInUserId((userId) => {
+      this.setState({userId: userId});
+
+      getUserData(userId, (user) => {
+        this.setState({user: user});
+      });
     });
   }
 
@@ -18,15 +25,13 @@ export default class PlaylistList extends React.Component {
     this.refresh();
   }
 
-  makePlaylist(key) {
+  makePlaylist(i) {
     var playlists = this.state.user["playlists"];
-    var name = playlists[key]["name"];
-    var cover = playlists[key]["cover"];
-    return <Playlist pic={cover} listname={name}></Playlist>;
+    return <Playlist setPlaylist={this.state.data.setPlaylist} genreInfo={playlists[i]} key={playlists[i]._id}></Playlist>;
   }
 
   getPlaylists() {
-    if (this.state) {
+    if (this.state.user) {
       var playlists = this.state.user["playlists"];
 
       var elements = [];

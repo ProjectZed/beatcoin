@@ -168,15 +168,16 @@ var initialData = {
         1, 2, 3
       ],
       "token": "TOKEN-GOES-HERE",
-      "playlists": {
-        "1": {
+      "playlists": [
+        {
+          "_id": "1",
           "name": "My Jazz",
           "genre": "Jazz",
           "owner": 1,
           "cover": "img/user-home/Jazz.jpg",
           "songs": [1]
         }
-      },
+      ],
       "likes": [2],
       "comments": [1, 2]
     }

@@ -7,17 +7,18 @@ import PlaylistList from './playlist-list';
 import {getUserData} from '../server';
 
 export default class Profile extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userId: 0,
-      userData: {
-        name: "",
-        profilePicture: "",
+	constructor(props) {
+		super(props);
+		this.state = {
+			userId: 0,
+			userData: {
+				name: "",
+				profilePicture: "",
         info: {}
-      }
-    };
-  }
+			},
+			setPlaylist: this.props.setPlaylist
+		};
+	}
 
   refresh() {
     // getLoggedInUserId((userId) => {
@@ -72,7 +73,8 @@ export default class Profile extends React.Component {
                 <CommentThread type={2} contentId={this.state.userId}></CommentThread>
               </div>
             </div>
-            <div className="row">
+
+            <div className="row" id="userhome">
               <h4 className="timeline-title">Playlists</h4>
               <PlaylistList setPlaylist={this.props.setPlaylist}></PlaylistList>
             </div>

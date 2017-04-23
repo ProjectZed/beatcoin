@@ -1,62 +1,48 @@
 import React from 'react';
-import {getLoggedInUserId, getUserData} from '../server';
+import {getUserPlaylist} from '../server';
 import Playlist from './playlist';
 
 export default class PlaylistList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {},
-      data: props
+      playList: [],
+      setPlaylist: this.props.setPlaylist
     };
+
+    getUserPlaylist((list) => {
+      this.setState({playList: list});
+    })
   }
 
-  refresh() {
-    getLoggedInUserId((userId) => {
-      this.setState({userId: userId});
-
-      getUserData(userId, (user) => {
-        this.setState({user: user});
-      });
-    });
-  }
-
-  componentDidMount() {
-    this.refresh();
-  }
-
-  makePlaylist(i) {
-    var playlists = this.state.user["playlists"];
-    return <Playlist setPlaylist={this.state.data.setPlaylist} genreInfo={playlists[i]} key={playlists[i]._id}></Playlist>;
-  }
-
-  getPlaylists() {
-    if (this.state.user) {
-      var playlists = this.state.user["playlists"];
-
-      var elements = [];
-      for (var key in playlists) {
-        elements.push(this.makePlaylist(key));
-      }
-      return elements;
-    } else {
-      return [];
-    }
-  }
-
-  // handleClick(e) {
-  // 	e.preventDefault();
-  // 	var list = e.target.listname;
-  // 	this.props.onCall(1, list);
-  // }
 
   render() {
+    var list = this.state.playList;
+    var playLists = [];
+    for (var i = 0; i < (list.length); i++) {
+      playLists.push(
+        <Playlist setPlaylist={this.props.setPlaylist} genreInfo={list[i]} key={list[i]._id}></Playlist>
+      );
+    }
+
+    var rows = [];
+    for (var j = 0; j < (playLists.length / 4); j++) {
+      rows.push([]);
+      for (var k = 0; k < 4; k++) {
+        if ((4 * j + k) < playLists.length) {
+          rows[j].push(playLists[4 * j + k]);
+        }
+      }
+    }
+
     return (
       <div>
-        {React.Children.map(this.getPlaylists(), function(playlist) {
+        {rows.map((child) => {
           return (
-            <div>{playlist}</div>
-          );
+            <div className="row" key={rows.indexOf(child)}>
+              {child}
+            </div>
+          )
         })}
       </div>
     );

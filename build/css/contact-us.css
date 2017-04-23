@@ -1,51 +1,51 @@
 #contact-us-component .contact-title {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 #contact-us-component .contact-title>h1 {
-    font-size: 28px;
-    margin-bottom: 0px;
+  font-size: 28px;
+  margin-bottom: 0px;
 }
 
 #contact-us-component .contact-form {
-    padding-left: 40px;
-    padding-right: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 #contact-us-component .form-group {
-    padding-left: 0px;
-    padding-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 #contact-us-component .row>.col-md-12>.contact-submit {
-    background-color: #480c68;
-    border-width: 2px;
-    color: white;
-    border-color: #54078c;
+  background-color: #480c68;
+  border-width: 2px;
+  color: white;
+  border-color: #54078c;
 }
 
 #contact-us-component .row>.col-md-12>.contact-submit:hover {
-    border-color: #910cf2;
-    background-color: #480c68;
-    color: white !important;
+  border-color: #910cf2;
+  background-color: #480c68;
+  color: white !important;
 }
 
 #contact-us-component .row>.col-md-12>.contact-submit:focus {
-    border-color: #910cf2;
-    background-color: #54078c;
-    color: white !important;
+  border-color: #910cf2;
+  background-color: #54078c;
+  color: white !important;
 }
 
 #contact-us-component .row>.col-md-12>.contact-submit:active, #contact-us-component .row>.col-md-12>.contact-submit:focus, #contact-us-component .row>.col-md-12>.contact-submit:active:focus {
-    border-color: #910cf2;
-    background-color: #54078c;
-    color: white;
-    /* Removes halo and shadow on button when clicked. */
-    outline: none;
-    box-shadow: none;
+  border-color: #910cf2;
+  background-color: #54078c;
+  color: white;
+  /* Removes halo and shadow on button when clicked. */
+  outline: none;
+  box-shadow: none;
 }
 
 #contact-us-component .information {
-    padding-top: 10px;
-    padding-left: 25px;
+  padding-top: 10px;
+  padding-left: 25px;
 }

@@ -1,157 +1,157 @@
 #playlist-component .playlist-container {
-    width: 100%;
-    height: calc(100vh - 120px);
-    overflow: hidden;
+  width: 100%;
+  height: calc(100vh - 120px);
+  overflow: hidden;
 }
 
 #playlist-component .border-top {
-    height: 1px;
-    padding: 0px;
-    background: #838383;
+  height: 1px;
+  padding: 0px;
+  background: #838383;
 }
 
 #playlist-component .border-between>[class*='col-']:before {
-    background: #838383;
-    bottom: 0;
-    content: " ";
-    z-index: 999;
-    left: 0;
-    position: absolute;
-    width: 1px;
-    top: 0;
+  background: #838383;
+  bottom: 0;
+  content: " ";
+  z-index: 999;
+  left: 0;
+  position: absolute;
+  width: 1px;
+  top: 0;
 }
 
 #playlist-component .border-between>[class*='col-']:first-child:before {
-    display: none;
+  display: none;
 }
 
 #playlist-component .comments-container {
-    padding-left: 0px;
-    padding-right: 0px;
-    overflow: scroll;
-    height: calc(100vh - 120px);
+  padding-left: 0px;
+  padding-right: 0px;
+  overflow: scroll;
+  height: calc(100vh - 120px);
 }
 
 #playlist-component .comments-container>h3 {
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 #playlist-component .comments-container .list-group-item {
-    border-radius: 0px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    background-color: #c7c4ff;
-    border-color: #B3B3B3;
+  border-radius: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #c7c4ff;
+  border-color: #B3B3B3;
 }
 
 #playlist-component .list-group-item>.container {
-    padding-left: 0px;
+  padding-left: 0px;
 }
 
 #playlist-component .col-img {
-    padding-right: 0px;
-    text-align: left;
+  padding-right: 0px;
+  text-align: left;
 }
 
 #playlist-component .col-name-message {
-    padding-left: 0px;
-    padding-right: 0px;
-    text-align: left;
-    height: auto;
+  padding-left: 0px;
+  padding-right: 0px;
+  text-align: left;
+  height: auto;
 }
 
 #playlist-component .col-actions-date {
-    padding-left: 0px;
-    padding-right: 0px;
-    position: relative;
+  padding-left: 0px;
+  padding-right: 0px;
+  position: relative;
 }
 
 #playlist-component .comments-name {
-    font-weight: 500;
-    font-size: 14px;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 #playlist-component .comments-message {
-    padding-top: 5px;
-    padding-left: 10px;
-    font-size: 12px;
+  padding-top: 5px;
+  padding-left: 10px;
+  font-size: 12px;
 }
 
 #playlist-component .comments-date {
-    margin-right: 10px;
-    padding-bottom: 5px;
+  margin-right: 10px;
+  padding-bottom: 5px;
 }
 
 #playlist-component .comments-like, .comments-reply {
-    font-size: 12px;
-    float: right;
-    bottom: 0;
-    right: 0;
+  font-size: 12px;
+  float: right;
+  bottom: 0;
+  right: 0;
 }
 
 #playlist-component .comments-like {
-    padding-left: 10px;
-    padding-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 #playlist-component .comments-image, .song-image {
-    display: inline-block;
-    vertical-align: middle;
-    width: 50px;
-    height: 50px;
-    background-position: center center;
-    background-size: cover;
+  display: inline-block;
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  background-position: center center;
+  background-size: cover;
 }
 
 #playlist-component .song-image {
-    width: 150px;
-    height: 150px;
-    margin-right: 0px;
+  width: 150px;
+  height: 150px;
+  margin-right: 0px;
 }
 
 #playlist-component .songs-container {
-    padding-left: 0px;
-    padding-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 #playlist-component .song-container {
-    padding-top: 20px;
-    text-align: center;
+  padding-top: 20px;
+  text-align: center;
 }
 
 #playlist-component .song-artist {
-    margin-top: 0px;
-    margin-bottom: 20px;
+  margin-top: 0px;
+  margin-bottom: 20px;
 }
 
 #playlist-component .song-title {
-    font-size: 20px;
-    margin-top: 10px;
-    margin-bottom: 5px;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 #playlist-component .shaded {
-    background-color: #B0B0B0
+  background-color: #B0B0B0
 }
 
 #playlist-component .lyrics-container {
-    height: calc(100vh - 20px - 150px - 35px - 40px - 120px);
-    overflow: hidden;
+  height: calc(100vh - 20px - 150px - 35px - 40px - 120px);
+  overflow: hidden;
 }
 
 #playlist-component .lyrics {
-    height: calc(100vh - 20px - 150px - 35px - 40px - 120px - 64px);
-    overflow: auto;
+  height: calc(100vh - 20px - 150px - 35px - 40px - 120px - 64px);
+  overflow: auto;
 }
 
 #playlist-component .description-container {
-    height: calc(100vh - 20px - 150px - 35px - 40px - 120px);
-    overflow: hidden;
+  height: calc(100vh - 20px - 150px - 35px - 40px - 120px);
+  overflow: hidden;
 }
 
 #playlist-component .description {
-    height: calc(100vh - 20px - 150px - 35px - 40px - 120px - 64px);
-    overflow: auto;
+  height: calc(100vh - 20px - 150px - 35px - 40px - 120px - 64px);
+  overflow: auto;
 }

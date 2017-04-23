@@ -70,6 +70,7 @@ export default class Timeline extends React.Component {
   }
 
   render() {
+    //If the user hasn't uploaded any songs
     if (this.state.uploadedSongs == 0) {
       return (
         <div className="col-md-4">
@@ -82,16 +83,18 @@ export default class Timeline extends React.Component {
         </div>
       );
     }
-    return (
-      <div className="col-md-4">
-        <h4 className="timeline-title">Timeline</h4>
+    else {
+      return (
+        <div className="col-md-4">
+          <h4 className="timeline-title">Timeline</h4>
 
-        {React.Children.map(this.getUploadedSongElements(), function(song) {
-          return (
-            <div>{song}</div>
-          );
-        })}
-      </div>
-    );
+          {React.Children.map(this.getUploadedSongElements(), function(song) {
+            return (
+              <div>{song}</div>
+            );
+          })}
+        </div>
+      );
+    }
   }
 }

@@ -1,77 +1,42 @@
 import React from 'react';
-import {getLoggedInUserId, getUploadedSongs} from '../server';
+import {getUploadedSongs} from '../server';
+import TimelineSong from './timeline-song';
 
 export default class Timeline extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: 0,
+      userId: props.id,
       uploadedSongs: []
     };
   }
 
   refresh() {
-    getLoggedInUserId((userId) => {
-      this.setState({userId: userId});
-
-      getUploadedSongs(userId, (uploadedSongs) => {
-        this.setState({uploadedSongs: uploadedSongs});
-      });
-    })
+    getUploadedSongs(this.state.userId, (uploadedSongs) => {
+      this.setState({uploadedSongs: uploadedSongs});
+    });
   }
 
   componentDidMount() {
     this.refresh();
   }
 
-  formatDate(timestamp) {
-    var d = new Date(timestamp);
-
-    return (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear();
-  }
-
-  convertSongToElement(song) {
-    //might be interesting to include plays/price/likes as well
-
-    // song.cover
-    // console.log(song);
-
-    return (
-      <div>
-        <div className="row song-timestamp">
-          <span className="glyphicon glyphicon-time"></span>
-          {this.formatDate(song["uploadDate"])}
-        </div>
-
-        <div className="panel box">
-          <div className="panel-body">
-            <div className="col-md-3">
-              <div className="comments-image uploaded-song-pic" style={{
-                'backgroundImage': "url('" + song["cover"] + "')"
-              }}></div>
-            </div>
-
-            <div className="col-md-9">
-              {song["title"]}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+  makeSongElement(song) {
+    return <TimelineSong songInfo={song} />;
   }
 
   getUploadedSongElements() {
     var elements = [];
     for (var key in this.state.uploadedSongs) {
       var song = this.state.uploadedSongs[key];
-      elements.push(this.convertSongToElement(song));
+      elements.push( this.makeSongElement(song) );
     }
     return elements;
   }
 
   render() {
     //If the user hasn't uploaded any songs
-    if (this.state.uploadedSongs == 0) {
+    if(this.state.uploadedSongs == 0) {
       return (
         <div className="col-md-4">
           <h4 className="timeline-title">Timeline</h4>

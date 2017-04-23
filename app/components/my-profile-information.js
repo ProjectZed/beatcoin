@@ -76,28 +76,28 @@ export default class MyProfileInformation extends React.Component {
                 ? "remove"
                 : "ok")}></span>
             </div>
-              <div onClick={(e) => this.handleToggle(e, 1)}>
+            <div onClick={(e) => this.handleToggle(e, 1)}>
               {this.state.info.displayed[1]
                 ? "Displayed"
                 : "Hidden"}<span className={"glyphicon glyphicon-" + (this.state.info.displayed[1]
         ? "remove"
         : "ok")}></span>
             </div>
-              <div onClick={(e) => this.handleToggle(e, 2)}>
+            <div onClick={(e) => this.handleToggle(e, 2)}>
               {this.state.info.displayed[2]
                 ? "Displayed"
                 : "Hidden"}<span className={"glyphicon glyphicon-" + (this.state.info.displayed[2]
         ? "remove"
         : "ok")}></span>
             </div>
-              <div onClick={(e) => this.handleToggle(e, 3)}>
+            <div onClick={(e) => this.handleToggle(e, 3)}>
               {this.state.info.displayed[3]
                 ? "Displayed"
                 : "Hidden"}<span className={"glyphicon glyphicon-" + (this.state.info.displayed[3]
         ? "remove"
         : "ok")}></span>
             </div>
-              <div onClick={(e) => this.handleToggle(e, 4)}>
+            <div onClick={(e) => this.handleToggle(e, 4)}>
               {this.state.info.displayed[4]
                 ? "Displayed"
                 : "Hidden"}<span className={"glyphicon glyphicon-" + (this.state.info.displayed[4]

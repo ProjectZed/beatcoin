@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {IndexRoute, Router, Route, browserHistory} from 'react-router'
+import {IndexRoute, Router, Route, browserHistory} from 'react-router';
 
 // Each major browser view user interface must be imported.
 import Profile from './components/profile.js';
@@ -192,6 +192,7 @@ class App extends React.Component {
 }
 
 ReactDOM.render((
+
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={UserHome}/>

@@ -7,8 +7,7 @@ export default class PlaylistList extends React.Component {
     super(props);
     this.state = {
       userId: this.props.userId,
-      playList: [],
-      setPlaylist: this.props.setPlaylist
+      playList: []
     };
     getUserPlaylist(this.state.userId, (list) => {
       this.setState({playList: list});

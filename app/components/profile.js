@@ -15,8 +15,7 @@ export default class Profile extends React.Component {
         name: "",
         profilePicture: "",
         info: {}
-      },
-      setPlaylist: this.props.setPlaylist
+      }
     };
   }
 
@@ -51,7 +50,7 @@ export default class Profile extends React.Component {
                 <div className="profile-picture img-circle" style={{
                   'backgroundImage': "url('" + this.state.userData.profilePicture + "')"
                 }}></div>
-              <DonateButton id={this.state.userId}/>
+                <DonateButton id={this.state.userId}/>
               </div>
             </div>
             <div className="col-md-9 bc-profile-name">

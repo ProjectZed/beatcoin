@@ -17,6 +17,12 @@ export default class Timeline extends React.Component {
     });
   }
 
+  componentWillReceiveProps(nextProps) {
+    getUploadedSongs(nextProps.id, (uploadedSongs) => {
+      this.setState({userId: nextProps.id, uploadedSongs: uploadedSongs});
+    });
+  }
+
   componentDidMount() {
     this.refresh();
   }

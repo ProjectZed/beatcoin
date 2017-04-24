@@ -11,6 +11,9 @@ var initialData = {
       "balance": 0,
       "profilePicture": "img/users/beatcoin.jpg",
       "info": {
+        "nickname": [
+          "Beatcoin", false
+        ],
         "birthday": [
           "2017/01/24", false
         ],
@@ -147,6 +150,9 @@ var initialData = {
       "balance": 500,
       "profilePicture": "img/users/fang_jhang.jpg",
       "info": {
+        "nickname": [
+          "Fang Jhang", true
+        ],
         "birthday": [
           "1689/03/31", true
         ],

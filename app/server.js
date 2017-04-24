@@ -44,12 +44,10 @@
     });
   }
 
-  export function getUserPlaylist(cb){
-    getLoggedInUserId((userId) => {
-      var user = readDocument('users', userId);
-      var playList = user.playlists;
-      emulateServerReturn(playList, cb);
-    })
+  export function getUserPlaylist(userId, cb) {
+    var user = readDocument('users', userId);
+    var playList = user.playlists;
+    emulateServerReturn(playList, cb);
   }
 
   export function playlistClicked(userId, listId, cb) {
@@ -198,12 +196,12 @@
     emulateServerReturn(song, cb);
   }
 
-  export function updateDisplayInfo(displayInfo, cb) {
+  export function updateProfile(profile, cb) {
     getLoggedInUserId((userId) => {
       getUserData(userId, (user) => {
-        user.info.displayed = displayInfo;
+        user.info = profile;
         writeDocument('users', user);
-        emulateServerReturn(displayInfo, cb);
+        emulateServerReturn(profile, cb);
       });
     });
   }
@@ -221,6 +219,9 @@
     delete userData.balance;
     delete userData.token;
     delete userData.likes;
+    if (userData.info.nickname[1] === false) {
+      delete userData.info.nickname
+    }
     if (userData.info.birthday[1] === false) {
       delete userData.info.birthday
     }

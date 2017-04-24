@@ -4,7 +4,6 @@ import DonateButton from './donate-button';
 import ProfileInfo from './profile-info';
 import Timeline from './timeline';
 import PlaylistList from './playlist-list';
-import Playlist from './playlist';
 import {getPublicProfile} from '../server';
 
 export default class Profile extends React.Component {
@@ -15,9 +14,9 @@ export default class Profile extends React.Component {
       userData: {
         name: "",
         profilePicture: "",
-				info: {}
+        info: {}
       },
-			setPlaylist: this.props.setPlaylist
+      setPlaylist: this.props.setPlaylist
     };
   }
 
@@ -62,7 +61,7 @@ export default class Profile extends React.Component {
           <div className="row bc-middle-profile"></div>
           <div className="row bc-lower-profile">
             <div className="row">
-              <Timeline id={this.state.userId} setPlaylist={this.props.setPlaylist} onSongChanged={this.props.onSongChanged} />
+              <Timeline id={this.state.userId} setPlaylist={this.props.setPlaylist} onSongChanged={this.props.onSongChanged}/>
 
               <div className="col-md-4">
                 <h4 className="timeline-title">Biography</h4>
@@ -81,6 +80,7 @@ export default class Profile extends React.Component {
               <h4 className="timeline-title">Playlists</h4>
               <PlaylistList setPlaylist={this.props.setPlaylist}></PlaylistList>
             </div>
+
           </div>
         </div>
       </div>

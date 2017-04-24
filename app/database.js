@@ -136,7 +136,7 @@ var initialData = {
           "cover": "img/user-home/Acapella.jpg",
           "songs": [1]
         }
-      },
+      ],
       "likes": [],
       "comments": []
     },

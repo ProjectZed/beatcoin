@@ -75,12 +75,6 @@ export function getLoggedInUserId(cb) {
   emulateServerReturn("2", cb);
 }
 
-//getGenreLists
-app.get('/users/1/playlists', function(req, res) {
-  var beatcoin = readDocument('users', "1");
-  var genreList = beatcoin.playlists;
-  res.send(genreList);
-});
 
 //getUserFavList
 app.get('/users/:userid/favorites', function(req, res) {
@@ -109,11 +103,15 @@ app.get('/users/:userid/favorites', function(req, res) {
   }
 });
 
-export function getUserPlaylist(userId, cb) {
+
+//getUserPlaylist
+//note that playlists are all public, so we don't need to add auth here
+app.get('/users/:userid/playlists', function(req, res) {
+  var userId = req.params.userid;
   var user = readDocument('users', userId);
-  var playList = user.playlists;
-  emulateServerReturn(playList, cb);
-}
+  var playlists = user.playlists;
+  res.send(playlists);
+});
 
 export function getSongComments(songId, cb) {
   var song = readDocument('songs', songId);
@@ -125,15 +123,20 @@ export function getSongComments(songId, cb) {
   emulateServerReturn(comments, cb);
 }
 
-export function getUserComments(userId, cb) {
+
+//getUserComments
+//note that comments are all public, so we don't need to add auth here
+app.get('/users/:userid/comments', function(req, res) {
+  var userId = req.params.userid;
   var user = readDocument('users', userId);
   var comments = user.comments;
   comments = comments.map((commentId) => readDocument('comments', commentId));
   comments.forEach((comment) => {
     comment.author = readDocument('users', comment.author);
   });
-  emulateServerReturn(comments, cb);
-}
+  res.send(comments);
+});
+
 
 function getSong(songId) {
   var song = readDocument('songs', songId);
@@ -152,16 +155,6 @@ function getPlaylistSync(userId, playlistId) {
   return playlist;
 }
 
-export function getPlaylist(userId, playlistId, cb) {
-  var user = readDocument('users', userId);
-  var playlist = user.playlists[playlistId];
-  var songs = playlist.songs;
-  songs = songs.map((songId) => {
-    return getSong(songId)
-  });
-  playlist.songs = songs;
-  emulateServerReturn(playlist, cb);
-}
 
 export function likeComment(userId, commentId, cb) {
   var comment = readDocument('comments', commentId);
@@ -243,15 +236,54 @@ export function updateProfile(profile, cb) {
   });
 }
 
-export function getUserData(userId, cb) {
-  // Get the User object with the id "user".
+//getUserFavList
+app.get('/users/:userid/data', function(req, res) {
+  var userid = req.params.userid;
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var useridNumber = parseInt(userid, 10);
+  if (fromUser === useridNumber) {
+      var user = readDocument('users', userid);
+      var favList = user.favorites;
+      if (favList !== null) {
+        favList = favList.map((genreId) => {
+          return getPlaylistSync(1, genreId);
+        });
+        favList = favList.map((object) => {
+          return object.songs;
+        });
+        favList = [].concat.apply([], favList);
+        favList = favList.sort((a, b) => {
+          b.uploadDate - a.uploadDate
+        });
+      }
+    res.send(favList);
+  } else {
+    // 401: Unauthorized request.
+    res.status(401).end();
+  }
+});
+
+//getUserData
+app.get('/users/:userid/private', function(req, res) {
+  var userid = req.params.userid;
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var useridNumber = parseInt(userid, 10);
+  if (fromUser === useridNumber) {
+    var user = readDocument('users', userid);
+    res.send(user);
+  } else {
+    // 401: Unauthorized request.
+    res.status(401).end();
+  }
+});
+
+//getPublicProfile
+//note that comments are all public, so we don't need to add auth here
+app.get('/users/:userid/public', function(req, res) {
+  var userId = req.params.userid;
   var userData = readDocument('users', userId);
 
-  emulateServerReturn(userData, cb);
-}
-
-export function getPublicProfile(userId, cb) {
-  var userData = readDocument('users', userId);
+  //remove all private information so it won't be returned
   delete userData.beatcoins;
   delete userData.balance;
   delete userData.token;
@@ -275,17 +307,19 @@ export function getPublicProfile(userId, cb) {
     delete userData.info.education
   }
 
-  emulateServerReturn(userData, cb);
-}
+  res.send(userData);
+});
 
-export function getUploadedSongs(userId, cb) {
-  // Get the User object with the id "user".
+
+//getUploadedSongs
+//note that uploaded songs are all public, so we don't need to add auth here
+app.get('/users/:userid/uploads', function(req, res) {
+  var userId = req.params.userid;
   var user = readDocument('users', userId);
   var uploadIds = user['uploads'];
   var uploadedSongs = uploadIds.map((uploadId) => readDocument('songs', uploadId));
-
-  emulateServerReturn(uploadedSongs, cb);
-}
+  res.send(uploadedSongs);
+});
 
 /**
  * Translate JSON Schema Validation failures into error 400s.
@@ -302,5 +336,5 @@ app.use(function(err, req, res, next) {
 
 // Starts the server on port 3000!
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+  console.log('Beatcoin server listening on port 3000!');
 });

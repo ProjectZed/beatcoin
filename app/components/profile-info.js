@@ -1,24 +1,19 @@
 import React from 'react';
-import {getUserData} from '../server';
 
 export default class ProfileInfo extends React.Component {
   constructor(props) {
     super(props);
-    this.state = props.data;
+    this.state = {
+      profile: props.profile
+    }
   }
 
-  refresh() {
-    getUserData(this.props.id, (userData) => {
-      this.setState(userData.info);
-    });
+  componentWillReceiveProps(nextProps) {
+    this.setState({profile: nextProps.profile});
   }
 
-  componentDidMount() {
-    this.refresh();
-  }
-
-  makeElement(key) {
-    var info = this.state;
+  makeElements(info) {
+    var elements = [];
     var namesDict = {
       'birthday': 'Birthday',
       'gender': 'Gender',
@@ -26,37 +21,30 @@ export default class ProfileInfo extends React.Component {
       'contactAgent': 'Contact Agent',
       'education': 'Education'
     };
-
-    var name = namesDict[key];
-    var value = info[key][0];
-    var isDisplayed = info[key][1];
-    if (isDisplayed) {
-      return <li>
-        <p style={{
-          'textAlign': 'left'
-        }}>
-          <b>{name}</b>
-          <span style={{
-            'float': 'right'
-          }}>{value}</span>
-        </p>
-      </li>;
-    } else {
-      return <div></div>;
-    }
-  }
-
-  makeElements(info) {
-    var elements = [];
     for (var key in info) {
-      elements.push(this.makeElement(key));
+      var name = namesDict[key];
+      var value = info[key];
+      elements.push(
+        <li>
+          <p style={{
+            'textAlign': 'left'
+          }}>
+            <b>{name}</b>
+            <span style={{
+              'float': 'right'
+            }}>{value[0]}</span>
+          </p>
+        </li>
+      );
     }
     return elements;
   }
 
   render() {
-    var info = this.state;
-
+    var info = this.makeElements(this.state.profile);
+    info.map((i) => { < div > {
+        i
+      } < /div>});
     return (
       <div>
         <div className="panel box">
@@ -64,13 +52,7 @@ export default class ProfileInfo extends React.Component {
             <ul className="user-info-list" style={{
               'paddingLeft': '0'
             }}>
-              {React.Children.map(this.makeElements(info), function(element) {
-                return <div>{element}</div>;
-              })}
-            </ul>
-          </div>
-        </div>
-      </div>
-    )
+              {info}
+            </ul > </div> < /div>
+      </div >)}
   }
-}

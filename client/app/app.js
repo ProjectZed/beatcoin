@@ -11,6 +11,7 @@ import Redeem from './components/redeem.js';
 import UserHome from './components/user-home.js';
 import Navbar from './components/navbar.js';
 import Footer from './components/footer.js';
+import ErrorBanner from './components/errorbanner';
 
 class App extends React.Component {
   constructor(props) {
@@ -194,6 +195,11 @@ class App extends React.Component {
     return (
       <div>
         <Navbar/>
+          <div className="row">
+            <div className="col-md-12">
+              <ErrorBanner />
+            </div>
+          </div>
         <div>{child}</div>
         <Footer songList={this.state.songList} currentSongIndex={this.state.currentSongIndex} songChangeCallback={this.onSongChanged}/>
       </div>

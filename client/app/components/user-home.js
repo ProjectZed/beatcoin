@@ -11,13 +11,13 @@ export default class UserHome extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null,
+      userId: null,
       genreList: [],
       userFavList: [],
       setPlaylist: this.props.setPlaylist
     };
     getLoggedInUserId((userId) => {
-      this.setState({user: userId});
+      this.setState({userId: userId});
     })
 
     getGenreLists((genreList) => {

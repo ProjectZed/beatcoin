@@ -76,7 +76,7 @@ export default class Profile extends React.Component {
               </div>
             </div>
 
-            <div className="row">
+            <div className="row" id="userhome">
               <h4 className="timeline-title">Playlists</h4>
               <PlaylistList setPlaylist={this.props.setPlaylist}></PlaylistList>
             </div>

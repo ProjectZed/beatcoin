@@ -301,7 +301,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.get('/redeemables', function(req, res) {
-  var items = {};
+  var items = [];
   items.push(readDocument('redeemables', 1));
   items.push(readDocument('redeemables', 2));
   items.push(readDocument('redeemables', 3));

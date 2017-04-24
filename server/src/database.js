@@ -298,6 +298,34 @@ var initialData = {
         [1700, 2000]
       ]
     }
+    "3": {
+      "name": "Beatcoin",
+      "image": "img/redeem/beatcoinholder.png",
+      "price": [
+        //beatcoins,cents
+        [
+          1000, 1000
+        ],
+        [
+          1400, 1500
+        ],
+        [1700, 2000]
+      ]
+    }
+    "4": {
+      "name": "iTunes",
+      "image": "img/redeem/itunes.jpg",
+      "price": [
+        //beatcoins,cents
+        [
+          1000, 1000
+        ],
+        [
+          1400, 1500
+        ],
+        [1700, 2000]
+      ]
+    }
   }
 }
 

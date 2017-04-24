@@ -11,6 +11,7 @@ export default class UserHome extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: null,
       genreList: [],
       userFavList: [],
       setPlaylist: this.props.setPlaylist
@@ -23,7 +24,7 @@ export default class UserHome extends React.Component {
       this.setState({genreList: genreList});
     })
 
-    getUserFavList((userFavList) => {
+    getUserFavList(this.state.user, (userFavList) => {
       this.setState({userFavList: userFavList});
     })
   }

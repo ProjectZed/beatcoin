@@ -18,29 +18,17 @@
     emulateServerReturn("2", cb);
   }
 
+///users/1/playlists
   export function getGenreLists(cb) {
-    var beatcoin = readDocument('users', "1");
-    var genreList = beatcoin.playlists;
-    emulateServerReturn(genreList, cb);
+    sendXHR('GET', '/users/1/playlists', undefined, (xhr) => {
+      cb(JSON.parse(xhr.responseText));
+    });
   }
 
-  export function getUserFavList(cb) {
-    getLoggedInUserId((userId) => {
-      var user = readDocument('users', userId);
-      var favList = user.favorites;
-      if (favList !== null) {
-        favList = favList.map((genreId) => {
-          return getPlaylistSync(1, genreId);
-        });
-        favList = favList.map((object) => {
-          return object.songs;
-        });
-        favList = [].concat.apply([], favList);
-        favList = favList.sort((a, b) => {
-          b.uploadDate - a.uploadDate
-        });
-        emulateServerReturn(favList, cb);
-      }
+///users/:userid/favorites
+  export function getUserFavList(userId, cb) {
+    sendXHR('GET', '/users/' + userId + '/favorites', undefined, (xhr) => {
+      cb(JSON.parse(xhr.responseText));
     });
   }
 
@@ -48,34 +36,6 @@
     var user = readDocument('users', userId);
     var playList = user.playlists;
     emulateServerReturn(playList, cb);
-  }
-
-  export function playlistClicked(userId, listId, cb) {
-    if (userId === "1") {
-      var user = readDocument('users', userId);
-      var playlist = user.playlists[listId];
-      var songs = playlist.songs;
-      songs = songs.sort((a, b) => {
-        b.uploadDate - a.uploadDate
-      });
-      var actualSongs = songs.map((songId) => {
-        return getSong(songId)
-      });
-      emulateServerReturn(actualSongs, cb);
-
-    } else {
-      getLoggedInUserId((userId) => {
-        var user = readDocument('users', userId);
-        var songs = user.favorites;
-        songs = songs.sort((a, b) => {
-          b.uploadDate - a.uploadDate
-        });
-        var actualSongs = songs.map((songId) => {
-          return getSong(songId)
-        });
-        emulateServerReturn(actualSongs, cb);
-      });
-    }
   }
 
   export function getSongComments(songId, cb) {
@@ -102,17 +62,6 @@
     var song = readDocument('songs', songId);
     song.uploader = readDocument('users', song.uploader);
     return song;
-  }
-
-  function getPlaylistSync(userId, playlistId) {
-    var user = readDocument('users', userId);
-    var playlist = user.playlists[playlistId];
-    var songs = playlist.songs;
-    songs = songs.map((songId) => {
-      return getSong(songId)
-    });
-    playlist.songs = songs;
-    return playlist;
   }
 
   export function getPlaylist(userId, playlistId, cb) {

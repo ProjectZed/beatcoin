@@ -10,6 +10,10 @@ var readDocument = database.readDocument;
 var writeDocument = database.writeDocument;
 var addDocument = database.addDocument;
 
+
+
+
+
 /*Your schemas here!*/
 
 var validate = require('express-jsonschema').validate;
@@ -71,64 +75,44 @@ export function getLoggedInUserId(cb) {
   emulateServerReturn("2", cb);
 }
 
-export function getGenreLists(cb) {
+//getGenreLists
+app.get('/users/1/playlists', function(req, res) {
   var beatcoin = readDocument('users', "1");
   var genreList = beatcoin.playlists;
-  emulateServerReturn(genreList, cb);
-}
+  res.send(genreList);
+});
 
-export function getUserFavList(cb) {
-  getLoggedInUserId((userId) => {
-    var user = readDocument('users', userId);
-    var favList = user.favorites;
-    if (favList !== null) {
-      favList = favList.map((genreId) => {
-        return getPlaylistSync(1, genreId);
-      });
-      favList = favList.map((object) => {
-        return object.songs;
-      });
-      favList = [].concat.apply([], favList);
-      favList = favList.sort((a, b) => {
-        b.uploadDate - a.uploadDate
-      });
-      emulateServerReturn(favList, cb);
-    }
-  });
-}
+//getUserFavList
+app.get('/users/:userid/favorites', function(req, res) {
+  var userid = req.params.userid;
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var useridNumber = parseInt(userid, 10);
+  if (fromUser === useridNumber) {
+      var user = readDocument('users', userid);
+      var favList = user.favorites;
+      if (favList !== null) {
+        favList = favList.map((genreId) => {
+          return getPlaylistSync(1, genreId);
+        });
+        favList = favList.map((object) => {
+          return object.songs;
+        });
+        favList = [].concat.apply([], favList);
+        favList = favList.sort((a, b) => {
+          b.uploadDate - a.uploadDate
+        });
+      }
+    res.send(favList);
+  } else {
+    // 401: Unauthorized request.
+    res.status(401).end();
+  }
+});
 
 export function getUserPlaylist(userId, cb) {
   var user = readDocument('users', userId);
   var playList = user.playlists;
   emulateServerReturn(playList, cb);
-}
-
-export function playlistClicked(userId, listId, cb) {
-  if (userId === "1") {
-    var user = readDocument('users', userId);
-    var playlist = user.playlists[listId];
-    var songs = playlist.songs;
-    songs = songs.sort((a, b) => {
-      b.uploadDate - a.uploadDate
-    });
-    var actualSongs = songs.map((songId) => {
-      return getSong(songId)
-    });
-    emulateServerReturn(actualSongs, cb);
-
-  } else {
-    getLoggedInUserId((userId) => {
-      var user = readDocument('users', userId);
-      var songs = user.favorites;
-      songs = songs.sort((a, b) => {
-        b.uploadDate - a.uploadDate
-      });
-      var actualSongs = songs.map((songId) => {
-        return getSong(songId)
-      });
-      emulateServerReturn(actualSongs, cb);
-    });
-  }
 }
 
 export function getSongComments(songId, cb) {

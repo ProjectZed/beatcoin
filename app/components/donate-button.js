@@ -33,21 +33,34 @@ export default class DonateButton extends React.Component {
     }
   }
 
-  makeText() {
+  makeButton() {
     if (this.isViewingOwnProfile())
-      return <Link to={"/my-profile/" + this.props.id} style={{
-        'color': 'white'
-      }}>Edit</Link>;
+      return (
+        <Link to={"/my-profile"}>
+          <button type="button" className="donate-button btn btn-default every-button">
+            <span className="" styles="width:100%">
+              <div style={{
+                'color': 'white'
+              }}>Edit</div>
+            </span>
+          </button>
+        </Link>
+      );
     else
-      return <div>Donate</div>;
+      return (
+        <button type="button" className="donate-button btn btn-default every-button">
+          <span className="" styles="width:100%">
+            Donate
+          </span>
+        </button>
+
+      );
     }
 
   render() {
     return (
       <div>
-        <button type="button" className="donate-button btn btn-default every-button">
-          <span className="" styles="width:100%">{this.makeText()}</span>
-        </button>
+        {this.makeButton()}
       </div>
     )
   }

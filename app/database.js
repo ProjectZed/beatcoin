@@ -151,7 +151,7 @@ var initialData = {
       "profilePicture": "img/users/fang_jhang.jpg",
       "info": {
         "nickname": [
-          "Fang Jhang", true
+          "DJ Fangz", true
         ],
         "birthday": [
           "1689/03/31", true

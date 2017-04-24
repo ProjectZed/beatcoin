@@ -58,6 +58,8 @@ export default class MyProfileInformation extends React.Component {
           <div className="col-md-4 displayed-info">
             Displayed Name
             <br/>
+            Nickname
+            <br/>
             Birthday
             <br/>
             Gender
@@ -69,7 +71,8 @@ export default class MyProfileInformation extends React.Component {
             Contact Agent
           </div>
           <div className="col-md-4 displayed-info">
-            {this.state.info.nickname[0]}
+            {this.state.name}
+            <br/>{this.state.info.nickname[0]}
             <br/> {this.state.info.birthday[0]}
             <br/> {this.state.info.gender[0]}
             <br/> {this.state.info.location[0]}
@@ -77,13 +80,13 @@ export default class MyProfileInformation extends React.Component {
             <br/> {this.state.info.contactAgent[0]}
           </div>
           <div className="col-md-3 displayed-info">
+          <br/>
             <div onClick={(e) => this.handleToggle(e, "nickname")}>
               {this.state.info.nickname[1]
                 ? "Displayed"
-                : "Hidden"}
-              <span className={"glyphicon glyphicon-" + (this.state.info.nickname[1]
-                ? "remove"
-                : "ok")}></span>
+                : "Hidden"}<span className={"glyphicon glyphicon-" + (this.state.info.nickname[1]
+        ? "remove"
+        : "ok")}></span>
             </div>
             <div onClick={(e) => this.handleToggle(e, "birthday")}>
               {this.state.info.birthday[1]

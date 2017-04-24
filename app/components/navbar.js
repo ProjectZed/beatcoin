@@ -1,8 +1,31 @@
 import React from 'react';
 import {Link} from 'react-router';
+import {getLoggedInUserId} from '../server';
 import ResetDatabase from '../database';
 
 export default class Navbar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = props.data;
+  }
+
+  refresh() {
+    getLoggedInUserId((userId) => {
+      this.setState({userId: userId});
+    });
+  }
+
+  componentDidMount() {
+    this.refresh();
+  }
+
+  getId() {
+    if (this.state)
+      return this.state.userId;
+    else
+      return 1;
+    }
+
   render() {
     return (
       <nav className="navbar navbar-fixed-top navbar-default">
@@ -42,11 +65,11 @@ export default class Navbar extends React.Component {
                   </button>
                 </div>
                 <div className="btn-group" role="group">
-                  <Link to={'/my-profile'}>
-                    <button type="button" className="btn btn-default navbar-btn">
-                      Profile
-                    </button>
-                  </Link>
+                  <button type="button" className="btn btn-default navbar-btn">
+                    <Link to={"/profile/" + this.getId()} style={{
+                      'color': 'white'
+                    }}>Profile</Link>
+                  </button>
                   <div className="btn-group" role="group">
                     <button type="button" className="btn btn-default dropdown-toggle navbar-btn" data-toggle="dropdown">
                       <span className="caret"></span>

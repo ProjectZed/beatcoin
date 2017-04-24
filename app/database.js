@@ -11,6 +11,9 @@ var initialData = {
       "balance": 0,
       "profilePicture": "img/users/beatcoin.jpg",
       "info": {
+        "nickname": [
+          "Beatcoin", false
+        ],
         "birthday": [
           "2017/01/24", false
         ],
@@ -147,12 +150,22 @@ var initialData = {
       "balance": 500,
       "profilePicture": "img/users/fang_jhang.jpg",
       "info": {
-        "birthday": "1689/03/31",
-        "gender": "Female",
-        "location": "UMass Amherst",
-        "contactAgent": "Sara Ramaker (310-288-8000)",
-        "education": "High School",
-        "displayed": [true, true, true, true, true]
+        "nickname": [
+          "Fang Jhang", true
+        ],
+        "birthday": [
+          "1689/03/31", true
+        ],
+        "gender": [
+          "Female", true
+        ],
+        "location": [
+          "UMass Amherst", true
+        ],
+        "contactAgent": [
+          "Sara Ramaker", true
+        ],
+        "education": ["High School", true]
       },
       "uploads": [
         1, 2, 3
@@ -161,15 +174,16 @@ var initialData = {
         1, 2, 3
       ],
       "token": "TOKEN-GOES-HERE",
-      "playlists": {
-        "1": {
+      "playlists": [
+        {
+          "_id": "1",
           "name": "My Jazz",
           "genre": "Jazz",
           "owner": 1,
           "cover": "img/user-home/Jazz.jpg",
           "songs": [1]
         }
-      },
+      ],
       "likes": [2],
       "comments": [1, 2]
     }

@@ -1,73 +1,85 @@
 import React from 'react';
 import CommentThread from './comment-thread';
+import DonateButton from './donate-button';
+import ProfileInfo from './profile-info';
+import Timeline from './timeline';
+import PlaylistList from './playlist-list';
+import {getPublicProfile} from '../server';
 
 export default class Profile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userId: props.routeParams.id,
+      userData: {
+        name: "",
+        profilePicture: "",
+        info: {}
+      }
+    };
+  }
+
+  refresh() {
+    getPublicProfile(this.state.userId, (userData) => {
+      this.setState({userData: userData});
+    });
+  }
+
+  componentDidMount() {
+    this.refresh();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    getPublicProfile(nextProps.routeParams.id, (userData) => {
+      this.setState({userId: nextProps.routeParams.id, userData: userData});
+    });
+  }
+
   render() {
+    if (this.state.userId === 0) {
+      return (
+        <div id="profile"></div>
+      );
+    }
     return (
-      <div>
+      <div id="profile">
         <div className="container main-container">
           <div className="row bc-upper-profile">
             <div className="col-md-3">
               <div className="row" align="right">
-                <div src="img/bach.jpg" className="profile-picture img-circle"></div>
-
-              </div>
-              <div className="row" align="right">
-                <button type="button" className="donate-button btn btn-default every-button">
-                  <span className="" styles="width:100%">Donate</span>
-                </button>
+                <div className="profile-picture img-circle" style={{
+                  'backgroundImage': "url('" + this.state.userData.profilePicture + "')"
+                }}></div>
+                <DonateButton id={this.state.userId}/>
               </div>
             </div>
             <div className="col-md-9 bc-profile-name">
-              Johann Bach
+              {this.state.userData.name}
             </div>
           </div>
-
           <div className="row bc-middle-profile"></div>
-
           <div className="row bc-lower-profile">
-            <div className="col-md-4">
-              <h4 className="timeline-title">Timeline</h4>
+            <div className="row">
+              <Timeline id={this.state.userId} setPlaylist={this.props.setPlaylist} onSongChanged={this.props.onSongChanged}/>
 
-              <div className="row" className="song-timestamp">
-                <span className="glyphicon glyphicon-time"></span>
-                2017-02-27
+              <div className="col-md-4">
+                <h4 className="timeline-title">Biography</h4>
+                <ProfileInfo profile={this.state.userData.info}/>
               </div>
 
-              <div className="panel box">
-                <div className="panel-body">
-                  Ave Maria
-                </div>
-              </div>
-
-              <div className="panel box">
-                <div className="panel-body">
-                  Magnificat
-                </div>
-              </div>
-
-              <div className="row" className="song-timestamp">
-                <span className="glyphicon glyphicon-time"></span>
-                2017-02-26
-              </div>
-
-              <div className="panel box">
-                <div className="panel-body">
-                  Cello Suites
-                </div>
+              <div className="col-md-4 comments-container" align="right" style={{
+                'height': '0'
+              }}>
+                <h4 className="timeline-title">Comments</h4>
+                <CommentThread type={2} contentId={this.state.userId}></CommentThread>
               </div>
             </div>
 
-            <div className="col-md-4">
-              <div className="comments-image"></div>
+            <div className="row" id="userhome">
+              <h4 className="timeline-title">Playlists</h4>
+              <PlaylistList userId={this.state.userId} setPlaylist={this.props.setPlaylist}></PlaylistList>
             </div>
 
-            <div className="col-md-4 comments-container" align="right">
-              <CommentThread>
-                <Comment picture="profile-pic" name="Doggie Doggo" message="Bark Bark Bark" date="Today"/>
-                <Comment picture="profile-pic" name="Doggie Doggo" message="Woof Woof Woof" date="Yesterday"/>
-              </CommentThread>
-            </div>
           </div>
         </div>
       </div>

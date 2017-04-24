@@ -44,6 +44,12 @@
     });
   }
 
+  export function getUserPlaylist(userId, cb) {
+    var user = readDocument('users', userId);
+    var playList = user.playlists;
+    emulateServerReturn(playList, cb);
+  }
+
   export function playlistClicked(userId, listId, cb) {
     if (userId === "1") {
       var user = readDocument('users', userId);
@@ -75,6 +81,16 @@
   export function getSongComments(songId, cb) {
     var song = readDocument('songs', songId);
     var comments = song.comments;
+    comments = comments.map((commentId) => readDocument('comments', commentId));
+    comments.forEach((comment) => {
+      comment.author = readDocument('users', comment.author);
+    });
+    emulateServerReturn(comments, cb);
+  }
+
+  export function getUserComments(userId, cb) {
+    var user = readDocument('users', userId);
+    var comments = user.comments;
     comments = comments.map((commentId) => readDocument('comments', commentId));
     comments.forEach((comment) => {
       comment.author = readDocument('users', comment.author);
@@ -180,12 +196,12 @@
     emulateServerReturn(song, cb);
   }
 
-  export function updateDisplayInfo(displayInfo, cb) {
+  export function updateProfile(profile, cb) {
     getLoggedInUserId((userId) => {
       getUserData(userId, (user) => {
-        user.info.displayed = displayInfo;
+        user.info = profile;
         writeDocument('users', user);
-        emulateServerReturn(displayInfo, cb);
+        emulateServerReturn(profile, cb);
       });
     });
   }
@@ -195,4 +211,41 @@
     var userData = readDocument('users', userId);
 
     emulateServerReturn(userData, cb);
+  }
+
+  export function getPublicProfile(userId, cb) {
+    var userData = readDocument('users', userId);
+    delete userData.beatcoins;
+    delete userData.balance;
+    delete userData.token;
+    delete userData.likes;
+    if (userData.info.nickname[1] === false) {
+      delete userData.info.nickname
+    }
+    if (userData.info.birthday[1] === false) {
+      delete userData.info.birthday
+    }
+    if (userData.info.gender[1] === false) {
+      delete userData.info.gender
+    }
+    if (userData.info.location[1] === false) {
+      delete userData.info.location
+    }
+    if (userData.info.contactAgent[1] === false) {
+      delete userData.info.contactAgent
+    }
+    if (userData.info.education[1] === false) {
+      delete userData.info.education
+    }
+
+    emulateServerReturn(userData, cb);
+  }
+
+  export function getUploadedSongs(userId, cb) {
+    // Get the User object with the id "user".
+    var user = readDocument('users', userId);
+    var uploadIds = user['uploads'];
+    var uploadedSongs = uploadIds.map((uploadId) => readDocument('songs', uploadId));
+
+    emulateServerReturn(uploadedSongs, cb);
   }

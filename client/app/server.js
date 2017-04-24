@@ -198,6 +198,12 @@
 
     emulateServerReturn(uploadedSongs, cb);
   }
+  export function redeemables(cb){
+    sendXHR('GET', 'redeemables', undefined, (xhr) => {
+            // Call the callback with the data.
+            cb(JSON.parse(xhr.responseText));
+        });
+  }
 
   //new Buffer(JSON.stringify({ id: 2 })).toString('base64');
   var token = 'eyJpZCI6Mn0=';

@@ -334,6 +334,15 @@ app.use(function(err, req, res, next) {
   }
 });
 
+app.get('/redeemables', function(req, res) {
+  var items = [];
+  items.push(readDocument('redeemables', 1));
+  items.push(readDocument('redeemables', 2));
+  items.push(readDocument('redeemables', 3));
+  items.push(readDocument('redeemables', 4));
+  res.send(items);
+}
+
 // Starts the server on port 3000!
 app.listen(3000, function () {
   console.log('Beatcoin server listening on port 3000!');

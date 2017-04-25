@@ -86,13 +86,26 @@ app.get('/users/:userid/favorites', function(req, res) {
 });
 
 
-//getUserPlaylist
+//getUserPlaylists
 //note that playlists are all public, so we don't need to add auth here
 app.get('/users/:userid/playlists', function(req, res) {
   var userId = req.params.userid;
   var user = readDocument('users', userId);
   var playlists = user.playlists;
   res.send(playlists);
+});
+
+app.get('/users/:userid/playlist/:playlistid', function(req, res) {
+  var userId = req.params.userid;
+  var playlistId = req.params.playlistid;
+  var user = readDocument('users', userId);
+  var playlist = user.playlists[playlistId];
+  var songs = playlist.songs;
+  songs = songs.map((songId) => {
+    return getSong(songId)
+  });
+  playlist.songs = songs;
+  res.send(playlist);
 });
 
 // getSongComments
@@ -291,7 +304,7 @@ app.delete('/songs/:songid/likes/:userid', function(req, res) {
 });
 
 // Update Birthday display
-app.post('/users/:userid/info/birthday/', validate({
+app.post('/users/:userid/info/birthday', validate({
   body: DisplaySchema
 }), function(req, res) {
   var body = req.body;

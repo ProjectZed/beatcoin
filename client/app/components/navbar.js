@@ -6,7 +6,9 @@ import ResetDatabase from '../database';
 export default class Navbar extends React.Component {
   constructor(props) {
     super(props);
-    this.state.currentUserID = this.props.currentUserID;
+    this.state = {
+      currentUserID: props.currentUserID
+    }
   }
 
   render() {

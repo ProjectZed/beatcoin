@@ -1,5 +1,3 @@
-import React from 'react';
-
 var initialData = {
   "users": {
     // This user has id "1".
@@ -297,7 +295,7 @@ var initialData = {
         ],
         [1700, 2000]
       ]
-    }
+    },
     "3": {
       "name": "Beatcoin",
       "image": "img/redeem/beatcoinholder.png",
@@ -311,7 +309,7 @@ var initialData = {
         ],
         [1700, 2000]
       ]
-    }
+    },
     "4": {
       "name": "iTunes",
       "image": "img/redeem/itunes.jpg",

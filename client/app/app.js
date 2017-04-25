@@ -170,10 +170,20 @@ class App extends React.Component {
           "comments": []
         }
       ],
-      currentSongIndex: 0
+      currentSongIndex: 0,
+      currentUserID: 0
     }
     this.setPlaylist = this.setPlaylist.bind(this);
     this.onSongChanged = this.onSongChanged.bind(this);
+  }
+
+  componentDidMount() {
+    getLoggedInUserId((userID) => {
+      this.setState({currentUserID: userID});
+    });
+  }
+  setUserID(userID) {
+    this.setState({currentUserID: userID});
   }
 
   onSongChanged(songIndex) {
@@ -191,17 +201,18 @@ class App extends React.Component {
       setPlaylist: this.setPlaylist,
       songList: this.state.songList,
       currentSongIndex: this.state.currentSongIndex
+      currentUserID: this.state.currentUserID
     });
     return (
       <div>
-        <Navbar/>
+        <Navbar currentUserID={this.state.currentUserID}/>
           <div className="row">
             <div className="col-md-12">
               <ErrorBanner />
             </div>
           </div>
         <div>{child}</div>
-        <Footer songList={this.state.songList} currentSongIndex={this.state.currentSongIndex} songChangeCallback={this.onSongChanged}/>
+        <Footer songList={this.state.songList} currentSongIndex={this.state.currentSongIndex} songChangeCallback={this.onSongChanged} currentUserID={this.state.currentUserID}/>
       </div>
     )
   }

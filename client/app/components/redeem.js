@@ -27,14 +27,14 @@ export default class Redeem extends React.Component {
           <div className="row row-centered">
             <div className="col-md-10 col-centered">
               <div className="row row-centered">
-                <ProductTile productPhoto="img/chipotle.png"/>
-                <ProductTile productPhoto="img/amazon.jpg"/>
+                <ProductTile productPhoto={one.image}/>
+                <ProductTile productPhoto={two.image}/>
               </div>
               <div className="row row-centered" style={{
                 marginTop: "15px"
               }}>
-                <ProductTile productPhoto="img/beatcoinholder.png"/>
-                <ProductTile productPhoto="img/itunes.jpg"/>
+                <ProductTile productPhoto={three.image}/>
+                <ProductTile productPhoto={four.image}/>
               </div>
             </div>
           </div>

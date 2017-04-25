@@ -6,27 +6,11 @@ import ResetDatabase from '../database';
 export default class Navbar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = props.data;
+    this.state.currentUserID = this.props.currentUserID;
   }
-
-  refresh() {
-    getLoggedInUserId((userId) => {
-      this.setState({userId: userId});
-    });
-  }
-
-  componentDidMount() {
-    this.refresh();
-  }
-
-  getId() {
-    if (this.state)
-      return this.state.userId;
-    else
-      return 1;
-    }
 
   render() {
+    var user = getUserData(this.state.currentUserID).beatcoins;
     return (
       <nav className="navbar navbar-fixed-top navbar-default">
         <div className="container">
@@ -56,7 +40,7 @@ export default class Navbar extends React.Component {
               <div className="btn-toolbar pull-right" role="toolbar">
                 <div className="btn-group" role="group">
                   <button type="button" className="btn btn-default navbar-btn">
-                    <Link to="/redeem">$15</Link>
+                    <Link to="/redeem">{"$"+user}</Link>
                   </button>
                 </div>
                 <div className="btn-group" role="group">
@@ -65,11 +49,11 @@ export default class Navbar extends React.Component {
                   </button>
                 </div>
                 <div className="btn-group" role="group">
-                  <button type="button" className="btn btn-default navbar-btn">
-                    <Link to={"/profile/" + this.getId()} style={{
-                      'color': 'white'
-                    }}>Profile</Link>
-                  </button>
+                  <Link to={"/profile/" + this.getId()} style={{'color': 'white'}}>
+                    <button type="button" className="btn btn-default navbar-btn">
+                      Profile
+                    </button>
+                  </Link>
                   <div className="btn-group" role="group">
                     <button type="button" className="btn btn-default dropdown-toggle navbar-btn" data-toggle="dropdown">
                       <span className="caret"></span>

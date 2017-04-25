@@ -10,10 +10,10 @@ var readDocument = database.readDocument;
 var writeDocument = database.writeDocument;
 var addDocument = database.addDocument;
 
-
 /*Your schemas here!*/
-
 var validate = require('express-jsonschema').validate;
+var CommentSchema = require('./schemas/comment.json');
+var DisplaySchema = require('./schemas/display.json');
 
 // Support receiving text in HTTP request bodies
 app.use(bodyParser.text());
@@ -58,27 +58,26 @@ function getUserIdFromToken(authorizationLine) {
   }
 }
 
-
 //getUserFavList
 app.get('/users/:userid/favorites', function(req, res) {
   var userid = req.params.userid;
   var fromUser = getUserIdFromToken(req.get('Authorization'));
   var useridNumber = parseInt(userid, 10);
   if (fromUser === useridNumber) {
-      var user = readDocument('users', userid);
-      var favList = user.favorites;
-      if (favList !== null) {
-        favList = favList.map((genreId) => {
-          return getPlaylistSync(1, genreId);
-        });
-        favList = favList.map((object) => {
-          return object.songs;
-        });
-        favList = [].concat.apply([], favList);
-        favList = favList.sort((a, b) => {
-          b.uploadDate - a.uploadDate
-        });
-      }
+    var user = readDocument('users', userid);
+    var favList = user.favorites;
+    if (favList !== null) {
+      favList = favList.map((genreId) => {
+        return getPlaylistSync(1, genreId);
+      });
+      favList = favList.map((object) => {
+        return object.songs;
+      });
+      favList = [].concat.apply([], favList);
+      favList = favList.sort((a, b) => {
+        b.uploadDate - a.uploadDate
+      });
+    }
     res.send(favList);
   } else {
     // 401: Unauthorized request.
@@ -96,16 +95,59 @@ app.get('/users/:userid/playlists', function(req, res) {
   res.send(playlists);
 });
 
-export function getSongComments(songId, cb) {
-  var song = readDocument('songs', songId);
+// getSongComments
+// note that comments are all public, so we don't need to add auth here
+app.get('/songs/:songid/comments', function(req, res) {
+  var songid = req.params.songid;
+  var song = readDocument('songs', songid);
   var comments = song.comments;
   comments = comments.map((commentId) => readDocument('comments', commentId));
   comments.forEach((comment) => {
     comment.author = readDocument('users', comment.author);
   });
-  emulateServerReturn(comments, cb);
+  res.send(comments);
+});
+
+function postSongComment(authorId, songId, text, cb) {
+  try {
+    var song = readDocument('songs', songId);
+    var newComment = {
+      "author": authorId,
+      "text": text,
+      "postDate": new Date().getTime(),
+      "likes": []
+    };
+    newComment = addDocument('comments', newComment);
+    newComment.author = readDocument('users', newComment.author);
+    song.comments.push(newComment._id);
+    writeDocument('songs', song);
+    cb(null, newComment);
+  } catch (err) {
+    cb(err);
+  }
 }
 
+// postSongComment
+app.post('/songs/:songid/comments', validate({
+  body: CommentSchema
+}), function(req, res) {
+  var body = req.body;
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var songId = req.params.songid;
+  if (fromUser === body.author) {
+    postSongComment(fromUser, songId, body.text, function(err, newComment) {
+      if (err) {
+        res.status(500).send("A database error occurred: " + err);
+      } else {
+        res.status(201);
+        res.set('Location', '/songs/' + songId);
+        res.send(newComment);
+      }
+    });
+  } else {
+    res.status(401).end();
+  }
+});
 
 //getUserComments
 //note that comments are all public, so we don't need to add auth here
@@ -138,117 +180,134 @@ function getPlaylistSync(userId, playlistId) {
   return playlist;
 }
 
-
-export function likeComment(userId, commentId, cb) {
-  var comment = readDocument('comments', commentId);
-  comment.likes.push(userId);
-  writeDocument('comments', comment);
-  comment.author = readDocument('users', comment.author);
-  emulateServerReturn(comment, cb);
-}
-
-export function dislikeComment(userId, commentId, cb) {
-  var comment = readDocument('comments', commentId);
-  var index = comment.likes.indexOf(userId);
-  if (index !== -1) {
-    comment.likes.splice(index, 1);
-    writeDocument('comments', comment);
+app.put('/comments/:commentid/likes/:userid', function(req, res) {
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var commentId = req.params.commentid;
+  var userId = req.params.userid;
+  if (fromUser === userId) {
+    var comment = readDocument('comments', commentId);
+    if (comment.likes.indexOf(fromUser) == -1) {
+      comment.likes.push(userId);
+      writeDocument('comments', comment);
+    }
+    comment.author = readDocument('users', comment.author);
+    res.send(comment);
+  } else {
+    res.status(401).end();
   }
-  comment.author = readDocument('users', comment.author);
-  emulateServerReturn(comment, cb);
-}
+});
 
-export function postUserComment(posterId, userId, message, cb) {
-  var comment = {
-    "author": posterId,
-    "text": message,
-    "postDate": new Date().getTime(),
-    "likes": []
+app.delete('/comments/:commentid/likes/:userid', function(req, res) {
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var commentId = req.params.commentid;
+  var userId = req.params.userid;
+  if (fromUser === userId) {
+    var comment = readDocument('comments', commentId);
+    var index = comment.likes.indexOf(fromUser);
+    if (index !== -1) {
+      comment.likes.splice(index, 1);
+      writeDocument('comments', comment);
+    }
+    comment.author = readDocument('users', comment.author);
+    res.send(comment);
+  } else {
+    res.status(401).end();
   }
-  comment = addDocument('comments', comment);
-  comment.author = readDocument('users', comment.author);
-  var user = readDocument('users', userId);
-  user.comments.push(comment._id);
-  writeDocument('users', user);
-  emulateServerReturn(comment, cb);
-}
+});
 
-export function postSongComment(songId, message, cb) {
-  getLoggedInUserId((userId) => {
-    var comment = {
-      "author": userId,
-      "text": message,
+function postUserComment(authorId, userId, text, cb) {
+  try {
+    var user = readDocument('users', userId);
+    var newComment = {
+      "author": authorId,
+      "text": text,
       "postDate": new Date().getTime(),
       "likes": []
-    }
-    comment = addDocument('comments', comment);
-    comment.author = readDocument('users', comment.author);
-    var song = readDocument('songs', songId);
-    song.comments.push(comment._id);
-    writeDocument('songs', song);
-    emulateServerReturn(comment, cb);
-  });
-}
-
-export function likeSong(userId, songId, cb) {
-  var song = readDocument('songs', songId);
-  song.likes.push(userId);
-  writeDocument('songs', song);
-  song.uploader = readDocument('users', song.uploader);
-  emulateServerReturn(song, cb);
-}
-
-export function dislikeSong(userId, songId, cb) {
-  var song = readDocument('songs', songId);
-  var index = song.likes.indexOf(userId);
-  if (index !== -1) {
-    song.likes.splice(index, 1);
-    writeDocument('songs', song);
+    };
+    newComment = addDocument('comments', newComment);
+    newComment.author = readDocument('users', newComment.author);
+    user.comments.push(newComment._id);
+    writeDocument('users', user);
+    cb(null, newComment);
+  } catch (err) {
+    cb(err);
   }
-  song.uploader = readDocument('users', song.uploader);
-  emulateServerReturn(song, cb);
 }
 
-export function updateProfile(profile, cb) {
-  getLoggedInUserId((userId) => {
-    getUserData(userId, (user) => {
-      user.info = profile;
-      writeDocument('users', user);
-      emulateServerReturn(profile, cb);
+app.post('/users/:userid/comments', validate({
+  body: CommentSchema
+}), function(req, res) {
+  var body = req.body;
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var toUser = req.params.userid;
+  if (fromUser === body.author) {
+    postUserComment(fromUser, toUser, body.text, function(err, newComment) {
+      if (err) {
+        res.status(500).send("A database error occurred: " + err);
+      } else {
+        res.status(201);
+        res.set('Location', '/users/' + toUser);
+        res.send(newComment);
+      }
     });
-  });
-}
-//updateProfile
-app.post('/users/:userid/info/birthday/:displayed', function(req, res) {
+  } else {
+    res.status(401).end();
+  }
+});
+
+app.put('/songs/:songid/likes/:userid', function(req, res) {
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var songId = req.params.songid;
+  var userId = req.params.userid;
+  if (fromUser === userId) {
+    var song = readDocument('songs', songId);
+    if (song.likes.indexOf(userId) == -1) {
+      song.likes.push(userId);
+      writeDocument('songs', song);
+    }
+    song.uploader = readDocument('users', song.uploader);
+    res.send(song);
+  } else {
+    res.status(401).end();
+  }
+});
+
+app.delete('/songs/:songid/likes/:userid', function(req, res) {
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var songId = req.params.songid;
+  var userId = req.params.userid;
+  if (fromUser === userId) {
+    var song = readDocument('songs', songId);
+    var index = song.likes.indexOf(userId);
+    if (index !== -1) {
+      song.likes.splice(index, 1);
+      writeDocument('songs', song);
+    }
+    song.uploader = readDocument('users', song.uploader);
+    res.send(song);
+  } else {
+    res.status(401).end();
+  }
+});
+
+// Update Birthday display
+app.post('/users/:userid/info/birthday/', validate({
+  body: DisplaySchema
+}), function(req, res) {
+  var body = req.body;
   var userid = req.params.userid;
   var fromUser = getUserIdFromToken(req.get('Authorization'));
   var useridNumber = parseInt(userid, 10);
   if (fromUser === useridNumber) {
-    getLoggedInUserId((userId) => {
-      getUserData(userId, (user) => {
-        //changed profile into req
-        user.info.birthday[1];
-        var displayed = req.params.displayed;
-        if(displayed === "true"){
-          user.info.birthday[1] = true;
-        }
-        else if(displayed === "false"){
-          user.info.birthday[1] = false;
-        }
-        else{
-          res.status(400).end();
-        }
-        }
-        writeDocument('birthday', user.info.birthday);
-      });
-    });
-    res.send();
-  }
-  else{
+    var user = readDocument('users', userid);
+    user.info.birthday[1] = body.display;
+    writeDocument('users', user);
+    res.send(user);
+  } else {
     // 401: Unauthorized request.
     res.status(401).end();
   }
-})
+});
 
 //getUserFavList
 app.get('/users/:userid/data', function(req, res) {
@@ -256,20 +315,20 @@ app.get('/users/:userid/data', function(req, res) {
   var fromUser = getUserIdFromToken(req.get('Authorization'));
   var useridNumber = parseInt(userid, 10);
   if (fromUser === useridNumber) {
-      var user = readDocument('users', userid);
-      var favList = user.favorites;
-      if (favList !== null) {
-        favList = favList.map((genreId) => {
-          return getPlaylistSync(1, genreId);
-        });
-        favList = favList.map((object) => {
-          return object.songs;
-        });
-        favList = [].concat.apply([], favList);
-        favList = favList.sort((a, b) => {
-          b.uploadDate - a.uploadDate
-        });
-      }
+    var user = readDocument('users', userid);
+    var favList = user.favorites;
+    if (favList !== null) {
+      favList = favList.map((genreId) => {
+        return getPlaylistSync(1, genreId);
+      });
+      favList = favList.map((object) => {
+        return object.songs;
+      });
+      favList = [].concat.apply([], favList);
+      favList = favList.sort((a, b) => {
+        b.uploadDate - a.uploadDate
+      });
+    }
     res.send(favList);
   } else {
     // 401: Unauthorized request.
@@ -324,7 +383,6 @@ app.get('/users/:userid/public', function(req, res) {
   res.send(userData);
 });
 
-
 //getUploadedSongs
 //note that uploaded songs are all public, so we don't need to add auth here
 app.get('/users/:userid/uploads', function(req, res) {
@@ -355,9 +413,9 @@ app.get('/redeemables', function(req, res) {
   items.push(readDocument('redeemables', 3));
   items.push(readDocument('redeemables', 4));
   res.send(items);
-}
+});
 
 // Starts the server on port 3000!
-app.listen(3000, function () {
+app.listen(3000, function() {
   console.log('Beatcoin server listening on port 3000!');
 });

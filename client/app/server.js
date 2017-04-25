@@ -1,22 +1,5 @@
-  import {
-    readDocument,
-    writeDocument,
-    addDocument
-  } from './database.js';
-
-  /**
-   * Emulates how a REST call is *asynchronous* -- it calls your function back
-   * some time in the future with data.
-   */
-  function emulateServerReturn(data, cb) {
-    setTimeout(() => {
-      cb(data);
-    }, 4);
-  }
-
-  export function getLoggedInUserId(cb) {
-    emulateServerReturn("2", cb);
-  }
+//new Buffer(JSON.stringify({ id: 2 })).toString('base64');
+var token = 'eyJpZCI6Mn0=';
 
 ///users/1/playlists
   export function getGenreLists(cb) {
@@ -204,9 +187,6 @@
             cb(JSON.parse(xhr.responseText));
         });
   }
-
-  //new Buffer(JSON.stringify({ id: 2 })).toString('base64');
-  var token = 'eyJpZCI6Mn0=';
 
   function sendXHR(verb, resource, body, cb) {
     var xhr = new XMLHttpRequest();

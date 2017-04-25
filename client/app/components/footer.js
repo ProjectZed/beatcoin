@@ -274,12 +274,6 @@ export default class Footer extends React.Component {
     // this.play();
   }
 
-  repeat() {
-    this.setState({
-      repeat: !this.state.repeat
-    });
-  }
-
   toggleMute() {
     let mute = this.state.mute;
 
@@ -341,10 +335,7 @@ export default class Footer extends React.Component {
                   width: this.state.progress + '%'
                 }}></span>
               </div>
-              <p className="nav navbar-text">4:26</p>
-              <button onClick={this.repeat} type="button" className='btn btn-defaultm navbar-btn' title="Repeat">
-                <span className="glyphicon glyphicon-repeat"></span>
-              </button>
+              <p className="nav navbar-text">{this.refs.player.duration}</p>
               <button onClick={this.toggleMute} type="button" className='btn btn-defaultm navbar-btn'>
                 <span className="glyphicon glyphicon-volume-down"></span>
               </button>

@@ -11,9 +11,6 @@ var writeDocument = database.writeDocument;
 var addDocument = database.addDocument;
 
 
-
-
-
 /*Your schemas here!*/
 
 var validate = require('express-jsonschema').validate;
@@ -59,20 +56,6 @@ function getUserIdFromToken(authorizationLine) {
     // Return an invalid ID.
     return -1;
   }
-}
-
-/**
- * Emulates how a REST call is *asynchronous* -- it calls your function back
- * some time in the future with data.
- */
-function emulateServerReturn(data, cb) {
-  setTimeout(() => {
-    cb(data);
-  }, 4);
-}
-
-export function getLoggedInUserId(cb) {
-  emulateServerReturn("2", cb);
 }
 
 

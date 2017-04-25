@@ -200,7 +200,7 @@ class App extends React.Component {
       onSongChanged: this.onSongChanged,
       setPlaylist: this.setPlaylist,
       songList: this.state.songList,
-      currentSongIndex: this.state.currentSongIndex
+      currentSongIndex: this.state.currentSongIndex,
       currentUserID: this.state.currentUserID
     });
     return (

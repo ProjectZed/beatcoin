@@ -218,6 +218,37 @@ export function updateProfile(profile, cb) {
     });
   });
 }
+//updateProfile
+app.post('/users/:userid/info/birthday/:displayed', function(req, res) {
+  var userid = req.params.userid;
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var useridNumber = parseInt(userid, 10);
+  if (fromUser === useridNumber) {
+    getLoggedInUserId((userId) => {
+      getUserData(userId, (user) => {
+        //changed profile into req
+        user.info.birthday[1];
+        var displayed = req.params.displayed;
+        if(displayed === "true"){
+          user.info.birthday[1] = true;
+        }
+        else if(displayed === "false"){
+          user.info.birthday[1] = false;
+        }
+        else{
+          res.status(400).end();
+        }
+        }
+        writeDocument('birthday', user.info.birthday);
+      });
+    });
+    res.send();
+  }
+  else{
+    // 401: Unauthorized request.
+    res.status(401).end();
+  }
+})
 
 //getUserFavList
 app.get('/users/:userid/data', function(req, res) {

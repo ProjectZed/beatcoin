@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "birthday": {
+      "additionalItems": false,
+      "id": "/properties/birthday",
+      "items": [{
+          "type": "string"
+        },
+        {
+          "type": "boolean"
+        }
+      ],
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array"
+    },
+    "contactAgent": {
+      "additionalItems": false,
+      "id": "/properties/contactAgent",
+      "items": [{
+          "type": "string"
+        },
+        {
+          "type": "boolean"
+        }
+      ],
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array"
+    },
+    "education": {
+      "additionalItems": false,
+      "id": "/properties/education",
+      "items": [{
+          "type": "string"
+        },
+        {
+          "type": "boolean"
+        }
+      ],
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array"
+    },
+    "gender": {
+      "additionalItems": false,
+      "id": "/properties/gender",
+      "items": [{
+          "type": "string"
+        },
+        {
+          "type": "boolean"
+        }
+      ],
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array"
+    },
+    "location": {
+      "additionalItems": false,
+      "id": "/properties/location",
+      "items": [{
+          "type": "string"
+        },
+        {
+          "type": "boolean"
+        }
+      ],
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array"
+    },
+    "nickname": {
+      "additionalItems": false,
+      "id": "/properties/nickname",
+      "items": [{
+          "type": "string"
+        },
+        {
+          "type": "boolean"
+        }
+      ],
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array"
+    }
+  }
+}

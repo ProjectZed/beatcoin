@@ -1,4 +1,6 @@
 test:
+  pre:
+    - cd server && npm install supertest
   override:
     - cd client && npm run test
     - cd server && npm run test

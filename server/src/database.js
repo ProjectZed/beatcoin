@@ -264,62 +264,68 @@ var initialData = {
     }
   },
   "redeemables": {
-    "1": {
-      "name": "Chipotle",
-      "image": "img/redeem/chipotle.jpg",
-      "price": [
-        //beatcoins,cents
-        [
-          1000, 1000
-        ],
-        [
-          1400, 1500
-        ],
-        [1700, 2000]
-      ]
-    },
-    "2": {
-      "name": "Amazon",
-      "image": "img/redeem/amazon.jpg",
-      "price": [
-        //beatcoins,cents
-        [
-          1000, 1000
-        ],
-        [
-          1400, 1500
-        ],
-        [1700, 2000]
-      ]
-    },
-    "3": {
-      "name": "Beatcoin",
-      "image": "img/redeem/beatcoinholder.png",
-      "price": [
-        //beatcoins,cents
-        [
-          1000, 1000
-        ],
-        [
-          1400, 1500
-        ],
-        [1700, 2000]
-      ]
-    },
-    "4": {
-      "name": "iTunes",
-      "image": "img/redeem/itunes.jpg",
-      "price": [
-        //beatcoins,cents
-        [
-          1000, 1000
-        ],
-        [
-          1400, 1500
-        ],
-        [1700, 2000]
-      ]
-    }
+    "inactive": [],
+    "active": [{
+        "id": 1,
+        "name": "Chipotle",
+        "image": "img/redeem/chipotle.jpg",
+        "price": [
+          //beatcoins,cents
+          [
+            1000, 1000
+          ],
+          [
+            1400, 1500
+          ],
+          [1700, 2000]
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Amazon",
+        "image": "img/redeem/amazon.jpg",
+        "price": [
+          //beatcoins,cents
+          [
+            1000, 1000
+          ],
+          [
+            1400, 1500
+          ],
+          [1700, 2000]
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Beatcoin",
+        "image": "img/redeem/beatcoinholder.png",
+        "price": [
+          //beatcoins,cents
+          [
+            1000, 1000
+          ],
+          [
+            1400, 1500
+          ],
+          [1700, 2000]
+        ]
+      },
+      {
+        "id": 4,
+        "name": "iTunes",
+        "image": "img/redeem/itunes.jpg",
+        "price": [
+          //beatcoins,cents
+          [
+            1000, 1000
+          ],
+          [
+            1400, 1500
+          ],
+          [1700, 2000]
+        ]
+      }
+    ]
   }
 }
 

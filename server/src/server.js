@@ -317,7 +317,7 @@ app.post('/users/:userid/info', validate({
   if (fromUser === useridNumber) {
     var user = readDocument('users', userid);
     user.info = body;
-    user = writeDocument('users', user);
+    writeDocument('users', user);
     res.send(user);
   } else {
     // 401: Unauthorized request.
@@ -376,19 +376,12 @@ app.get('/users/:userid/public', function(req, res) {
 //note that uploaded songs are all public, so we don't need to add auth here
 app.get('/users/:userid/uploads', function(req, res) {
   var userId = req.params.userid;
-  var user = readDocument('users', userId);
-  var uploadIds = user['uploads'];
-  var uploadedSongs = uploadIds.map((uploadId) => readDocument('songs', uploadId));
+  var uploadedSongs = readDocument('users', userId)['uploads'].map((uploadId) => readDocument('songs', uploadId));
   res.send(uploadedSongs);
 });
 
 app.get('/redeemables', function(req, res) {
-  var items = [];
-  items.push(readDocument('redeemables', 1));
-  items.push(readDocument('redeemables', 2));
-  items.push(readDocument('redeemables', 3));
-  items.push(readDocument('redeemables', 4));
-  res.send(items);
+  res.send(readDocument('redeemables', 'active'));
 });
 
 /**

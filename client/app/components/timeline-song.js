@@ -27,10 +27,6 @@ export default class TimelineSong extends React.Component {
 
   convertSongToElement(song) {
     //might be interesting to include plays/price/likes as well
-
-    // song.cover
-    // console.log(song);
-
     return (
       <div>
         <div className="row song-timestamp">
@@ -62,7 +58,6 @@ export default class TimelineSong extends React.Component {
 
     this.state.setPlaylist(this.state.uploadedSongs);
     this.state.onSongChanged(this.state.songIndex);
-
 
     // getPlaylist(this.state.genreInfo.owner, this.state.genreInfo._id - 1, (songList) => {
     //   this.state.setPlaylist(songList.songs);

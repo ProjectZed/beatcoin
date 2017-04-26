@@ -51,7 +51,7 @@ export default class Profile extends React.Component {
                 <div className="profile-picture img-circle" style={{
                   'backgroundImage': "url('" + this.state.userData.profilePicture + "')"
                 }}></div>
-              <DonateButton loggedUser={this.state.loggedUser} id={this.state.userId}/>
+                <DonateButton loggedUser={this.state.loggedUser} id={this.state.userId}/>
               </div>
             </div>
             <div className="col-md-9 bc-profile-name">
@@ -72,7 +72,7 @@ export default class Profile extends React.Component {
                 'height': '0'
               }}>
                 <h4 className="timeline-title">Comments</h4>
-                <CommentThread type={2} contentId={this.state.userId}></CommentThread>
+                <CommentThread type={2} authorId={this.state.loggedUser} contentId={this.state.userId}></CommentThread>
               </div>
             </div>
 

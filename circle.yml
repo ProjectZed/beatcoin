@@ -1,6 +1,6 @@
 test:
   pre:
-    - cd server && npm install supertest
+    - cd server && npm install supertest && npm install mocha
   override:
     - cd client && npm run test
     - cd server && npm run test

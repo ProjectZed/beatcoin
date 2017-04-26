@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
-import {getLoggedInUserId, likeSong, dislikeSong} from '../server';
+import {likeSong, dislikeSong} from '../server';
 
 export default class Footer extends React.Component {
   constructor(props) {
@@ -14,7 +14,6 @@ export default class Footer extends React.Component {
     this.next = this.next.bind(this);
     this.previous = this.previous.bind(this);
     this.toggleMute = this.toggleMute.bind(this);
-    this.repeat = this.repeat.bind(this);
     this.handleLikeClick = this.handleLikeClick.bind(this);
     this.didUserLike = this.didUserLike.bind(this);
 
@@ -169,11 +168,9 @@ export default class Footer extends React.Component {
       random: false,
       repeat: false,
       mute: false,
-      play: this.props.autoplay || false
+      play: this.props.autoplay || false,
+      loggedUser: this.props.currentUserID
     }
-    getLoggedInUserId((userId) => {
-      this.setState({loggedUser: userId, index: props.index});
-    });
   }
   componentWillReceiveProps(nextProps) {
     if (this.state.songList != nextProps.songList) {
@@ -309,6 +306,10 @@ export default class Footer extends React.Component {
     var cover = this.state.active.cover;
     var title = this.state.active.title;
     var name = this.state.active.uploader.name;
+    var duration = 0;
+    if (this.refs && this.refs.player && this.refs.player.duration) {
+      duration = this.refs.player.duration;
+    }
     return (
       <nav className="navbar navbar-fixed-bottom navbar-default">
         <div className="container">
@@ -335,7 +336,7 @@ export default class Footer extends React.Component {
                   width: this.state.progress + '%'
                 }}></span>
               </div>
-              <p className="nav navbar-text">{this.refs.player.duration}</p>
+              <p className="nav navbar-text">{duration}</p>
               <button onClick={this.toggleMute} type="button" className='btn btn-defaultm navbar-btn'>
                 <span className="glyphicon glyphicon-volume-down"></span>
               </button>

@@ -3,7 +3,6 @@ import React from 'react';
 import PreferredPlaylist from './preferred-playlist.js';
 import Playlist from './playlist.js';
 
-import {getLoggedInUserId} from '../server';
 import {getGenreLists} from '../server';
 import {getUserFavList} from '../server';
 
@@ -11,22 +10,17 @@ export default class UserHome extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: null,
+      userId: props.currentUserID,
       genreList: [],
       userFavList: [],
-      setPlaylist: this.props.setPlaylist
+      setPlaylist: props.setPlaylist
     };
-    getLoggedInUserId((userId) => {
-      this.setState({userId: userId});
-    })
 
     getGenreLists((genreList) => {
-      this.setState({genreList: genreList});
-    })
-
-    getUserFavList(this.state.user, (userFavList) => {
-      this.setState({userFavList: userFavList});
-    })
+      getUserFavList(this.state.userId, (userFavList) => {
+        this.setState({genreList: genreList, userFavList: userFavList});
+      });
+    });
   }
 
   render() {

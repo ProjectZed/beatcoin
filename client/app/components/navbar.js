@@ -1,18 +1,23 @@
 import React from 'react';
 import {Link} from 'react-router';
-import {getLoggedInUserId} from '../server';
 import ResetDatabase from '../database';
+import {getPrivateProfile} from '../server';
 
 export default class Navbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUserID: props.currentUserID
+      beatcoins: 0
     }
+    getPrivateProfile(props.currentUserID, (user) => {
+      this.state = {
+        beatcoins: user.beatcoins
+      }
+    });
   }
 
   render() {
-    var user = getUserData(this.state.currentUserID).beatcoins;
+    var beatcoins = this.state.beatcoins;
     return (
       <nav className="navbar navbar-fixed-top navbar-default">
         <div className="container">
@@ -42,7 +47,7 @@ export default class Navbar extends React.Component {
               <div className="btn-toolbar pull-right" role="toolbar">
                 <div className="btn-group" role="group">
                   <button type="button" className="btn btn-default navbar-btn">
-                    <Link to="/redeem">{"$"+user}</Link>
+                    <Link to="/redeem">{"$" + beatcoins}</Link>
                   </button>
                 </div>
                 <div className="btn-group" role="group">
@@ -51,7 +56,9 @@ export default class Navbar extends React.Component {
                   </button>
                 </div>
                 <div className="btn-group" role="group">
-                  <Link to={"/profile/" + this.getId()} style={{'color': 'white'}}>
+                  <Link to={"/profile/" + this.props.currentUserID} style={{
+                    'color': 'white'
+                  }}>
                     <button type="button" className="btn btn-default navbar-btn">
                       Profile
                     </button>

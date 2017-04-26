@@ -52,13 +52,19 @@ export function dislikeComment(userId, commentId, cb) {
 }
 
 export function postUserComment(posterId, userId, message, cb) {
-  sendXHR('POST', '/users/' + userId + '/comments', undefined, (xhr) => {
+  sendXHR('POST', '/users/' + userId + '/comments', {
+    "author": posterId,
+    "text": message
+  }, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });
 }
 
-export function postSongComment(songId, message, cb) {
-  sendXHR('POST', '/songs/' + songId + '/comments', undefined, (xhr) => {
+export function postSongComment(posterId, songId, message, cb) {
+  sendXHR('POST', '/songs/' + songId + '/comments', {
+    "author": posterId,
+    "text": message
+  }, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });
 }
@@ -76,7 +82,9 @@ export function dislikeSong(userId, songId, cb) {
 }
 
 export function updateProfile(userId, cb) {
-  sendXHR('POST', '/users/' + userId + '/info/birthday', undefined, (xhr) => {
+  sendXHR('POST', '/users/' + userId + '/info/birthday', {
+    "display": false
+  }, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });
 }

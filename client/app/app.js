@@ -171,19 +171,10 @@ class App extends React.Component {
         }
       ],
       currentSongIndex: 0,
-      currentUserID: 0
+      currentUserID: 2
     }
     this.setPlaylist = this.setPlaylist.bind(this);
     this.onSongChanged = this.onSongChanged.bind(this);
-  }
-
-  componentDidMount() {
-    getLoggedInUserId((userID) => {
-      this.setState({currentUserID: userID});
-    });
-  }
-  setUserID(userID) {
-    this.setState({currentUserID: userID});
   }
 
   onSongChanged(songIndex) {

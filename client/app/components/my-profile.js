@@ -2,25 +2,18 @@ import React from 'react';
 
 import MyProfileInformation from './my-profile-information';
 import MyProfileSelector from './my-profile-selector';
-import {getUserData} from '../server';
-import {getLoggedInUserId} from '../server';
+import {getPrivateProfile} from '../server';
 
 export default class MyProfile extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {}
-  }
-
-  refresh() {
-    getLoggedInUserId((userId) => {
-      getUserData(userId, (userData) => {
-        this.setState(userData);
-      });
+    this.state = {
+      profilePicture: ""
+    }
+    getPrivateProfile(props.currentUserID, (user) => {
+      this.setState(user);
     });
-  }
-  componentDidMount() {
-    this.refresh();
   }
 
   render() {
@@ -46,7 +39,7 @@ export default class MyProfile extends React.Component {
             <div className="col-md-4">
               <MyProfileSelector/>
             </div>
-            <MyProfileInformation profile={data}/>
+            <MyProfileInformation loggedUser={this.props.currentUserID} profile={data}/>
           </div>
         </div>
       </div>

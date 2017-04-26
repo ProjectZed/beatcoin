@@ -5,14 +5,18 @@ export default class DonateButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: props.loggedUser,
-      data: props.data
+      loggedUser: props.loggedUser,
+      userId: props.id
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({userId: nextProps.id});
   }
 
   isViewingOwnProfile() {
     if (this.state) {
-      if (this.state.userId == this.props.id)
+      if (this.state.loggedUser == this.state.userId)
         return true;
       else
         return false;

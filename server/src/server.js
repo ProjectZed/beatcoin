@@ -13,7 +13,7 @@ var addDocument = database.addDocument;
 /*Your schemas here!*/
 var validate = require('express-jsonschema').validate;
 var CommentSchema = require('./schemas/comment.json');
-var DisplaySchema = require('./schemas/display.json');
+var InfoSchema = require('./schemas/info.json');
 
 // Support receiving text in HTTP request bodies
 app.use(bodyParser.text());
@@ -307,9 +307,9 @@ app.delete('/songs/:songid/likes/:userid', function(req, res) {
   }
 });
 
-// Update Birthday display
-app.post('/users/:userid/info/birthday', validate({
-  body: DisplaySchema
+// Update User info
+app.post('/users/:userid/info', validate({
+  body: InfoSchema
 }), function(req, res) {
   var body = req.body;
   var userid = req.params.userid;
@@ -317,8 +317,8 @@ app.post('/users/:userid/info/birthday', validate({
   var useridNumber = parseInt(userid, 10);
   if (fromUser === useridNumber) {
     var user = readDocument('users', userid);
-    user.info.birthday[1] = body.display;
-    writeDocument('users', user);
+    user.info = body;
+    user = writeDocument('users', user);
     res.send(user);
   } else {
     // 401: Unauthorized request.

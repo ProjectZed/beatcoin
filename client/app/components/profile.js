@@ -10,7 +10,7 @@ export default class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedUser: props.loggedUser,
+      loggedUser: props.currentUserID,
       userId: props.routeParams.id,
       userData: {
         name: "",

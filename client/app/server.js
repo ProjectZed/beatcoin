@@ -81,10 +81,8 @@ export function dislikeSong(userId, songId, cb) {
   });
 }
 
-export function updateProfile(userId, cb) {
-  sendXHR('POST', '/users/' + userId + '/info/birthday', {
-    "display": false
-  }, (xhr) => {
+export function updateProfile(userId, info, cb) {
+  sendXHR('POST', '/users/' + userId + '/info', info, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });
 }

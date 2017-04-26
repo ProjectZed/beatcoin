@@ -5,6 +5,7 @@ export default class MyProfileInformation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      loggedUser: props.loggedUser,
       name: "",
       info: {
         nickname: [
@@ -38,8 +39,8 @@ export default class MyProfileInformation extends React.Component {
     e.preventDefault();
     var newProfile = this.state.info;
     newProfile[key][1] = !newProfile[key][1];
-    updateProfile(newProfile, (updatedProfile) => {
-      this.setState({info: updatedProfile});
+    updateProfile(this.state.loggedUser, newProfile, (updatedProfile) => {
+      this.setState({info: updatedProfile.info});
     });
   }
 
@@ -56,7 +57,7 @@ export default class MyProfileInformation extends React.Component {
           </font>
           <hr/>
           <div className="col-md-4 displayed-info">
-            Displayed Name
+            Nickname
             <br/>
             Birthday
             <br/>

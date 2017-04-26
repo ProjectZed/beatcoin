@@ -10,6 +10,7 @@ export default class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      loggedUser: props.loggedUser,
       userId: props.routeParams.id,
       userData: {
         name: "",
@@ -50,7 +51,7 @@ export default class Profile extends React.Component {
                 <div className="profile-picture img-circle" style={{
                   'backgroundImage': "url('" + this.state.userData.profilePicture + "')"
                 }}></div>
-                <DonateButton id={this.state.userId}/>
+              <DonateButton loggedUser={this.state.loggedUser} id={this.state.userId}/>
               </div>
             </div>
             <div className="col-md-9 bc-profile-name">

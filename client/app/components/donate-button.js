@@ -1,24 +1,13 @@
 import React from 'react';
-import {getLoggedInUserId} from '../server';
 import {Link} from 'react-router';
 
 export default class DonateButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: 0,
+      userId: props.loggedUser,
       data: props.data
     };
-  }
-
-  refresh() {
-    getLoggedInUserId((userId) => {
-      this.setState({userId: userId});
-    });
-  }
-
-  componentDidMount() {
-    this.refresh();
   }
 
   isViewingOwnProfile() {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {getUserPlaylist} from '../server';
+import {getUserPlaylists} from '../server';
 import Playlist from './playlist';
 
 export default class PlaylistList extends React.Component {
@@ -9,13 +9,13 @@ export default class PlaylistList extends React.Component {
       userId: this.props.userId,
       playList: []
     };
-    getUserPlaylist(this.state.userId, (list) => {
+    getUserPlaylists(this.state.userId, (list) => {
       this.setState({playList: list});
     })
   }
 
   componentWillReceiveProps(nextProps) {
-    getUserPlaylist(nextProps.userId, (list) => {
+    getUserPlaylists(nextProps.userId, (list) => {
       this.setState({userId: nextProps.userId, playList: list});
     })
   }

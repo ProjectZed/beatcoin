@@ -85,7 +85,6 @@ app.get('/users/:userid/favorites', function(req, res) {
   }
 });
 
-
 //getUserPlaylists
 //note that playlists are all public, so we don't need to add auth here
 app.get('/users/:userid/playlists', function(req, res) {
@@ -326,33 +325,6 @@ app.post('/users/:userid/info', validate({
   }
 });
 
-//getUserFavList
-app.get('/users/:userid/data', function(req, res) {
-  var userid = req.params.userid;
-  var fromUser = getUserIdFromToken(req.get('Authorization'));
-  var useridNumber = parseInt(userid, 10);
-  if (fromUser === useridNumber) {
-    var user = readDocument('users', userid);
-    var favList = user.favorites;
-    if (favList !== null) {
-      favList = favList.map((genreId) => {
-        return getPlaylistSync(1, genreId);
-      });
-      favList = favList.map((object) => {
-        return object.songs;
-      });
-      favList = [].concat.apply([], favList);
-      favList = favList.sort((a, b) => {
-        b.uploadDate - a.uploadDate
-      });
-    }
-    res.send(favList);
-  } else {
-    // 401: Unauthorized request.
-    res.status(401).end();
-  }
-});
-
 //getUserData
 app.get('/users/:userid/private', function(req, res) {
   var userid = req.params.userid;
@@ -410,6 +382,15 @@ app.get('/users/:userid/uploads', function(req, res) {
   res.send(uploadedSongs);
 });
 
+app.get('/redeemables', function(req, res) {
+  var items = [];
+  items.push(readDocument('redeemables', 1));
+  items.push(readDocument('redeemables', 2));
+  items.push(readDocument('redeemables', 3));
+  items.push(readDocument('redeemables', 4));
+  res.send(items);
+});
+
 /**
  * Translate JSON Schema Validation failures into error 400s.
  */
@@ -421,15 +402,6 @@ app.use(function(err, req, res, next) {
     // It's some other sort of error; pass it to next error middleware handler
     next(err);
   }
-});
-
-app.get('/redeemables', function(req, res) {
-  var items = [];
-  items.push(readDocument('redeemables', 1));
-  items.push(readDocument('redeemables', 2));
-  items.push(readDocument('redeemables', 3));
-  items.push(readDocument('redeemables', 4));
-  res.send(items);
 });
 
 // Starts the server on port 3000!

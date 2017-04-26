@@ -30,114 +30,112 @@ var initialData = {
       "favorites": [],
       //used for authentication
       "token": "TOKEN-GOES-HERE",
-      "playlists": [
-        {
-          "_id": "1",
-          "name": "Jazz",
-          "genre": "Jazz",
-          "owner": 1,
-          "cover": "img/user-home/Jazz.jpg",
-          "songs": [1]
-        }, {
-          "_id": "2",
-          "name": "Folk",
-          "genre": "Folk",
-          "owner": 1,
-          "cover": "img/user-home/Folk.jpg",
-          "songs": [1]
-        }, {
-          "_id": "3",
-          "name": "Rock",
-          "genre": "Rock",
-          "owner": 1,
-          "cover": "img/user-home/Rock.jpg",
-          "songs": [1]
-        }, {
-          "_id": "4",
-          "name": "Blues",
-          "genre": "Blues",
-          "owner": 1,
-          "cover": "img/user-home/Blues.jpg",
-          "songs": [1]
-        }, {
-          "_id": "5",
-          "name": "Funk",
-          "genre": "Funk",
-          "owner": 1,
-          "cover": "img/user-home/Funk.jpg",
-          "songs": [1]
-        }, {
-          "_id": "6",
-          "name": "Country",
-          "genre": "Country",
-          "owner": 1,
-          "cover": "img/user-home/Country.jpg",
-          "songs": [1]
-        }, {
-          "_id": "7",
-          "name": "Pop",
-          "genre": "Pop",
-          "owner": 1,
-          "cover": "img/user-home/Pop.jpg",
-          "songs": [1]
-        }, {
-          "_id": "8",
-          "name": "RnB",
-          "genre": "RnB",
-          "owner": 1,
-          "cover": "img/user-home/RnB.jpg",
-          "songs": [1]
-        }, {
-          "_id": "9",
-          "name": "Hiphop",
-          "genre": "Hiphop",
-          "owner": 1,
-          "cover": "img/user-home/Hiphop.jpg",
-          "songs": [1]
-        }, {
-          "_id": "10",
-          "name": "Rapping",
-          "genre": "Rapping",
-          "owner": 1,
-          "cover": "img/user-home/Rapping.jpg",
-          "songs": [1]
-        }, {
-          "_id": "11",
-          "name": "Reggae",
-          "genre": "Reggae",
-          "owner": 1,
-          "cover": "img/user-home/Reggae.jpg",
-          "songs": [1]
-        }, {
-          "_id": "12",
-          "name": "Punk",
-          "genre": "Punk",
-          "owner": 1,
-          "cover": "img/user-home/Punk.jpg",
-          "songs": [1]
-        }, {
-          "_id": "13",
-          "name": "EDM",
-          "genre": "EDM",
-          "owner": 1,
-          "cover": "img/user-home/EDM.jpg",
-          "songs": [1]
-        }, {
-          "_id": "14",
-          "name": "Classical",
-          "genre": "Classical",
-          "owner": 1,
-          "cover": "img/user-home/Classical.jpg",
-          "songs": [1, 2, 3]
-        }, {
-          "_id": "15",
-          "name": "Acapella",
-          "genre": "Acapella",
-          "owner": 1,
-          "cover": "img/user-home/Acapella.jpg",
-          "songs": [1]
-        }
-      ],
+      "playlists": [{
+        "_id": "1",
+        "name": "Jazz",
+        "genre": "Jazz",
+        "owner": 1,
+        "cover": "img/user-home/Jazz.jpg",
+        "songs": [1]
+      }, {
+        "_id": "2",
+        "name": "Folk",
+        "genre": "Folk",
+        "owner": 1,
+        "cover": "img/user-home/Folk.jpg",
+        "songs": [1]
+      }, {
+        "_id": "3",
+        "name": "Rock",
+        "genre": "Rock",
+        "owner": 1,
+        "cover": "img/user-home/Rock.jpg",
+        "songs": [1]
+      }, {
+        "_id": "4",
+        "name": "Blues",
+        "genre": "Blues",
+        "owner": 1,
+        "cover": "img/user-home/Blues.jpg",
+        "songs": [1]
+      }, {
+        "_id": "5",
+        "name": "Funk",
+        "genre": "Funk",
+        "owner": 1,
+        "cover": "img/user-home/Funk.jpg",
+        "songs": [1]
+      }, {
+        "_id": "6",
+        "name": "Country",
+        "genre": "Country",
+        "owner": 1,
+        "cover": "img/user-home/Country.jpg",
+        "songs": [1]
+      }, {
+        "_id": "7",
+        "name": "Pop",
+        "genre": "Pop",
+        "owner": 1,
+        "cover": "img/user-home/Pop.jpg",
+        "songs": [1]
+      }, {
+        "_id": "8",
+        "name": "RnB",
+        "genre": "RnB",
+        "owner": 1,
+        "cover": "img/user-home/RnB.jpg",
+        "songs": [1]
+      }, {
+        "_id": "9",
+        "name": "Hiphop",
+        "genre": "Hiphop",
+        "owner": 1,
+        "cover": "img/user-home/Hiphop.jpg",
+        "songs": [1]
+      }, {
+        "_id": "10",
+        "name": "Rapping",
+        "genre": "Rapping",
+        "owner": 1,
+        "cover": "img/user-home/Rapping.jpg",
+        "songs": [1]
+      }, {
+        "_id": "11",
+        "name": "Reggae",
+        "genre": "Reggae",
+        "owner": 1,
+        "cover": "img/user-home/Reggae.jpg",
+        "songs": [1]
+      }, {
+        "_id": "12",
+        "name": "Punk",
+        "genre": "Punk",
+        "owner": 1,
+        "cover": "img/user-home/Punk.jpg",
+        "songs": [1]
+      }, {
+        "_id": "13",
+        "name": "EDM",
+        "genre": "EDM",
+        "owner": 1,
+        "cover": "img/user-home/EDM.jpg",
+        "songs": [1]
+      }, {
+        "_id": "14",
+        "name": "Classical",
+        "genre": "Classical",
+        "owner": 1,
+        "cover": "img/user-home/Classical.jpg",
+        "songs": [1, 2, 3]
+      }, {
+        "_id": "15",
+        "name": "Acapella",
+        "genre": "Acapella",
+        "owner": 1,
+        "cover": "img/user-home/Acapella.jpg",
+        "songs": [1]
+      }],
       "likes": [],
       "comments": []
     },
@@ -172,16 +170,14 @@ var initialData = {
         1, 2, 3
       ],
       "token": "TOKEN-GOES-HERE",
-      "playlists": [
-        {
-          "_id": "1",
-          "name": "My Jazz",
-          "genre": "Jazz",
-          "owner": 1,
-          "cover": "img/user-home/Jazz.jpg",
-          "songs": [1]
-        }
-      ],
+      "playlists": [{
+        "_id": "1",
+        "name": "My Jazz",
+        "genre": "Jazz",
+        "owner": 1,
+        "cover": "img/user-home/Jazz.jpg",
+        "songs": [1]
+      }],
       "likes": [2],
       "comments": [1, 2]
     }
@@ -390,7 +386,6 @@ function writeDocument(collection, changedDocument) {
 }
 module.exports.writeDocument = writeDocument;
 
-
 /**
  * Adds a new document to the NoSQL database.
  */
@@ -410,6 +405,27 @@ function addDocument(collectionName, newDoc) {
 module.exports.addDocument = addDocument;
 
 /**
+ * Deletes a document from an object collection.
+ */
+function deleteDocument(collectionName, id) {
+  var collection = data[collectionName];
+  if (!collection[id]) {
+    throw new Error(`Collection ${collectionName} lacks an item with id ${id}!`);
+  }
+  delete collection[id];
+  updated = true;
+}
+module.exports.deleteDocument = deleteDocument;
+
+/**
+ * Returns an entire object collection.
+ */
+function getCollection(collectionName) {
+  return JSONClone(data[collectionName]);
+}
+module.exports.getCollection = getCollection;
+
+/**
  * Reset the database.
  */
 function resetDatabase() {
@@ -422,7 +438,9 @@ module.exports.resetDatabase = resetDatabase;
 // when changed.
 setInterval(function() {
   if (updated) {
-    fs.writeFileSync(path.join(__dirname, 'database.json'), JSON.stringify(data), { encoding: 'utf8' });
+    fs.writeFileSync(path.join(__dirname, 'database.json'), JSON.stringify(data), {
+      encoding: 'utf8'
+    });
     updated = false;
   }
 }, 200);

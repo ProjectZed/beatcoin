@@ -12,12 +12,12 @@
   },
   "devDependencies": {
     "eslint": "^2.4.0",
+    "eslint-plugin-mocha": "^4.9.0",
     "eslint-plugin-node": "^1.0.0",
     "mocha": "^3.3.0",
     "supertest": "^3.0.0"
   },
   "scripts": {
-    "test": "mocha --timeout 10000",
-    "watch": "./node_modules/.bin/webpack --watch"
+    "test": "mocha --timeout 10000"
   }
 }

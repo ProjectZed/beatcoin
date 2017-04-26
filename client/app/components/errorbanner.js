@@ -13,7 +13,7 @@ export default class ErrorBanner extends React.Component {
     // By assigning to 'window', this is a global function. Global functions
     // are not typically a good idea, but they can be useful for adding basic
     // error handling to an application
-    window.FacebookError = (errorText) => {
+    window.BeatcoinError = (errorText) => {
       this.setState({
         active: true,
         error: errorText
@@ -24,7 +24,7 @@ export default class ErrorBanner extends React.Component {
   render() {
     return (
       <div className={"alert alert-warning " + hideElement(!this.state.active)} role="alert">
-        Facebook was unable to complete a recent request: {this.state.error}<br />
+        Beatcoin was unable to complete a recent request: {this.state.error}<br />
         Please <a onClick={() => window.location.reload()}>refresh the web page</a> and try again.
       </div>
     );

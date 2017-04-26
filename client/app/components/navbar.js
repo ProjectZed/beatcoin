@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router';
-import ResetDatabase from '../database';
 import {getPrivateProfile} from '../server';
 
 export default class Navbar extends React.Component {
@@ -78,7 +77,15 @@ export default class Navbar extends React.Component {
                         <a href="#">Log out</a>
                       </li>
                       <li>
-                        <ResetDatabase></ResetDatabase>
+                        <button className="btn btn-default" type="button" onClick={() => {
+                          var xhr = new XMLHttpRequest();
+                          xhr.open('POST', '/resetdb');
+                          xhr.addEventListener('load', function() {
+                            window.alert("Database reset! Refreshing the page now...");
+                            document.location.reload(false);
+                          });
+                          xhr.send();
+                        }}>Reset Mock DB</button>
                       </li>
                     </ul>
                   </div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import Comment from './comment';
-import {getLoggedInUserId} from '../server';
 import {getSongComments} from '../server';
 import {postSongComment} from '../server';
 import {getUserComments} from '../server';
@@ -16,7 +15,8 @@ export default class CommentThread extends React.Component {
       type: props.type,
       contentId: props.contentId,
       comments: [],
-      commentText: ""
+      commentText: "",
+      authorId: props.authorId
     };
     this.commentCallback = this.commentCallback.bind(this);
   }
@@ -55,15 +55,13 @@ export default class CommentThread extends React.Component {
       if (comment !== "") {
         if (this.state.type == TYPE_SONG) {
           // Post comment to song
-          postSongComment(this.state.contentId, this.state.commentText, (comment) => {
+          postSongComment(this.state.authorId, this.state.contentId, this.state.commentText, (comment) => {
             this.setState({comments: this.state.comments.concat(comment), commentText: ""});
           });
         } else if (this.state.type == TYPE_USER) {
           // Post comment to user
-          getLoggedInUserId((userId) => {
-            postUserComment(userId, this.state.contentId, this.state.commentText, (comment) => {
-              this.setState({comments: this.state.comments.concat(comment), commentText: ""});
-            });
+          postUserComment(this.state.authorId, this.state.contentId, this.state.commentText, (comment) => {
+            this.setState({comments: this.state.comments.concat(comment), commentText: ""});
           });
         }
       }
@@ -76,7 +74,7 @@ export default class CommentThread extends React.Component {
         <input type="text" className="form-control" placeholder="Write a comment..." value={this.state.commentText} onChange={(e) => this.handleChange(e)} onKeyUp={(e) => this.handleKeyUp(e)}></input>
         {this.state.comments.map((comment) => {
           return (
-            <Comment key={comment._id} index={comment._id} data={comment}></Comment>
+            <Comment key={comment._id} userId={this.state.authorId} index={comment._id} comment={comment}></Comment>
           )
         })}
       </div>

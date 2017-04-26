@@ -1,23 +1,14 @@
 import React from 'react';
 
-import {getLoggedInUserId} from '../server'
-
 export default class PreferredPlaylist extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      user: null,
       favListInfo: this.props.favListInfo,
       setPlaylist: this.props.setPlaylist
     }
     this.onClick = this.onClick.bind(this);
-  }
-
-  componentDidMount() {
-    getLoggedInUserId((usr) => {
-      this.setState({user: usr})
-    })
   }
 
   onClick(e) {

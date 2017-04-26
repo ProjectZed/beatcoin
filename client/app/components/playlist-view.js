@@ -13,7 +13,8 @@ export default class PlaylistView extends React.Component {
       setPlaylist: props.setPlaylist,
       songList: props.songList,
       currentIndex: 0,
-      currentSong: 1
+      currentSong: 1,
+      currentUserID: props.currentUserID
     };
     this.handlePrevClick = this.handlePrevClick.bind(this);
     this.handleNextClick = this.handleNextClick.bind(this);
@@ -83,7 +84,7 @@ export default class PlaylistView extends React.Component {
             </div>
             <div className="col-md-3 comments-container">
               <h3>Comments</h3>
-              <CommentThread type={1} contentId={this.state.currentSong}></CommentThread>
+              <CommentThread type={1} authorId={this.state.currentUserID} contentId={this.state.currentSong}></CommentThread>
             </div>
           </div>
         </div>

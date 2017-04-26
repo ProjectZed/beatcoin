@@ -40,12 +40,14 @@ export function getPlaylist(userId, playlistId, cb) {
 }
 
 export function likeComment(userId, commentId, cb) {
+  console.log('/comments/' + commentId + '/likes/' + userId)
   sendXHR('PUT', '/comments/' + commentId + '/likes/' + userId, undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });
 }
 
 export function dislikeComment(userId, commentId, cb) {
+  console.log('/comments/' + commentId + '/likes/' + userId)
   sendXHR('DELETE', '/comments/' + commentId + '/likes/' + userId, undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });

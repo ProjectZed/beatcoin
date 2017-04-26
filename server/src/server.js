@@ -197,10 +197,11 @@ app.put('/comments/:commentid/likes/:userid', function(req, res) {
   var fromUser = getUserIdFromToken(req.get('Authorization'));
   var commentId = req.params.commentid;
   var userId = req.params.userid;
-  if (fromUser === userId) {
+  var useridNumber = parseInt(userId, 10);
+  if (fromUser === useridNumber) {
     var comment = readDocument('comments', commentId);
-    if (comment.likes.indexOf(fromUser) == -1) {
-      comment.likes.push(userId);
+    if (comment.likes.indexOf(useridNumber) == -1) {
+      comment.likes.push(useridNumber);
       writeDocument('comments', comment);
     }
     comment.author = readDocument('users', comment.author);
@@ -214,9 +215,10 @@ app.delete('/comments/:commentid/likes/:userid', function(req, res) {
   var fromUser = getUserIdFromToken(req.get('Authorization'));
   var commentId = req.params.commentid;
   var userId = req.params.userid;
-  if (fromUser === userId) {
+  var useridNumber = parseInt(userId, 10);
+  if (fromUser === useridNumber) {
     var comment = readDocument('comments', commentId);
-    var index = comment.likes.indexOf(fromUser);
+    var index = comment.likes.indexOf(useridNumber);
     if (index !== -1) {
       comment.likes.splice(index, 1);
       writeDocument('comments', comment);
@@ -272,10 +274,11 @@ app.put('/songs/:songid/likes/:userid', function(req, res) {
   var fromUser = getUserIdFromToken(req.get('Authorization'));
   var songId = req.params.songid;
   var userId = req.params.userid;
-  if (fromUser === userId) {
+  var useridNumber = parseInt(userId, 10);
+  if (fromUser === useridNumber) {
     var song = readDocument('songs', songId);
-    if (song.likes.indexOf(userId) == -1) {
-      song.likes.push(userId);
+    if (song.likes.indexOf(useridNumber) == -1) {
+      song.likes.push(useridNumber);
       writeDocument('songs', song);
     }
     song.uploader = readDocument('users', song.uploader);
@@ -289,9 +292,10 @@ app.delete('/songs/:songid/likes/:userid', function(req, res) {
   var fromUser = getUserIdFromToken(req.get('Authorization'));
   var songId = req.params.songid;
   var userId = req.params.userid;
-  if (fromUser === userId) {
+  var useridNumber = parseInt(userId, 10);
+  if (fromUser === useridNumber) {
     var song = readDocument('songs', songId);
-    var index = song.likes.indexOf(userId);
+    var index = song.likes.indexOf(useridNumber);
     if (index !== -1) {
       song.likes.splice(index, 1);
       writeDocument('songs', song);

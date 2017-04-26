@@ -107,7 +107,7 @@ export function getUploadedSongs(userId, cb) {
   });
 }
 
-export function redeemables(cb) {
+export function getRedeemables(cb) {
   sendXHR('GET', 'redeemables', undefined, (xhr) => {
     // Call the callback with the data.
     cb(JSON.parse(xhr.responseText));

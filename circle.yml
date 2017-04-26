@@ -1,4 +1,7 @@
 test:
+  pre:
+    - cd client; npm install
+    - cd server; npm install
   override:
     - cd client; npm run test
     - cd server; npm run test

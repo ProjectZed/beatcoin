@@ -306,9 +306,25 @@ export default class Footer extends React.Component {
     var cover = this.state.active.cover;
     var title = this.state.active.title;
     var name = this.state.active.uploader.name;
-    var duration = 0;
+    var duration = "0:00";
+    var atnow = "0:00";
     if (this.refs && this.refs.player && this.refs.player.duration) {
-      duration = this.refs.player.duration;
+      var minutes = Math.floor(this.refs.player.duration/60);
+      var seconds = Math.ceil(this.refs.player.duration%60);
+      var secondstr = ""+seconds;
+      if (seconds<10){
+        secondstr = "0"+seconds;
+      }
+      duration = minutes+":"+secondstr;
+    }
+    if (this.refs && this.refs.player && this.refs.player.currentTime) {
+      var curminutes = Math.floor(this.refs.player.currentTime/60);
+      var curseconds = Math.ceil(this.refs.player.currentTime%60);
+      var cursecondstr = ""+curseconds;
+      if (curseconds<10){
+        cursecondstr = "0"+curseconds;
+      }
+      atnow = curminutes+":"+cursecondstr;
     }
     return (
       <nav className="navbar navbar-fixed-bottom navbar-default">
@@ -331,15 +347,22 @@ export default class Footer extends React.Component {
             <div className="navbar-inner" style={{
               display: "inline-block"
             }}>
+              <span>
+              <p className="nav navbar-text">{atnow}</p>
+              </span>
+              <span>
               <div className="player-progress-container" onClick={this.setProgress}>
                 <span className="player-progress-value" style={{
                   width: this.state.progress + '%'
                 }}></span>
               </div>
+              </span>
+              <span>
               <p className="nav navbar-text">{duration}</p>
               <button onClick={this.toggleMute} type="button" className='btn btn-defaultm navbar-btn'>
                 <span className="glyphicon glyphicon-volume-down"></span>
               </button>
+            </span>
             </div>
             <div className="nav navbar-nav navbar-right">
               <Link to={'/playlist-view'}>

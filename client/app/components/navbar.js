@@ -1,12 +1,30 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {getPrivateProfile} from '../server';
+import UploadModal from './upload-modal.js';
 
 export default class Navbar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      beatcoins: 0
+    constructor(props) {
+        super(props);
+        this.state = {
+            beatcoins: 0
+        }
+        getPrivateProfile(props.currentUserID, (user) => {
+            this.state = {
+                beatcoins: user.beatcoins
+            }
+        });
+    }
+    // Get the modal
+    onClickUpload(e) {
+        var modal = document.getElementById('upload-modal');
+        e.preventDefault();
+        modal.style.display = "block";
+    }
+    onClickClose(e) {
+        var modal = document.getElementById('upload-modal');
+        e.preventDefault();
+        modal.style.display = "none";
     }
     getPrivateProfile(props.currentUserID, (user) => {
       this.setState({beatcoins: user.beatcoins})
@@ -92,11 +110,7 @@ export default class Navbar extends React.Component {
                     </ul>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-    )
-  }
+            </nav>
+        )
+    }
 }

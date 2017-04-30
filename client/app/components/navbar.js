@@ -50,7 +50,7 @@ export default class Navbar extends React.Component {
                   <button type="button" className="btn btn-default navbar-btn">
                     <Link to="/redeem" style={{
                       'color': 'white'
-                    }}>{"$" + beatcoins}</Link>
+                    }}>{beatcoins}</Link>
                   </button>
                 </div>
                 <div className="btn-group" role="group">

@@ -17,6 +17,13 @@ Like many other music streaming web apps such as Pandora, Beatcoin offers music 
 6. `cd beatcoin/server`
 7. `npm install`
 
+8. Navigate out of the beatcoin project folder(Class directory)
+9. Make a folder named beatcoin-data
+10. Start up database using this folder
+ex:
+-mongod --dbpath beatcoin-data
+-Windows: "C:\Program Files\MongoDB\Server\3.2\bin\mongod.exe" --dbpath beatcoin-data
+
 8. In the client terminal, run `npm run watch`
 9. In the server terminal, run `node server/src/server.js`
 

@@ -112,6 +112,12 @@ export function getRedeemables(cb) {
   });
 }
 
+export function uploadSong(cb) {
+  sendXHR('PUT', 'upload', undefined, (xhr) => {
+    cb(JSON.parse(xhr.responseText));
+  });
+}
+
 function sendXHR(verb, resource, body, cb) {
   var xhr = new XMLHttpRequest();
   xhr.open(verb, resource);

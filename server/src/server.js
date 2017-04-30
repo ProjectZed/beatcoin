@@ -384,6 +384,11 @@ app.get('/redeemables', function(req, res) {
   res.send(readDocument('redeemables', 'active'));
 });
 
+app.put('/upload', function(req, res) {
+  var song = readDocument('songs', '0');
+  res.send(readDocument('songs', song));
+});
+
 /**
  * Translate JSON Schema Validation failures into error 400s.
  */

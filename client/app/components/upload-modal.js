@@ -9,8 +9,11 @@ export default class UploadModal extends React.Component {
       title: "",
       lyrics: "",
       description: "",
+      selectedCheckboxes: [],
       genreList: []
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
 
     getGenreLists((genreList) => {
         this.setState({genreList: genreList});
@@ -35,9 +38,18 @@ export default class UploadModal extends React.Component {
     this.setState({description: e.target.value});
   }
 
+  handleCheckboxChange(e) {
+    if (this.selectedCheckboxes.has(e.target.value)) {
+      this.selectedCheckboxes.delete(e.target.value);
+    } else {
+      this.selectedCheckboxes.push(e.target.value);
+    }
+  }
+
   handleSubmit(clickEvent) {
     clickEvent.preventDefault();
-
+    var modal = document.getElementById('upload-modal');
+    modal.style.display = "none";
   }
 
   render() {
@@ -45,7 +57,8 @@ export default class UploadModal extends React.Component {
     var genres = [];
     for (var i = 0; i < (genreList.length); i++) {
       genres.push(
-        <div className="col-md-2"><input id="genres" type="checkbox" value={genreList[i].name} key={genreList[i]._id} />{genreList[i].name}</div>
+        <div className="col-md-2"><input id="genres" type="checkbox" label={genreList[i]._id}
+          value={genreList[i].name} key={genreList[i]._id}/>{genreList[i].name}</div>
       );
     }
 

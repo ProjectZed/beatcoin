@@ -46,7 +46,7 @@ export default class Navbar extends React.Component {
               <div className="btn-toolbar pull-right" role="toolbar">
                 <div className="btn-group" role="group">
                   <button type="button" className="btn btn-default navbar-btn">
-                    <Link to="/redeem">{"$" + beatcoins}</Link>
+                    <Link to="/redeem">{beatcoins}</Link>
                   </button>
                 </div>
                 <div className="btn-group" role="group">

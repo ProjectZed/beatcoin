@@ -13,7 +13,7 @@ export default class PlaylistView extends React.Component {
       setPlaylist: props.setPlaylist,
       songList: props.songList,
       currentIndex: 0,
-      currentSong: 1,
+      currentSong: "000000000000000000000001",
       currentUserID: props.currentUserID
     };
     this.handlePrevClick = this.handlePrevClick.bind(this);
@@ -56,12 +56,10 @@ export default class PlaylistView extends React.Component {
     }
   }
 
-  songTileData() {}
-
   render() {
     var prevTile = <SongTile data={null}/>;
-    if (this.state.currentSong >= 2) {
-      prevTile = <SongTile data={this.state.songList[this.state.currentSong - 2]}/>;
+    if (this.state.currentIndex >= 1) {
+      prevTile = <SongTile data={this.state.songList[this.state.currentIndex - 1]}/>;
     }
     return (
       <div id="playlist-component">
@@ -73,13 +71,13 @@ export default class PlaylistView extends React.Component {
                   <div onClick={this.handlePrevClick}>
                     {prevTile}
                   </div>
-                  <SongTile isMiddle="true" data={this.state.songList[this.state.currentSong - 1]}/>
+                  <SongTile isMiddle="true" data={this.state.songList[this.state.currentIndex]}></SongTile>
                   <div onClick={this.handleNextClick}>
-                    <SongTile data={this.state.songList[this.state.currentSong]}/>
+                    <SongTile data={this.state.songList[this.state.currentIndex + 1]}></SongTile>
                   </div>
                 </div>
                 <div className="row border-top"></div>
-                <SongInfo data={this.state.songList[this.state.currentSong - 1]}/>
+                <SongInfo data={this.state.songList[this.state.currentIndex]}></SongInfo>
               </div>
             </div>
             <div className="col-md-3 comments-container">

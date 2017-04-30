@@ -19,11 +19,11 @@ class App extends React.Component {
     this.state = {
       songList: [
         {
-          "_id": 0,
+          "_id": "000000000000000000000000",
           "title": "Welcome to Beatcoin",
           "genre": "None",
           "uploader": {
-            "_id": 1,
+            "_id": "000000000000000000000001",
             "name": "Beatcoin Admin",
             "beatcoins": 0,
             // Amount of $ a User has to reward listeners
@@ -49,114 +49,116 @@ class App extends React.Component {
             },
             "uploads": [],
             "favorites": [],
+            //used for authentication
             "token": "TOKEN-GOES-HERE",
-            "playlists": {
-              "1": {
+            "playlists": [
+              {
+                "_id": "000000000000000000000001",
                 "name": "Jazz",
                 "genre": "Jazz",
-                "owner": 1,
+                "owner": "000000000000000000000001",
                 "cover": "img/user-home/Jazz.jpg",
-                "songs": [1]
-              },
-              "2": {
+                "songs": ["000000000000000000000001"]
+              }, {
+                "_id": "000000000000000000000002",
                 "name": "Folk",
                 "genre": "Folk",
-                "owner": 1,
+                "owner": "000000000000000000000001",
                 "cover": "img/user-home/Folk.jpg",
-                "songs": [1]
-              },
-              "3": {
+                "songs": ["000000000000000000000001"]
+              }, {
+                "_id": "000000000000000000000003",
                 "name": "Rock",
                 "genre": "Rock",
-                "owner": 1,
+                "owner": "000000000000000000000001",
                 "cover": "img/user-home/Rock.jpg",
-                "songs": [1]
-              },
-              "4": {
+                "songs": ["000000000000000000000001"]
+              }, {
+                "_id": "000000000000000000000004",
                 "name": "Blues",
                 "genre": "Blues",
-                "owner": 1,
+                "owner": "000000000000000000000001",
                 "cover": "img/user-home/Blues.jpg",
-                "songs": [1]
-              },
-              "5": {
+                "songs": ["000000000000000000000001"]
+              }, {
+                "_id": "000000000000000000000005",
                 "name": "Funk",
                 "genre": "Funk",
-                "owner": 1,
+                "owner": "000000000000000000000001",
                 "cover": "img/user-home/Funk.jpg",
-                "songs": [1]
-              },
-              "6": {
+                "songs": ["000000000000000000000001"]
+              }, {
+                "_id": "000000000000000000000006",
                 "name": "Country",
                 "genre": "Country",
-                "owner": 1,
+                "owner": "000000000000000000000001",
                 "cover": "img/user-home/Country.jpg",
-                "songs": [1]
-              },
-              "7": {
+                "songs": ["000000000000000000000001"]
+              }, {
+                "_id": "000000000000000000000007",
                 "name": "Pop",
                 "genre": "Pop",
-                "owner": 1,
+                "owner": "000000000000000000000001",
                 "cover": "img/user-home/Pop.jpg",
-                "songs": [1]
-              },
-              "8": {
+                "songs": ["000000000000000000000001"]
+              }, {
+                "_id": "000000000000000000000008",
                 "name": "RnB",
                 "genre": "RnB",
-                "owner": 1,
+                "owner": "000000000000000000000001",
                 "cover": "img/user-home/RnB.jpg",
-                "songs": [1]
-              },
-              "9": {
+                "songs": ["000000000000000000000001"]
+              }, {
+                "_id": "000000000000000000000009",
                 "name": "Hiphop",
                 "genre": "Hiphop",
-                "owner": 1,
+                "owner": "000000000000000000000001",
                 "cover": "img/user-home/Hiphop.jpg",
-                "songs": [1]
-              },
-              "10": {
+                "songs": ["000000000000000000000001"]
+              }, {
+                "_id": "000000000000000000000010",
                 "name": "Rapping",
                 "genre": "Rapping",
-                "owner": 1,
+                "owner": "000000000000000000000001",
                 "cover": "img/user-home/Rapping.jpg",
-                "songs": [1]
-              },
-              "11": {
+                "songs": ["000000000000000000000001"]
+              }, {
+                "_id": "000000000000000000000011",
                 "name": "Reggae",
                 "genre": "Reggae",
-                "owner": 1,
+                "owner": "000000000000000000000001",
                 "cover": "img/user-home/Reggae.jpg",
-                "songs": [1]
-              },
-              "12": {
+                "songs": ["000000000000000000000001"]
+              }, {
+                "_id": "000000000000000000000012",
                 "name": "Punk",
                 "genre": "Punk",
-                "owner": 1,
+                "owner": "000000000000000000000001",
                 "cover": "img/user-home/Punk.jpg",
-                "songs": [1]
-              },
-              "13": {
+                "songs": ["000000000000000000000001"]
+              }, {
+                "_id": "000000000000000000000013",
                 "name": "EDM",
                 "genre": "EDM",
-                "owner": 1,
+                "owner": "000000000000000000000001",
                 "cover": "img/user-home/EDM.jpg",
-                "songs": [1]
-              },
-              "14": {
+                "songs": ["000000000000000000000001"]
+              }, {
+                "_id": "000000000000000000000014",
                 "name": "Classical",
                 "genre": "Classical",
-                "owner": 1,
+                "owner": "000000000000000000000001",
                 "cover": "img/user-home/Classical.jpg",
-                "songs": [1, 2, 3]
-              },
-              "15": {
+                "songs": ["000000000000000000000001", "000000000000000000000002", "000000000000000000000003"]
+              }, {
+                "_id": "000000000000000000000015",
                 "name": "Acapella",
                 "genre": "Acapella",
-                "owner": 1,
+                "owner": "000000000000000000000001",
                 "cover": "img/user-home/Acapella.jpg",
-                "songs": [1]
+                "songs": ["000000000000000000000001"]
               }
-            },
+            ],
             "likes": [],
             "comments": []
           },
@@ -171,7 +173,7 @@ class App extends React.Component {
         }
       ],
       currentSongIndex: 0,
-      currentUserID: 2
+      currentUserID: "000000000000000000000002"
     }
     this.setPlaylist = this.setPlaylist.bind(this);
     this.onSongChanged = this.onSongChanged.bind(this);
@@ -197,11 +199,11 @@ class App extends React.Component {
     return (
       <div>
         <Navbar currentUserID={this.state.currentUserID}/>
-          <div className="row">
-            <div className="col-md-12">
-              <ErrorBanner />
-            </div>
+        <div className="row">
+          <div className="col-md-12">
+            <ErrorBanner/>
           </div>
+        </div>
         <div>{child}</div>
         <Footer songList={this.state.songList} currentSongIndex={this.state.currentSongIndex} songChangeCallback={this.onSongChanged} currentUserID={this.state.currentUserID}/>
       </div>

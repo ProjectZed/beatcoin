@@ -40,7 +40,7 @@ export default class MyProfileInformation extends React.Component {
     var newProfile = this.state.info;
     newProfile[key][1] = !newProfile[key][1];
     updateProfile(this.state.loggedUser, newProfile, (updatedProfile) => {
-      this.setState({info: updatedProfile.info});
+      this.setState({info: updatedProfile});
     });
   }
 

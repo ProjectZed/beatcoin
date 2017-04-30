@@ -1,13 +1,20 @@
 import React from 'react';
 
+import {getGenreLists} from '../server';
+
 export default class UploadModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       title: "",
       lyrics: "",
-      description: ""
-    }
+      description: "",
+      genreList: []
+    };
+
+    getGenreLists((genreList) => {
+        this.setState({genreList: genreList});
+    });
   }
 
   onClickClose(e) {
@@ -34,6 +41,14 @@ export default class UploadModal extends React.Component {
   }
 
   render() {
+    var genreList = this.state.genreList;
+    var genres = [];
+    for (var i = 0; i < (genreList.length); i++) {
+      genres.push(
+        <div className="col-md-2"><input id="genres" type="checkbox" value={genreList[i].name} key={genreList[i]._id} />{genreList[i].name}</div>
+      );
+    }
+
     return (
       <div id="upload-modal" className="modal">
           <div className="modal-content">
@@ -53,21 +68,28 @@ export default class UploadModal extends React.Component {
                   <div className="form-wrapper">
                     <form action="/action_page.php">
                     Select a song: <input type="file" name="song" accept="audio/*"/>
-                    <input type="submit"/>
                     </form>
                     <form action="/action_page.php">
                     Select a cover: <input type="file" name="pic" accept="image/*"/>
-                    <input type="submit"/>
                     </form>
                   </div>
 
+                  <div className="row">
+                  <form action="">
+                    <label htmlFor="genres" className="control-label">Genres:</label><br></br>
+                    {genres}
+                  </form>
+                  </div>
+
+                  <div className="row">
                   <label htmlFor="lyrics">Lyrics:</label>
-                  <textarea className="form-control" rows="5" id="lyrics" value={this.state.lyrics}
+                  <textarea className="form-control" rows="3" id="lyrics" value={this.state.lyrics}
                   onChange={(e) => this.handleLyricsChange(e)} required data-error=""></textarea>
 
                   <label htmlFor="description">Description:</label>
-                  <textarea className="form-control" rows="5" id="description" value={this.state.description}
+                  <textarea className="form-control" rows="3" id="description" value={this.state.description}
                   onChange={(e) => this.handleDescriptionChange(e)} required data-error=""></textarea>
+                </div>
 
               </div>
 

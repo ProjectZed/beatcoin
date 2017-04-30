@@ -347,24 +347,22 @@ export default class Footer extends React.Component {
             <div className="navbar-inner" style={{
               display: "inline-block"
             }}>
-              <span>
+              <div className="nav navbar-nav">
               <p className="nav navbar-text">{atnow}</p>
-              </span>
-              <span>
+              </div>
               <div className="player-progress-container" onClick={this.setProgress}>
                 <span className="player-progress-value" style={{
                   width: this.state.progress + '%'
                 }}></span>
               </div>
-              </span>
-              <span>
-              <p className="nav navbar-text">{duration}</p>
-              <button onClick={this.toggleMute} type="button" className='btn btn-defaultm navbar-btn'>
-                <span className="glyphicon glyphicon-volume-down"></span>
-              </button>
-            </span>
+              <div className="nav navbar-nav" style={{float: "right"}}>
+                <p className="nav navbar-text">{duration}</p>
+              </div>
             </div>
             <div className="nav navbar-nav navbar-right">
+              <button onClick={this.toggleMute} type="button" className='btn navbar-btn' style={{float: "left"}}>
+                <span className="glyphicon glyphicon-volume-down"></span>
+              </button>
               <Link to={'/playlist-view'}>
                 <div className="song-pic" style={{
                   backgroundImage: 'url(/' + cover + ')'

@@ -2,11 +2,22 @@
 
 # Beatcoin
 
-Amazing description here
+Beatcoin is a music streaming web app that encourages our listeners to give indie artists a chance to make it big. It’s difficult for aspiring artists to gain a fanbase nowadays due to the exclusivity that record labels maintain. We believe indie artists should have a chance to be heard by millions of people around the world without giving up their uniqueness. To give them this opportunity, artists pay us to have their content streamed on our service.
+
+Like many other music streaming web apps such as Pandora, Beatcoin offers music streaming services for listeners and big data analysis for artists. However, our uniqueness comes from incorporating something similar to how Bing Rewards works. We encourage our listeners to open their ears to the amazing music new artists have to offer by rewarding them with beatcoins! Beatcoins, our virtual currency, can be used to redeem gift cards and similar merchandise. It’s a win-win for everyone, listeners get compensated for listening to new music and artists grow their reputation.
 
 # Instructions
 
-1. `git clone https://github.com/ProjectZed/beatcoin.git`
-2. `cd beatcoin`
-3. `npm install`
-4. `npm run serve`
+1. Open a new terminal and run the following commands
+2. `git clone https://github.com/ProjectZed/beatcoin.git`
+3. `cd beatcoin/client`
+4. `npm install`
+
+5. Open a new terminal and run the following commands
+6. `cd beatcoin/server`
+7. `npm install`
+
+8. In the client terminal, run `npm run watch`
+9. In the server terminal, run `node server/src/server.js`
+
+10. Open Chrome web browser to `localhost:3000`

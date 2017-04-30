@@ -9,9 +9,7 @@ export default class Navbar extends React.Component {
       beatcoins: 0
     }
     getPrivateProfile(props.currentUserID, (user) => {
-      this.state = {
-        beatcoins: user.beatcoins
-      }
+      this.setState({beatcoins: user.beatcoins})
     });
   }
 
@@ -27,7 +25,9 @@ export default class Navbar extends React.Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <Link className='navbar-brand' to={'/'}>
+            <Link className='navbar-brand' to={'/'} style={{
+              'color': 'white'
+            }}>
               <span className="glyphicon glyphicon-home"></span>
             </Link>
           </div>
@@ -46,7 +46,9 @@ export default class Navbar extends React.Component {
               <div className="btn-toolbar pull-right" role="toolbar">
                 <div className="btn-group" role="group">
                   <button type="button" className="btn btn-default navbar-btn">
-                    <Link to="/redeem">{beatcoins}</Link>
+                    <Link to="/redeem" style={{
+                      'color': 'white'
+                    }}>{beatcoins}</Link>
                   </button>
                 </div>
                 <div className="btn-group" role="group">

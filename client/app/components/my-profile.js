@@ -3,6 +3,7 @@ import React from 'react';
 import MyProfileInformation from './my-profile-information';
 import MyProfileSelector from './my-profile-selector';
 import {getPrivateProfile} from '../server';
+import {Link} from 'react-router';
 
 export default class MyProfile extends React.Component {
 
@@ -25,10 +26,12 @@ export default class MyProfile extends React.Component {
             <div className="col prof-pic-and-upload">
               <img className="profile-picture img-circle" src={data.profilePicture}></img>
               <div className="row" align="right">
+                <Link to={"/profile/" + this.props.currentUserID}>
                 <button className="upload-profile-link">
                   <span className="glyphicon glyphicon-pencil"></span>
-                  Change Profile Picture
+                  Public Profile View
                 </button>
+              </Link>
               </div>
             </div>
             <div className="col my-profile-name">

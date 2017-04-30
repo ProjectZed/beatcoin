@@ -9,6 +9,7 @@ var database = require('./database');
 var readDocument = database.readDocument;
 var writeDocument = database.writeDocument;
 var addDocument = database.addDocument;
+var getCollection = database.getCollection;
 
 /*Your schemas here!*/
 var validate = require('express-jsonschema').validate;
@@ -382,6 +383,18 @@ app.get('/users/:userid/uploads', function(req, res) {
 
 app.get('/redeemables', function(req, res) {
   res.send(readDocument('redeemables', 'active'));
+});
+
+app.get('/username/:username', function (req, res){
+  debugger;
+  var username = req.params.username;
+  var users = getCollection('users');
+  for (var key in users){
+    if (key.name === username){
+      res.json(key._id);
+    }
+  }
+  res.json(-1);
 });
 
 /**

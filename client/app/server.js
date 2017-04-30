@@ -112,6 +112,12 @@ export function getRedeemables(cb) {
   });
 }
 
+export function userIdByName(username, cb){
+  sendXHR('GET', '/username/'+username, undefined, (xhr) => {
+    cb(JSON.parse(xhr.responseText));
+  });
+}
+
 function sendXHR(verb, resource, body, cb) {
   var xhr = new XMLHttpRequest();
   xhr.open(verb, resource);

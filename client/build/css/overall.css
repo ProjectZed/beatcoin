@@ -113,11 +113,14 @@ body {
 #upload-modal .modal-content {
     background-color: #c7c4ff;
     margin: 1% auto;
-    margin-top: 70px;
-    margin-bottom: 70px;
+    margin-top: 60px;
+    margin-bottom: 80px;
     padding: 20px;
     border: 5px solid #480c68;
     width: 80%;
+    z-index: 1;
+    overflow-y: scroll;
+    max-height: 85vh;
 }
 
 #upload-modal .modal-content h2 {
@@ -167,4 +170,8 @@ body {
   float: right;
   margin-top: -20px;
   margin-right: 50px;
+}
+
+#upload-modal textarea {
+  resize: none;
 }

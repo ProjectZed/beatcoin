@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "author": {
+      "id": "author",
+      "type": "integer"
+    },
+    "title": {
+      "id": "title",
+      "type": "string"
+    },
+    "lyrics": {
+      "id": "title",
+      "type": "string"
+    },
+    "description": {
+      "id": "description",
+      "type": "string"
+    },
+    "genre": {
+      "id": "genre",
+      "type": "string"
+    },
+    "rewards": {
+      "id": "rewards",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "author",
+    "title",
+    "lyrics",
+    "description",
+    "genre",
+    "rewards"
+  ]
+}

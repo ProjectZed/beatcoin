@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {getPrivateProfile} from '../server';
-import UploadButton from './upload-button.js';
+import UploadModal from './upload-modal.js';
 
 export default class Navbar extends React.Component {
   constructor(props) {
@@ -55,7 +55,10 @@ export default class Navbar extends React.Component {
                   </button>
                 </div>
                 <div className="btn-group" role="group">
-                  <UploadButton></UploadButton>
+                  <button type="button" className="btn btn-default navbar-btn" data-toggle="modal" data-target="#upload-modal">
+                    Upload
+                  </button>
+                  <UploadModal userId={this.props.currentUserID}></UploadModal>
                 </div>
                 <div className="btn-group" role="group">
                   <Link to={"/profile/" + this.props.currentUserID} style={{

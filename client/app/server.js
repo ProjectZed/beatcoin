@@ -69,6 +69,19 @@ export function postSongComment(posterId, songId, message, cb) {
   });
 }
 
+export function putSong(authorId, songTitle, songLyrics, songDescription, songGenre, songRewards, cb) {
+  sendXHR('PUT', '/users/' + authorId + '/uploads', {
+    "author": authorId,
+    "title": songTitle,
+    "rewards": songRewards,
+    "lyrics": songLyrics,
+    "description": songDescription,
+    "genre": songGenre
+  }, (xhr) => {
+    cb(JSON.parse(xhr.responseText));
+  });
+}
+
 export function likeSong(userId, songId, cb) {
   sendXHR('PUT', '/songs/' + songId + '/likes/' + userId, undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));

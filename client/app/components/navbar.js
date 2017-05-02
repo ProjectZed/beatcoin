@@ -10,9 +10,7 @@ export default class Navbar extends React.Component {
       beatcoins: 0
     }
     getPrivateProfile(props.currentUserID, (user) => {
-      this.state = {
-        beatcoins: user.beatcoins
-      }
+      this.setState({beatcoins: user.beatcoins});
     });
   }
 

@@ -22,9 +22,9 @@ Like many other music streaming web apps such as Pandora, Beatcoin offers music 
 10. Create the directory `beatcoin-data`
 11. **Mac/Linux**: Initialize database with `mongod --dbpath beatcoin-data`  
     **Windows**: Initialize database with `"C:\Program Files\MongoDB\Server\3.2\bin\mongod.exe" --dbpath beatcoin-data`  
-
 12. In `beatcoin/server/node_modules/mongo-express/config.default.js`, change `db: 'db'` to `db: 'beatcoin'`
+13. Initialize the database with `node beatcoin/server/src/resetdatabase.js`
 
-13. In the client terminal, run `npm run watch`
-14. In the server terminal, run `node server/src/server.js`
-15. Open Chrome web browser to `localhost:3000`
+14. In the client terminal, run `npm run watch`
+15. In the server terminal, run `node server/src/server.js`
+16. Open Chrome web browser to `localhost:3000`

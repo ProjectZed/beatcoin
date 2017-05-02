@@ -14,6 +14,7 @@ var addDocument = database.addDocument;
 var validate = require('express-jsonschema').validate;
 var CommentSchema = require('./schemas/comment.json');
 var InfoSchema = require('./schemas/info.json');
+var SongSchema = require('./schemas/song.json');
 
 // Support receiving text in HTTP request bodies
 app.use(bodyParser.text());
@@ -191,6 +192,53 @@ function getPlaylistSync(userId, playlistId) {
   playlist.songs = songs;
   return playlist;
 }
+
+function putSong(authorId, songTitle, songLyrics, songDescription, songGenre, songRewards, cb) {
+  try {
+    var user = readDocument('users', authorId);
+    var newSong = {
+      "title": songTitle,
+      "genre": songGenre,
+      "uploader": authorId,
+      "price": songRewards,
+      "plays": 0,
+      "audio": "audio/star-spangled-banner.mp3",
+      "cover": "img/songs/covers/star-spangled-banner.jpg",
+      "lyrics": songLyrics,
+      "description": songDescription,
+      "uploadDate": new Date().getTime(),
+      "likes": [],
+      "comments": []
+    };
+    newSong = addDocument('songs', newSong);
+    user.uploads.push(newSong._id);
+    writeDocument('users', user);
+    newSong.uploader = readDocument('users', authorId);
+    cb(null, newSong);
+  } catch (err) {
+    cb(err);
+  }
+}
+
+app.put('/users/:userid/uploads', validate({
+  body: SongSchema
+}), function(req, res) {
+  var body = req.body;
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  var userId = req.params.userid;
+  var useridNumber = parseInt(userId, 10);
+  if (fromUser === useridNumber) {
+    putSong(fromUser, body.title, body.lyrics, body.description, body.genre, body.rewards, (err, song) => {
+      if (err) {
+        res.status(500).send("A database error occurred: " + err);
+      } else {
+        res.send(song);
+      }
+    })
+  } else {
+    res.status(401).end();
+  }
+});
 
 app.put('/comments/:commentid/likes/:userid', function(req, res) {
   var fromUser = getUserIdFromToken(req.get('Authorization'));

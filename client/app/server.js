@@ -69,6 +69,19 @@ export function postSongComment(posterId, songId, message, cb) {
   });
 }
 
+export function putSong(authorId, songTitle, songLyrics, songDescription, songGenre, songRewards, cb) {
+  sendXHR('PUT', '/users/' + authorId + '/uploads', {
+    "author": authorId,
+    "title": songTitle,
+    "rewards": songRewards,
+    "lyrics": songLyrics,
+    "description": songDescription,
+    "genre": songGenre
+  }, (xhr) => {
+    cb(JSON.parse(xhr.responseText));
+  });
+}
+
 export function likeSong(userId, songId, cb) {
   sendXHR('PUT', '/songs/' + songId + '/likes/' + userId, undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
@@ -108,6 +121,12 @@ export function getUploadedSongs(userId, cb) {
 export function getRedeemables(cb) {
   sendXHR('GET', 'redeemables', undefined, (xhr) => {
     // Call the callback with the data.
+    cb(JSON.parse(xhr.responseText));
+  });
+}
+
+export function uploadSong(cb) {
+  sendXHR('PUT', 'upload', undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });
 }

@@ -1,9 +1,9 @@
-//new Buffer(JSON.stringify({ id: 2 })).toString('base64');
-var token = 'eyJpZCI6Mn0=';
+//new Buffer(JSON.stringify({ id: "000000000000000000000002" })).toString('base64');
+var token = 'eyJpZCI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMiJ9';
 
 ///users/1/playlists
 export function getGenreLists(cb) {
-  sendXHR('GET', '/users/1/playlists', undefined, (xhr) => {
+  sendXHR('GET', '/users/000000000000000000000001/playlists', undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });
 }
@@ -33,8 +33,8 @@ export function getUserComments(userId, cb) {
   });
 }
 
-export function getPlaylist(userId, playlistId, cb) {
-  sendXHR('GET', '/users/' + userId + '/playlist/' + playlistId, undefined, (xhr) => {
+export function getPlaylist(userId, playlistIdx, cb) {
+  sendXHR('GET', '/users/' + userId + '/playlist/' + playlistIdx, undefined, (xhr) => {
     cb(JSON.parse(xhr.responseText));
   });
 }

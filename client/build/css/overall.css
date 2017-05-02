@@ -148,6 +148,7 @@ body {
 #beatcoin-small {
   width: 20px;
   height: 20px;
+  margin-right: 3px;
 }
 
 #upload-modal .modal-nonbody {

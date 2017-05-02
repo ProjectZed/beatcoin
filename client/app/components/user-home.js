@@ -28,7 +28,7 @@ export default class UserHome extends React.Component {
     var playLists = [];
     for (var i = 0; i < (genreList.length); i++) {
       playLists.push(
-        <Playlist setPlaylist={this.props.setPlaylist} genreInfo={genreList[i]} key={genreList[i]._id}></Playlist>
+        <Playlist index={i} setPlaylist={this.props.setPlaylist} genreInfo={genreList[i]} key={genreList[i]._id}></Playlist>
       );
     }
 
@@ -67,6 +67,6 @@ export default class UserHome extends React.Component {
           </div>
         </section>
       </div>
-    );
+    )
   }
 }

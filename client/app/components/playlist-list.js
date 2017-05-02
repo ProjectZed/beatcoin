@@ -25,7 +25,7 @@ export default class PlaylistList extends React.Component {
     var playLists = [];
     for (var i = 0; i < (list.length); i++) {
       playLists.push(
-        <Playlist setPlaylist={this.props.setPlaylist} genreInfo={list[i]} key={list[i]._id}></Playlist>
+        <Playlist index={i} setPlaylist={this.props.setPlaylist} genreInfo={list[i]} key={list[i]._id}></Playlist>
       );
     }
 

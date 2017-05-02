@@ -255,11 +255,11 @@ MongoClient.connect(url, function(err, db) {
           }
         }).toArray(function(err, comments) {
           if (err) {
-            return sendDatabaseError(err);
+            return sendDatabaseError(res, err);
           }
           resolveCommentsAuthor(comments, function(err, userMap) {
             if (err) {
-              return sendDatabaseError(err);
+              return sendDatabaseError(res, err);
             }
             comments.forEach((comment) => {
               comment.author = userMap[comment.author];
@@ -330,7 +330,7 @@ MongoClient.connect(url, function(err, db) {
 
   function resolveCommentsAuthor(commentList, cb) {
     if (commentList.length === 0) {
-      cb(null, {})
+      return cb(null, {})
     }
     var authors = commentList.map((comment) => new ObjectID(comment.author));
     db.collection('users').find({
@@ -357,7 +357,7 @@ MongoClient.connect(url, function(err, db) {
       _id: new ObjectID(userId)
     }, function(err, user) {
       if (err) {
-        return sendDatabaseError(err);
+        return sendDatabaseError(res, err);
       } else if (user === null) {
         res.status(400).send("Could not find user: " + userId);
       } else {
@@ -368,11 +368,11 @@ MongoClient.connect(url, function(err, db) {
           }
         }).toArray(function(err, comments) {
           if (err) {
-            return sendDatabaseError(err);
+            return sendDatabaseError(res, err);
           }
           resolveCommentsAuthor(comments, function(err, userMap) {
             if (err) {
-              return sendDatabaseError(err);
+              return sendDatabaseError(res, err);
             }
             comments.forEach((comment) => {
               comment.author = userMap[comment.author];
@@ -433,9 +433,8 @@ MongoClient.connect(url, function(err, db) {
     var body = req.body;
     var fromUser = getUserIdFromToken(req.get('Authorization'));
     var userId = req.params.userid;
-    var useridNumber = parseInt(userId, 10);
-    if (fromUser === useridNumber) {
-      putSong(fromUser, body.title, body.lyrics, body.description, body.genre, body.rewards, (err, song) => {
+    if (fromUser === userId) {
+      putSong(new ObjectID(fromUser), body.title, body.lyrics, body.description, body.genre, body.rewards, (err, song) => {
         if (err) {
           res.status(500).send("A database error occurred: " + err);
         } else {
@@ -792,7 +791,19 @@ MongoClient.connect(url, function(err, db) {
           if (err) {
             return sendDatabaseError(res, err);
           } else {
-            res.send(songList)
+            resolveSongUploader(songList, function(err, userMap) {
+              if (err) {
+                return sendDatabaseError(res, err);
+              }
+              var userList = [];
+              songList.forEach((song) => {
+                userList.push(userMap[song.uploader])
+              })
+              for (var i = 0; i < songList.length; i++) {
+                songList[i].uploader = userList[i];
+              }
+              res.send(songList)
+            });
           }
         })
       }

@@ -71,11 +71,11 @@ export default class MyProfileInformation extends React.Component {
           </div>
           <div className="col-md-4 displayed-info">
             {this.state.info.nickname[0]}
-            <br/> {this.state.info.birthday[0]}
-            <br/> {this.state.info.gender[0]}
-            <br/> {this.state.info.location[0]}
-            <br/> {this.state.info.education[0]}
-            <br/> {this.state.info.contactAgent[0]}
+            <br/>{this.state.info.birthday[0]}
+            <br/>{this.state.info.gender[0]}
+            <br/>{this.state.info.location[0]}
+            <br/>{this.state.info.education[0]}
+            <br/>{this.state.info.contactAgent[0]}
           </div>
           <div className="col-md-3 displayed-info">
             <div onClick={(e) => this.handleToggle(e, "nickname")}>

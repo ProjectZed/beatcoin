@@ -50,11 +50,6 @@ export default class MyProfileInformation extends React.Component {
         <div className="col-md-8 profile-info">
           <font size="6">General
           </font>
-          <font size="4">
-            <a href="#">
-              <span className="glyphicon glyphicon-pencil"></span>
-            </a>
-          </font>
           <hr/>
           <div className="col-md-4 displayed-info">
             Nickname

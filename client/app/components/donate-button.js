@@ -34,7 +34,9 @@ export default class DonateButton extends React.Component {
             <span className="" styles="width:100%">
               <div style={{
                 'color': 'white'
-              }}>Edit</div>
+              }}>
+              Edit <span className="glyphicon glyphicon-pencil"></span>
+            </div>
             </span>
           </button>
         </Link>

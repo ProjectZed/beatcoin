@@ -18,20 +18,30 @@ export default class MyProfile extends React.Component {
   }
 
   render() {
+    // console.log(this.state);
+    // console.log(this.state.profilePicture);
+
     var data = this.state;
     return (
       <div id="my-profile">
         <div className="container main-container">
           <div className="row bc-upper-profile">
-            <div className="col prof-pic-and-upload">
-              <img className="profile-picture img-circle" src={data.profilePicture}></img>
+            <div className="col-md-3 prof-pic-and-upload">
+
               <div className="row" align="right">
+                <div className="profile-picture img-circle" style={{
+                  'backgroundImage': "url('" + this.state.profilePicture + "')"
+                }}></div>
                 <Link to={"/profile/" + this.props.currentUserID}>
-                <button className="upload-profile-link">
-                  <span className="glyphicon glyphicon-pencil"></span>
-                  Public Profile View
-                </button>
-              </Link>
+                  <button type="button" className="donate-button btn btn-default every-button">
+                    <span className="" styles="width:100%">
+                      <div style={{'color': 'white'}}>
+                      Public Profile
+                    </div>
+                    </span>
+                  </button>
+                </Link>
+
               </div>
             </div>
             <div className="col my-profile-name">

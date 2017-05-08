@@ -1,5 +1,6 @@
-#my-profile main-container {
-  height: 100%;
+#my-profile .main-container {
+  margin-top: 20px;
+  margin-bottom: 100px;
 }
 
 #my-profile .my-profile-top {
@@ -11,16 +12,18 @@
 }
 
 #my-profile .profile-picture {
-  width: 55%;
-  height: 55%;
-  display: block;
-  margin: auto;
-  /*text-align: right;*/
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  width: 150px;
+  height: 150px;
+  background-position: center center;
+  background-size: cover;
 }
 
 #my-profile .prof-pic-and-upload {
-  width: 30%;
-  display: inline-block;
+  /*width: 30%;*/
+  /*display: inline-block;*/
 }
 
 #my-profile .upload-profile-link {
@@ -30,7 +33,7 @@
 }
 
 #my-profile .donate-button {
-  width: 50%;
+  width: 150px;
   /*text-align: right;*/
 }
 
